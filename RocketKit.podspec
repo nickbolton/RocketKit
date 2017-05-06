@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'RocketKit'
-  spec.version = '0.0.2'
+  spec.version = '0.0.1'
   spec.license = 'Apache2.0'
   spec.summary = 'Rocket runtime library.'
   spec.homepage = 'http://www.rocketapp.com'
