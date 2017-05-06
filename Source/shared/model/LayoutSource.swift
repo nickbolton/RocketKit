@@ -6,9 +6,13 @@
 //  Copyright © 2017 Nick Bolton. All rights reserved.
 //
 
-import UIKit
+#if os(iOS)
+    import UIKit
+#else
+    import AppKit
+#endif
 
-class LayoutSource: NSObject {
+public class LayoutSource: NSObject {
 
     private (set) var topLevelComponents = [String: Component]()
     let version: Int
@@ -20,7 +24,7 @@ class LayoutSource: NSObject {
     private let projectColorsKey = "projectColors"
     private let duplicateComponentsKey = "duplicateComponents"
 
-    required init(dictionary: [String: Any]) {
+    required public init(dictionary: [String: Any]) {
         self.version = dictionary[versionKey] as? Int ?? 1
         self.projectColors = LayoutSource.initializeProjectColors(dictionary[projectColorsKey] as? [[String: Any]] ?? [])
         super.init()

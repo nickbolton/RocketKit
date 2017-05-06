@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias BaseView = UIView
+public typealias BaseView = UIView
 
 class RocketView: UIView, RocketViewProtocol {
 

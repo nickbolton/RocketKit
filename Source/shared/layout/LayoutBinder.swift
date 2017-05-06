@@ -6,7 +6,11 @@
 //  Copyright © 2017 Nick Bolton. All rights reserved.
 //
 
-import UIKit
+#if os(iOS)
+    import UIKit
+#else
+    import AppKit
+#endif
 
 class LayoutBinder: NSObject {
 

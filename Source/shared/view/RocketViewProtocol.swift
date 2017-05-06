@@ -6,9 +6,13 @@
 //  Copyright © 2017 Nick Bolton. All rights reserved.
 //
 
-import UIKit
+#if os(iOS)
+    import UIKit
+#else
+    import AppKit
+#endif
 
-@objc protocol RocketViewProtocol {
+@objc public protocol RocketViewProtocol {
     var isRootView: Bool { get set }
     var view: BaseView { get }
     var component: Component? { get set }

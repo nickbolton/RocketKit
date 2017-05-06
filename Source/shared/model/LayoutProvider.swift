@@ -6,10 +6,14 @@
 //  Copyright © 2017 Nick Bolton. All rights reserved.
 //
 
-import UIKit
+#if os(iOS)
+    import UIKit
+#else
+    import AppKit
+#endif
 
-class LayoutProvider: NSObject {
-    static let shared = LayoutProvider()
+public class LayoutProvider: NSObject {
+    static public let shared = LayoutProvider()
     private override init() {}
     
     private let viewFactory = ViewFactory()

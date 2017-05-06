@@ -6,9 +6,13 @@
 //  Copyright © 2017 Nick Bolton. All rights reserved.
 //
 
-import UIKit
+#if os(iOS)
+    import UIKit
+#else
+    import AppKit
+#endif
 
-enum LayoutState: Int {
+public enum LayoutState: Int {
     case disabled
     case def
     case low
@@ -16,14 +20,14 @@ enum LayoutState: Int {
     case required
 }
 
-enum MetaType: Int {
+public enum MetaType: Int {
     case none
     case ideal
     case min
     case max
 }
 
-class LayoutMeta: BaseObject {
+public class LayoutMeta: BaseObject {
     
     let constant: CGFloat
     let multiplier: CGFloat
@@ -43,7 +47,7 @@ class LayoutMeta: BaseObject {
     private static let stateKey = "state"
     private static let typeKey = "type"
     
-    required init(dictionary: [String: Any], layoutSource: LayoutSource) {
+    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
         self.constant = CGFloat(dictionary[LayoutMeta.constantKey] as? Float ?? 0.0)
         self.multiplier = CGFloat(dictionary[LayoutMeta.multiplierKey] as? Float ?? 0.0)
         self.proportionalLayoutObjectIdentifier = dictionary[LayoutMeta.proportionalLayoutObjectIdentifierKey] as? String

@@ -12,11 +12,11 @@
     import AppKit
 #endif
 
-enum ComponentType: Int {
+public enum ComponentType: Int {
     case container
 }
 
-class Component: BaseObject {
+public class Component: BaseObject {
     
     let componentType: ComponentType
     let name: String
@@ -66,7 +66,7 @@ class Component: BaseObject {
     private static let defaultLayoutObjectsKey = "defaultLayoutObjects"
     private static let childComponentsKey = "childComponents"
 
-    required init(dictionary: [String: Any], layoutSource: LayoutSource) {
+    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
         self.componentType = ComponentType(rawValue: dictionary[Component.typeKey] as? Int ?? 0) ?? .container
         self.name = dictionary[Component.nameKey] as? String ?? ""
         self.cornerRadius = dictionary[Component.cornerRadiusKey] as? CGFloat ?? 0.0

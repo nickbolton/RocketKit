@@ -8,13 +8,13 @@
 
 import Foundation
 
-class BaseObject: NSObject {
+public class BaseObject: NSObject {
 
     let identifier: String
     
     private static let identifierKey = "identifier"
     
-    required init(dictionary: [String: Any], layoutSource: LayoutSource) {
+    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
         self.identifier = dictionary[BaseObject.identifierKey] as? String ?? ""
         super.init()
     }

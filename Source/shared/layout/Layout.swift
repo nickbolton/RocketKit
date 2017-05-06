@@ -6,9 +6,13 @@
 //  Copyright © 2017 Nick Bolton. All rights reserved.
 //
 
-import UIKit
+#if os(iOS)
+    import UIKit
+#else
+    import AppKit
+#endif
 
-class Layout: BaseObject {
+public class Layout: BaseObject {
     
     let componentIdentifier: String
     let attribute: NSLayoutAttribute
@@ -58,7 +62,7 @@ class Layout: BaseObject {
     private static let minMetaKey = "minMeta"
     private static let maxMetaKey = "maxMeta"
     
-    required init(dictionary: [String: Any], layoutSource: LayoutSource) {
+    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
         self.componentIdentifier = dictionary[Layout.componentIdentifierKey] as? String ?? ""
         self.attribute = NSLayoutAttribute(rawValue: dictionary[Layout.attributeKey] as? Int ?? 0) ?? .notAnAttribute
         self.relatedComponentIdentifier = dictionary[Layout.relatedComponentIdentifierKey] as? String
