@@ -11,8 +11,8 @@ Pod::Spec.new do |spec|
   spec.osx.deployment_target = '10.10'
 
   spec.source_files = 'Source/**/*.{h,m}'
-  spec.ios.exclude_files = 'Source/osx', non_arc_files
-  spec.osx.exclude_files = 'Source/ios', non_arc_files
+  spec.ios.exclude_files = 'Source/osx'
+  spec.osx.exclude_files = 'Source/ios'
 
   spec.requires_arc = true
 end 
