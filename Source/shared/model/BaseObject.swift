@@ -1,0 +1,21 @@
+//
+//  BaseObject.swift
+//  RocketKit
+//
+//  Created by Nick Bolton on 5/5/17.
+//  Copyright © 2017 Nick Bolton. All rights reserved.
+//
+
+import Foundation
+
+class BaseObject: NSObject {
+
+    let identifier: String
+    
+    private static let identifierKey = "identifier"
+    
+    required init(dictionary: [String: Any], layoutSource: LayoutSource) {
+        self.identifier = dictionary[BaseObject.identifierKey] as? String ?? ""
+        super.init()
+    }
+}
