@@ -63,8 +63,15 @@ public class LayoutProvider: NSObject {
     
     // MARK: Public
     
-    public func view(with identifier: String) -> RocketViewProtocol? {
-        if let component = component(with: identifier) {
+    public func buildView(withIdentifier identifier: String) -> RocketViewProtocol? {
+        if let component = componentByIdentifier(identifier) {
+            return viewFactory.buildView(with: component)
+        }
+        return nil
+    }
+    
+    public func buildView(withName name: String) -> RocketViewProtocol? {
+        if let component = componentByName(name) {
             return viewFactory.buildView(with: component)
         }
         return nil
@@ -72,11 +79,15 @@ public class LayoutProvider: NSObject {
     
     // MARK: Internal
     
-    internal func component(with identifier: String) -> Component? {
+    internal func componentByIdentifier(_ identifier: String) -> Component? {
         return layoutSource?.component(with: identifier)
     }
     
-    internal func viewWithComponentIdentifier(_ identifier: String?) -> RocketViewProtocol? {
+    internal func componentByName(_ name: String) -> Component? {
+        return layoutSource?.componentByName(name)
+    }
+    
+    internal func view(with identifier: String?) -> RocketViewProtocol? {
         guard let identifier = identifier else {
             return nil
         }

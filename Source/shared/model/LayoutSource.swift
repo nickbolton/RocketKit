@@ -17,6 +17,7 @@ public class LayoutSource: NSObject {
     private (set) var topLevelComponents = [String: Component]()
     let version: Int
     private var componentMap = [String: Component]()
+    private var componentMapByName = [String: Component]()
     private let projectColors: [String: String]
     
     private let versionKey = "version"
@@ -36,6 +37,10 @@ public class LayoutSource: NSObject {
         return componentMap[identifier]
     }
     
+    public func componentByName(_ name: String) -> Component? {
+        return componentMapByName[name]
+    }
+    
     internal func projectColor(with identifier: String) -> String? {
         return projectColors[identifier]
     }
@@ -43,6 +48,7 @@ public class LayoutSource: NSObject {
     private func establishComponentMap(components: [Component]) {
         for component in components {
             componentMap[component.identifier] = component
+            componentMapByName[component.name] = component
             establishComponentMap(components: component.childComponents)
         }
     }
