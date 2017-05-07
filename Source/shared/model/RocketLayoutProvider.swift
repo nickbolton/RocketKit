@@ -85,9 +85,22 @@ public class RocketLayoutProvider: NSObject {
         if let component = componentByName(name) {
             return viewFactory.buildView(with: component)
         }
+        print("Could not find a component named: \(name)")
         return nil
     }
     
+    public func buildViewController(withIdentifier identifier: String) -> RocketViewController {
+        return RocketViewController(componentId: identifier)
+    }
+
+    public func buildViewController(withName name: String) -> RocketViewController {
+        if let component = componentByName(name) {
+            return RocketViewController(componentId: component.identifier)
+        }
+        print("Could not find a component named: \(name)")
+        return RocketViewController(componentId: "")
+    }
+
     // MARK: Internal
     
     internal func componentByIdentifier(_ identifier: String) -> RocketComponent? {
