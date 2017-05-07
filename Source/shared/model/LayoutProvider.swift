@@ -26,7 +26,8 @@ public class LayoutProvider: NSObject {
     
     private func loadDefaultLayoutSource() {
         guard let url = Bundle.main.url(forResource: "layoutSource", withExtension: "rocket") as URL?  else {
-            assert(false, "Missing layoutSource.rocket resource.")
+            print("Missing layoutSource.rocket resource.")
+            return
         }
         self.loadLayout(at: url)
     }
