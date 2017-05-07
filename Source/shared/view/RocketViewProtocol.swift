@@ -9,13 +9,13 @@
 #if os(iOS)
     import UIKit
 #else
-    import AppKit
+    import Cocoa
 #endif
 
 @objc public protocol RocketViewProtocol {
     var isRootView: Bool { get set }
-    var view: BaseView { get }
-    var component: Component? { get set }
-    var layoutProvider: LayoutProvider? { get set }
+    var view: RocketBaseView { get }
+    var component: RocketComponent? { get set }
+    var layoutProvider: RocketLayoutProvider? { get set }
     func applyComponentProperties()
 }

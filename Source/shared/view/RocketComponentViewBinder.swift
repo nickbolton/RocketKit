@@ -1,5 +1,5 @@
 //
-//  ComponentViewBinder.swift
+//  RocketComponentViewBinder.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/6/17.
@@ -9,16 +9,16 @@
 #if os(iOS)
     import UIKit
 #else
-    import AppKit
+    import Cocoa
 #endif
 
-class ComponentViewBinder: NSObject {
+class RocketComponentViewBinder: NSObject {
     
     private var isSetup = false
-    private let viewFactory = ViewFactory()
-    private let layoutBinder = LayoutBinder()
+    private let viewFactory = RocketViewFactory()
+    private let layoutBinder = RocketLayoutBinder()
     
-    internal func buildViewIfNecessary(for rocketView: RocketViewProtocol, component: Component?, layoutProvider: LayoutProvider?) {
+    internal func buildViewIfNecessary(for rocketView: RocketViewProtocol, component: RocketComponent?, layoutProvider: RocketLayoutProvider?) {
         guard !isSetup, let component = component, let layoutProvider = layoutProvider else { return }
         isSetup = true
         let view = rocketView.view
@@ -30,16 +30,18 @@ class ComponentViewBinder: NSObject {
             let childView = viewFactory.buildView(with: child)
             childView.layoutProvider = layoutProvider
             view.addSubview(childView.view)
-            childView.view.setNeedsLayout()
+            #if os(iOS)
+                childView.view.setNeedsLayout()
+            #endif
         }
     }
     
-    internal func cleanUp(for view: RocketViewProtocol, component: Component?, layoutProvider: LayoutProvider?) {
+    internal func cleanUp(for view: RocketViewProtocol, component: RocketComponent?, layoutProvider: RocketLayoutProvider?) {
         guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
         layoutProvider.unregisterView(view, for: component)
     }
     
-    private func applyLayout(component: Component, layoutProvider: LayoutProvider) {
+    private func applyLayout(component: RocketComponent, layoutProvider: RocketLayoutProvider) {
         for layoutObject in component.allLayoutObjects {
             layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
         }

@@ -1,5 +1,5 @@
 //
-//  LayoutProvider.swift
+//  RocketLayoutProvider.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/5/17.
@@ -9,18 +9,18 @@
 #if os(iOS)
     import UIKit
 #else
-    import AppKit
+    import Cocoa
 #endif
 
-public class LayoutProvider: NSObject {
-    static public let shared = LayoutProvider()
+public class RocketLayoutProvider: NSObject {
+    static public let shared = RocketLayoutProvider()
     private override init() {
         super.init()
         loadDefaultLayoutSource()
     }
     
-    private let viewFactory = ViewFactory()
-    private var layoutSource: LayoutSource?
+    private let viewFactory = RocketViewFactory()
+    private var layoutSource: RocketLayoutSource?
     
     private var viewRegistry = [String: RocketViewProtocol]()
     
@@ -65,7 +65,7 @@ public class LayoutProvider: NSObject {
     }
     
     private func loadDictionary(_ dict: [String: Any], from url: URL) {
-        layoutSource = LayoutSource(dictionary: dict)
+        layoutSource = RocketLayoutSource(dictionary: dict)
         guard layoutSource != nil else {
             print("Couldn't load url: \(url)")
             return
@@ -90,11 +90,11 @@ public class LayoutProvider: NSObject {
     
     // MARK: Internal
     
-    internal func componentByIdentifier(_ identifier: String) -> Component? {
+    internal func componentByIdentifier(_ identifier: String) -> RocketComponent? {
         return layoutSource?.component(with: identifier)
     }
     
-    internal func componentByName(_ name: String) -> Component? {
+    internal func componentByName(_ name: String) -> RocketComponent? {
         return layoutSource?.componentByName(name)
     }
     
@@ -105,11 +105,11 @@ public class LayoutProvider: NSObject {
         return viewRegistry[identifier]
     }
     
-    internal func registerView(_ view: RocketViewProtocol, for component: Component) {
+    internal func registerView(_ view: RocketViewProtocol, for component: RocketComponent) {
         viewRegistry[component.identifier] = view
     }
 
-    internal func unregisterView(_ view: RocketViewProtocol, for component: Component) {
+    internal func unregisterView(_ view: RocketViewProtocol, for component: RocketComponent) {
         viewRegistry.removeValue(forKey: component.identifier)
     }
 }

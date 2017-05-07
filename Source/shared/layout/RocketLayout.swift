@@ -1,5 +1,5 @@
 //
-//  Layout.swift
+//  RocketLayout.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/5/17.
@@ -9,29 +9,29 @@
 #if os(iOS)
     import UIKit
 #else
-    import AppKit
+    import Cocoa
 #endif
 
-public class Layout: BaseObject {
+public class RocketLayout: RocketBaseObject {
     
     let componentIdentifier: String
     let attribute: NSLayoutAttribute
     let relatedComponentIdentifier: String?
     let relatedAttribute: NSLayoutAttribute
     let isDefaultLayout: Bool
-    let idealMeta: LayoutMeta
-    let minMeta: LayoutMeta
-    let maxMeta: LayoutMeta
+    let idealMeta: RocketLayoutMeta
+    let minMeta: RocketLayoutMeta
+    let maxMeta: RocketLayoutMeta
     let commonAncestorComponentIdentifier: String?
     
     var isSizing: Bool { return attribute == .width || attribute == .height }
     
     var isHorizontal: Bool {
-        return Layout.isHorizontal(attribute)
+        return RocketLayout.isHorizontal(attribute)
     }
     
     var isVertical: Bool {
-        return Layout.isVertical(attribute)
+        return RocketLayout.isVertical(attribute)
     }
 
     var isCompletelyDeactivated: Bool {
@@ -62,16 +62,16 @@ public class Layout: BaseObject {
     private static let minMetaKey = "minMeta"
     private static let maxMetaKey = "maxMeta"
     
-    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
-        self.componentIdentifier = dictionary[Layout.componentIdentifierKey] as? String ?? ""
-        self.attribute = NSLayoutAttribute(rawValue: dictionary[Layout.attributeKey] as? Int ?? 0) ?? .notAnAttribute
-        self.relatedComponentIdentifier = dictionary[Layout.relatedComponentIdentifierKey] as? String
-        self.commonAncestorComponentIdentifier = dictionary[Layout.commonAncestorComponentIdentifierKey] as? String
-        self.relatedAttribute = NSLayoutAttribute(rawValue: dictionary[Layout.relatedAttributeKey] as? Int ?? 0) ?? .notAnAttribute
-        self.isDefaultLayout = dictionary[Layout.defaultLayoutKey] as? Bool ?? false
-        self.idealMeta = LayoutMeta(dictionary: dictionary[Layout.idealMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
-        self.minMeta = LayoutMeta(dictionary: dictionary[Layout.minMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
-        self.maxMeta = LayoutMeta(dictionary: dictionary[Layout.maxMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
+    required public init(dictionary: [String: Any], layoutSource: RocketLayoutSource) {
+        self.componentIdentifier = dictionary[RocketLayout.componentIdentifierKey] as? String ?? ""
+        self.attribute = NSLayoutAttribute(rawValue: dictionary[RocketLayout.attributeKey] as? Int ?? 0) ?? .notAnAttribute
+        self.relatedComponentIdentifier = dictionary[RocketLayout.relatedComponentIdentifierKey] as? String
+        self.commonAncestorComponentIdentifier = dictionary[RocketLayout.commonAncestorComponentIdentifierKey] as? String
+        self.relatedAttribute = NSLayoutAttribute(rawValue: dictionary[RocketLayout.relatedAttributeKey] as? Int ?? 0) ?? .notAnAttribute
+        self.isDefaultLayout = dictionary[RocketLayout.defaultLayoutKey] as? Bool ?? false
+        self.idealMeta = RocketLayoutMeta(dictionary: dictionary[RocketLayout.idealMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
+        self.minMeta = RocketLayoutMeta(dictionary: dictionary[RocketLayout.minMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
+        self.maxMeta = RocketLayoutMeta(dictionary: dictionary[RocketLayout.maxMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
         super.init(dictionary: dictionary, layoutSource: layoutSource)
     }
 }

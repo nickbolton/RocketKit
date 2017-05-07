@@ -1,5 +1,5 @@
 //
-//  LayoutBinder.swift
+//  RocketLayoutBinder.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/6/17.
@@ -9,28 +9,28 @@
 #if os(iOS)
     import UIKit
 #else
-    import AppKit
+    import Cocoa
 #endif
 
-class LayoutBinder: NSObject {
+class RocketLayoutBinder: NSObject {
 
-    private var metaBinders = [String : LayoutMetaBinder]()
+    private var metaBinders = [String : RocketLayoutMetaBinder]()
     
-    private func binderKey(forLayout layout: Layout, meta: LayoutMeta) -> String {
+    private func binderKey(forLayout layout: RocketLayout, meta: RocketLayoutMeta) -> String {
         return "\(layout.identifier):\(meta.metaType.rawValue)"
     }
     
-    private func binder(forLayout layout: Layout, meta: LayoutMeta) -> LayoutMetaBinder {
+    private func binder(forLayout layout: RocketLayout, meta: RocketLayoutMeta) -> RocketLayoutMetaBinder {
         let key = binderKey(forLayout: layout, meta: meta)
         var result = metaBinders[key]
         if result == nil {
-            result = LayoutMetaBinder()
+            result = RocketLayoutMetaBinder()
             metaBinders[key] = result
         }
         return result!
     }
     
-    internal func addLayout(_ layoutObject: Layout, layoutProvider: LayoutProvider) {
+    internal func addLayout(_ layoutObject: RocketLayout, layoutProvider: RocketLayoutProvider) {
         binder(forLayout: layoutObject, meta: layoutObject.idealMeta).createConstraintIfNecessary(with: layoutObject, meta: layoutObject.idealMeta, layoutProvider: layoutProvider)
         binder(forLayout: layoutObject, meta: layoutObject.minMeta).createConstraintIfNecessary(with: layoutObject, meta: layoutObject.minMeta, layoutProvider: layoutProvider)
         binder(forLayout: layoutObject, meta: layoutObject.maxMeta).createConstraintIfNecessary(with: layoutObject, meta: layoutObject.maxMeta, layoutProvider: layoutProvider)

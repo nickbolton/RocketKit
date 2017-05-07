@@ -1,5 +1,5 @@
 //
-//  LayoutSource.swift
+//  RocketLayoutSource.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/5/17.
@@ -9,15 +9,15 @@
 #if os(iOS)
     import UIKit
 #else
-    import AppKit
+    import Cocoa
 #endif
 
-public class LayoutSource: NSObject {
+public class RocketLayoutSource: NSObject {
 
-    private (set) var topLevelComponents = [String: Component]()
+    private (set) var topLevelComponents = [String: RocketComponent]()
     let version: Int
-    private var componentMap = [String: Component]()
-    private var componentMapByName = [String: Component]()
+    private var componentMap = [String: RocketComponent]()
+    private var componentMapByName = [String: RocketComponent]()
     private let projectColors: [String: String]
     
     private let versionKey = "version"
@@ -27,17 +27,17 @@ public class LayoutSource: NSObject {
 
     required public init(dictionary: [String: Any]) {
         self.version = dictionary[versionKey] as? Int ?? 1
-        self.projectColors = LayoutSource.initializeProjectColors(dictionary[projectColorsKey] as? [[String: Any]] ?? [])
+        self.projectColors = RocketLayoutSource.initializeProjectColors(dictionary[projectColorsKey] as? [[String: Any]] ?? [])
         super.init()
         topLevelComponents = initializeComponents(dictionary[componentsKey] as? [[String: Any]] ?? [])
         establishComponentMap(components: Array(topLevelComponents.values))
     }
     
-    public func component(with identifier: String) -> Component? {
+    public func component(with identifier: String) -> RocketComponent? {
         return componentMap[identifier]
     }
     
-    public func componentByName(_ name: String) -> Component? {
+    public func componentByName(_ name: String) -> RocketComponent? {
         return componentMapByName[name]
     }
     
@@ -45,7 +45,7 @@ public class LayoutSource: NSObject {
         return projectColors[identifier]
     }
     
-    private func establishComponentMap(components: [Component]) {
+    private func establishComponentMap(components: [RocketComponent]) {
         for component in components {
             componentMap[component.identifier] = component
             componentMapByName[component.name] = component
@@ -71,17 +71,17 @@ public class LayoutSource: NSObject {
         return nil
     }
     
-    private func initializeComponents(_ componentArray: [[String: Any]]) -> [String: Component] {
-        var components = [String: Component]()
+    private func initializeComponents(_ componentArray: [[String: Any]]) -> [String: RocketComponent] {
+        var components = [String: RocketComponent]()
         for dict in componentArray {
-            let component = Component(dictionary: dict, layoutSource: self)
+            let component = RocketComponent(dictionary: dict, layoutSource: self)
             components[component.identifier] = component
         }
         establishParentAssociations(Array(components.values), parent: nil)
         return components
     }
     
-    private func establishParentAssociations(_ components: [Component], parent: Component?) {
+    private func establishParentAssociations(_ components: [RocketComponent], parent: RocketComponent?) {
         for component in components {
             component.parentComponent = parent
             establishParentAssociations(component.childComponents, parent: component)

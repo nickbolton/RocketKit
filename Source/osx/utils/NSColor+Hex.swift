@@ -1,15 +1,15 @@
 //
-//  UIColor+Hex.swift
+//  NSColor+Hex.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/5/17.
 //  Copyright © 2017 Nick Bolton. All rights reserved.
 //
-import UIKit
+import Cocoa
 
-typealias RocketColorType = UIColor
+typealias RocketColorType = NSColor
 
-public extension UIColor {
+public extension NSColor {
     
     convenience init(hex: String) {
         let trimmedHex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -26,6 +26,6 @@ public extension UIColor {
         default:
             (a, r, g, b) = (255, 0, 0, 0)
         }
-        self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
+        self.init(calibratedRed: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
     }
 }

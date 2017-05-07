@@ -1,5 +1,5 @@
 //
-//  Component.swift
+//  RocketComponent.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/5/17.
@@ -9,16 +9,16 @@
 #if os(iOS)
     import UIKit
 #else
-    import AppKit
+    import Cocoa
 #endif
 
-public enum ComponentType: Int {
+public enum RocketComponentType: Int {
     case container
 }
 
-public class Component: BaseObject {
+public class RocketComponent: RocketBaseObject {
     
-    let componentType: ComponentType
+    let componentType: RocketComponentType
     let name: String
 
     let cornerRadius: CGFloat
@@ -26,23 +26,23 @@ public class Component: BaseObject {
     let isClipped: Bool
     let isRasterized: Bool
     let alpha: CGFloat
-    var borderColor: ColorType?
-    var backgroundColor: ColorType?
+    var borderColor: RocketColorType?
+    var backgroundColor: RocketColorType?
     
-    let layoutObjects: [Layout]
-    let defaultLayoutObjects: [Layout]
-    var allLayoutObjects: [Layout] {
-        var result = [Layout]()
+    let layoutObjects: [RocketLayout]
+    let defaultLayoutObjects: [RocketLayout]
+    var allLayoutObjects: [RocketLayout] {
+        var result = [RocketLayout]()
         result.append(contentsOf: defaultLayoutObjects)
         result.append(contentsOf: layoutObjects)
         return result
     }
     
-    let childComponents: [Component]
-    internal (set) var parentComponent: Component?
+    let childComponents: [RocketComponent]
+    internal (set) var parentComponent: RocketComponent?
     
     var isTopLevelComponent: Bool { return parentComponent == nil }
-    var topLevelComponent: Component {
+    var topLevelComponent: RocketComponent {
         if let parentComponent = parentComponent {
             return parentComponent.topLevelComponent
         }
@@ -66,23 +66,23 @@ public class Component: BaseObject {
     private static let defaultLayoutObjectsKey = "defaultLayoutObjects"
     private static let childComponentsKey = "childComponents"
 
-    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
-        self.componentType = ComponentType(rawValue: dictionary[Component.typeKey] as? Int ?? 0) ?? .container
-        self.name = dictionary[Component.nameKey] as? String ?? ""
-        self.cornerRadius = dictionary[Component.cornerRadiusKey] as? CGFloat ?? 0.0
-        self.borderWidth = dictionary[Component.borderWidthKey] as? CGFloat ?? 0.0
-        self.isClipped = dictionary[Component.clippedKey] as? Bool ?? false
-        self.isRasterized = dictionary[Component.rasterizedKey] as? Bool ?? false
-        self.alpha = dictionary[Component.alphaKey] as? CGFloat ?? 0.0
-        self.childComponents = Component.initializeChildComponents(dictionary[Component.childComponentsKey] as? [String: [String: Any]] ?? [:], layoutSource: layoutSource)
-        self.layoutObjects = Component.initializeLayoutObjects(dictionary[Component.layoutObjectsKey] as? [[String: Any]] ?? [], layoutSource: layoutSource)
-        self.defaultLayoutObjects = Component.initializeLayoutObjects(dictionary[Component.defaultLayoutObjectsKey] as? [[String: Any]] ?? [], layoutSource: layoutSource)
-        self.borderColor = Component.resolveColor(dict: dictionary, colorKey: Component.borderColorKey, projectColorKey: Component.borderColorProjectColorIdKey, layoutSource: layoutSource)
-        self.backgroundColor = Component.resolveColor(dict: dictionary, colorKey: Component.backgroundColorKey, projectColorKey: Component.backgroundProjectColorIdKey, layoutSource: layoutSource)
+    required public init(dictionary: [String: Any], layoutSource: RocketLayoutSource) {
+        self.componentType = RocketComponentType(rawValue: dictionary[RocketComponent.typeKey] as? Int ?? 0) ?? .container
+        self.name = dictionary[RocketComponent.nameKey] as? String ?? ""
+        self.cornerRadius = dictionary[RocketComponent.cornerRadiusKey] as? CGFloat ?? 0.0
+        self.borderWidth = dictionary[RocketComponent.borderWidthKey] as? CGFloat ?? 0.0
+        self.isClipped = dictionary[RocketComponent.clippedKey] as? Bool ?? false
+        self.isRasterized = dictionary[RocketComponent.rasterizedKey] as? Bool ?? false
+        self.alpha = dictionary[RocketComponent.alphaKey] as? CGFloat ?? 0.0
+        self.childComponents = RocketComponent.initializeChildComponents(dictionary[RocketComponent.childComponentsKey] as? [String: [String: Any]] ?? [:], layoutSource: layoutSource)
+        self.layoutObjects = RocketComponent.initializeLayoutObjects(dictionary[RocketComponent.layoutObjectsKey] as? [[String: Any]] ?? [], layoutSource: layoutSource)
+        self.defaultLayoutObjects = RocketComponent.initializeLayoutObjects(dictionary[RocketComponent.defaultLayoutObjectsKey] as? [[String: Any]] ?? [], layoutSource: layoutSource)
+        self.borderColor = RocketComponent.resolveColor(dict: dictionary, colorKey: RocketComponent.borderColorKey, projectColorKey: RocketComponent.borderColorProjectColorIdKey, layoutSource: layoutSource)
+        self.backgroundColor = RocketComponent.resolveColor(dict: dictionary, colorKey: RocketComponent.backgroundColorKey, projectColorKey: RocketComponent.backgroundProjectColorIdKey, layoutSource: layoutSource)
         super.init(dictionary: dictionary, layoutSource: layoutSource)
     }
     
-    private static func resolveColor(dict: [String: Any], colorKey: String, projectColorKey: String, layoutSource: LayoutSource) -> ColorType? {
+    private static func resolveColor(dict: [String: Any], colorKey: String, projectColorKey: String, layoutSource: RocketLayoutSource) -> RocketColorType? {
         var colorHexCode = dict[colorKey] as? String
         if let borderColorProjectColorId = dict[projectColorKey] as? String {
             if let hexCode = layoutSource.projectColor(with: borderColorProjectColorId) {
@@ -90,12 +90,12 @@ public class Component: BaseObject {
             }
         }
         if colorHexCode != nil {
-            return ColorType(hex: colorHexCode!)
+            return RocketColorType(hex: colorHexCode!)
         }
         return nil
     }
     
-    internal func layoutObject(with attribute: NSLayoutAttribute) -> Layout? {
+    internal func layoutObject(with attribute: NSLayoutAttribute) -> RocketLayout? {
         for layoutObject in layoutObjects {
             if layoutObject.attribute == attribute {
                 return layoutObject;
@@ -174,18 +174,18 @@ public class Component: BaseObject {
         return positionConstraintCount < 2
     }
 
-    private static func initializeLayoutObjects(_ layoutObjectArray: [[String: Any]], layoutSource: LayoutSource) -> [Layout] {
-        var result = [Layout]()
+    private static func initializeLayoutObjects(_ layoutObjectArray: [[String: Any]], layoutSource: RocketLayoutSource) -> [RocketLayout] {
+        var result = [RocketLayout]()
         for dict in layoutObjectArray {
-            result.append(Layout(dictionary: dict, layoutSource: layoutSource))
+            result.append(RocketLayout(dictionary: dict, layoutSource: layoutSource))
         }
         return result
     }
     
-    private static func initializeChildComponents(_ components: [String: [String: Any]], layoutSource: LayoutSource) -> [Component] {
-        var result = [Component]()
+    private static func initializeChildComponents(_ components: [String: [String: Any]], layoutSource: RocketLayoutSource) -> [RocketComponent] {
+        var result = [RocketComponent]()
         for dict in components.values {
-            result.append(Component(dictionary: dict, layoutSource: layoutSource))
+            result.append(RocketComponent(dictionary: dict, layoutSource: layoutSource))
         }
         return result
     }

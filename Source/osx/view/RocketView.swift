@@ -6,11 +6,11 @@
 //  Copyright © 2017 Nick Bolton. All rights reserved.
 //
 
-import UIKit
+import Cocoa
 
-public typealias RocketBaseView = UIView
+public typealias RocketBaseView = NSView
 
-class RocketView: UIView, RocketViewProtocol {
+class RocketView: NSView, RocketViewProtocol {
 
     var view: RocketBaseView { return self }
     var layoutProvider: RocketLayoutProvider?
@@ -23,18 +23,19 @@ class RocketView: UIView, RocketViewProtocol {
         binder.cleanUp(for: self, component: component, layoutProvider: layoutProvider)
     }
     
-    override func layoutSubviews() {
+    override func layout() {
         binder.buildViewIfNecessary(for: self, component: component, layoutProvider: layoutProvider)
-        super.layoutSubviews()
+        super.layout()
     }
     
     func applyComponentProperties() {
         guard let component = component else { return }
-        clipsToBounds = component.isClipped
-        alpha = component.alpha
-        layer.borderWidth = component.borderWidth
-        layer.cornerRadius = component.cornerRadius
-        layer.borderColor = component.borderColor?.cgColor
-        layer.backgroundColor = component.backgroundColor?.cgColor
+        wantsLayer = true
+        layer?.masksToBounds = component.isClipped
+        alphaValue = component.alpha
+        layer?.borderWidth = component.borderWidth
+        layer?.cornerRadius = component.cornerRadius
+        layer?.borderColor = component.borderColor?.cgColor
+        layer?.backgroundColor = component.backgroundColor?.cgColor
     }
 }
