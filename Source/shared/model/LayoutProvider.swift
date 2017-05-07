@@ -14,14 +14,24 @@
 
 public class LayoutProvider: NSObject {
     static public let shared = LayoutProvider()
-    private override init() {}
+    private override init() {
+        super.init()
+        loadDefaultLayoutSource()
+    }
     
     private let viewFactory = ViewFactory()
     private var layoutSource: LayoutSource?
     
     private var viewRegistry = [String: RocketViewProtocol]()
     
-    public func loadLayout(at url: URL) {
+    private func loadDefaultLayoutSource() {
+        guard let url = Bundle.main.url(forResource: "layoutSource", withExtension: "rocket") as URL?  else {
+            assert(false, "Missing layoutSource.rocket resource.")
+        }
+        self.loadLayout(at: url)
+    }
+    
+    private func loadLayout(at url: URL) {
         guard layoutSource == nil else { return }
         
         if url.lastPathComponent.hasSuffix(".rocket") {
