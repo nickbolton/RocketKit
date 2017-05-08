@@ -84,9 +84,11 @@ public class RocketComponent: RocketBaseObject {
     
     private static func resolveColor(dict: [String: Any], colorKey: String, projectColorKey: String, layoutSource: RocketLayoutSource) -> RocketColorType? {
         var colorHexCode = dict[colorKey] as? String
-        if let borderColorProjectColorId = dict[projectColorKey] as? String {
-            if let hexCode = layoutSource.projectColor(with: borderColorProjectColorId) {
-                colorHexCode = hexCode
+        if colorHexCode == nil {
+            if  let borderColorProjectColorId = dict[projectColorKey] as? String {
+                if let hexCode = layoutSource.projectColor(with: borderColorProjectColorId) {
+                    colorHexCode = hexCode
+                }
             }
         }
         if colorHexCode != nil {
