@@ -39,6 +39,7 @@ class RocketComponentViewBinder: NSObject {
     internal func cleanUp(for view: RocketViewProtocol, component: RocketComponent?, layoutProvider: RocketLayoutProvider?) {
         guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
         layoutProvider.unregisterView(view, for: component)
+        isSetup = false
     }
     
     private func applyLayout(component: RocketComponent, layoutProvider: RocketLayoutProvider) {

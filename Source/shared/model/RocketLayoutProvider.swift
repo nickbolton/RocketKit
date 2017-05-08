@@ -24,6 +24,15 @@ public class RocketLayoutProvider: NSObject {
     
     private var viewRegistry = [String: RocketViewProtocol]()
     
+    public func loadLayoutSource(from dict:[String: Any]) {
+        viewRegistry.removeAll()
+        layoutSource = RocketLayoutSource(dictionary: dict)
+        guard layoutSource != nil else {
+            print("Couldn't load layout source.")
+            return
+        }
+    }
+    
     private func loadDefaultLayoutSource() {
         guard let url = Bundle.main.url(forResource: "layoutSource", withExtension: "rocket") as URL?  else {
             print("Missing layoutSource.rocket resource.")
