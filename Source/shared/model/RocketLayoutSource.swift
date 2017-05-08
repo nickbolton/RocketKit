@@ -31,7 +31,6 @@ public class RocketLayoutSource: NSObject {
     private let componentsKey = "components"
     private let rootComponentIdKey = "rootComponentId"
     private let projectColorsKey = "projectColors"
-    private let duplicateComponentsKey = "duplicateComponents"
 
     required public init(dictionary: [String: Any]) {
         self.version = dictionary[versionKey] as? Int ?? 1
