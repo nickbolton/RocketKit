@@ -113,9 +113,7 @@ public class RocketComponent: RocketBaseObject {
 
     internal func isConstraintCompletelyDisabledWithAttribute(_ attribute: NSLayoutAttribute) -> Bool {
         guard let layoutObject = self.layoutObject(with: attribute) else { return true }
-        let deactivated = layoutObject.isCompletelyDeactivated
-        print("deactivated: \(deactivated)")
-        return deactivated
+        return layoutObject.isCompletelyDeactivated
     }
     
     internal func needsTopDefaultLayoutObject() -> Bool {

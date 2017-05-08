@@ -15,19 +15,28 @@
 public class RocketLayoutSource: NSObject {
 
     private (set) var topLevelComponents = [String: RocketComponent]()
+    
+    var rootComponent: RocketComponent? {
+        guard let identifier = rootComponentId else { return nil }
+        return component(with: identifier)
+    }
+    
     let version: Int
     private var componentMap = [String: RocketComponent]()
     private var componentMapByName = [String: RocketComponent]()
     private let projectColors: [String: String]
+    let rootComponentId: String?
     
     private let versionKey = "version"
     private let componentsKey = "components"
+    private let rootComponentIdKey = "rootComponentId"
     private let projectColorsKey = "projectColors"
     private let duplicateComponentsKey = "duplicateComponents"
 
     required public init(dictionary: [String: Any]) {
         self.version = dictionary[versionKey] as? Int ?? 1
         self.projectColors = RocketLayoutSource.initializeProjectColors(dictionary[projectColorsKey] as? [[String: Any]] ?? [])
+        self.rootComponentId = dictionary[rootComponentIdKey] as? String
         super.init()
         topLevelComponents = initializeComponents(dictionary[componentsKey] as? [[String: Any]] ?? [])
         establishComponentMap(components: Array(topLevelComponents.values))

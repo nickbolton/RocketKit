@@ -20,7 +20,7 @@ public class RocketLayoutProvider: NSObject {
     }
     
     private let viewFactory = RocketViewFactory()
-    private var layoutSource: RocketLayoutSource?
+    private (set) var layoutSource: RocketLayoutSource?
     
     private var viewRegistry = [String: RocketViewProtocol]()
     
