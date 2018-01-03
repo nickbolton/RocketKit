@@ -1,0 +1,740 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F3C28F924B250DB93BBCBA8FFA789AC /* RocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECCA97130C853F4F1CA607A9B6E575C /* RocketTypes.swift */; };
+		208DE08E8CC77E064347F83F584F4382 /* RocketLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15BA10BAA53FDAD5E6147C8CF192785 /* RocketLayoutProvider.swift */; };
+		304DF4EEDEF9F695F2EE1FE2CE27F28F /* RocketView+TextLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55CC205B3BDABE355EA11750DCF6568 /* RocketView+TextLayout.swift */; };
+		30D8B681382593CFB8B26050C8964B96 /* RocketLocalize.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A550B45F83FC8D842FC1C5B1FFE77 /* RocketLocalize.swift */; };
+		31672A39197D9EC546DBD832E1A9F3EF /* RocketComponentViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CCA7216D8C24D08DC79C999D6826C4 /* RocketComponentViewBinder.swift */; };
+		39AC0E13FE2D741DC5198077B36EA949 /* RocketFontFamilyMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC32C0D9D5093838B150F4260A676C9 /* RocketFontFamilyMember.swift */; };
+		3EE6476B53F0AE52646010418F7CAEF5 /* RocketLayoutSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC6FE38959541F326EA11F6DB9A94 /* RocketLayoutSource.swift */; };
+		3F180EA0EB32AF623979F8F6CFC6160A /* RocketTextDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66889D7F27B01AA073E58A0BC6C626E /* RocketTextDescriptor.swift */; };
+		41B94F0BCC12A29CE4CC588967F08CCB /* RocketLayoutMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F518E456966EF76884F38F75E6A6B3 /* RocketLayoutMeta.swift */; };
+		49B92A8B5CCF2750CD609A3C6956A5B1 /* RocketKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF1FC17307E053A6FDBAC4C6EFE747A /* RocketKit-dummy.m */; };
+		5F71F49CADAA02DD655A42AC07A5C4C8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
+		73E9751FE6C4D357172AD498ED576E97 /* RocketLayoutMetaBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4B9A36A25F2F9A1662C1F8CA20A702 /* RocketLayoutMetaBinder.swift */; };
+		75A543D299D960D07634932997F433D7 /* RocketLayoutBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBDD292FF9D148BDF0CC9A19742736 /* RocketLayoutBinder.swift */; };
+		776EF64A415B338C31046ADA4C24E587 /* RocketLocalizedTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37A4B5204699A0F5B601D8B5609197 /* RocketLocalizedTextContentProvider.swift */; };
+		915998B3882782A73DD13AE97F770FFA /* RocketTextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB2A254887F08F9BE1AE4BBBE37C98 /* RocketTextAttributes.swift */; };
+		9169FC8CA7ACCF6592B2F80AE9B48D49 /* RocketViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18185D86488662AB3832E004277553D2 /* RocketViewProtocol.swift */; };
+		946B5CD826EC493E8853C9681C6DC5C5 /* RocketTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DB1FCB82B662FB3BA013AF2DA83119 /* RocketTextContentProvider.swift */; };
+		ADE3EA444D52AF9FFE46EAD6C2A72551 /* RocketViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA08BE39F0F7B7D58766C6BF52A5C2E8 /* RocketViewFactory.swift */; };
+		B2B3FDDF55E5D586239B073C8B36B668 /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD83DF46C720C78141FECEEBF2594D7 /* RocketView.swift */; };
+		B3B0E1E6387EAFDE49F67C3E5FF59D1C /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3381E21391C1796B69E4F41B80F8F520 /* RocketViewController.swift */; };
+		BC20B9E8C2DD6EBCFB8E7B8D50772CA0 /* RocketDefaultTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC4AE0BA9B30390C4E3EFC8DD6C357A /* RocketDefaultTextContentProvider.swift */; };
+		BEFE56E39E4DDBB68928C56066D4FFEE /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF161EB1F181A8996276AF3BCBFCD65 /* NSColor+Hex.swift */; };
+		BFE09DDC8DE56112EC863A034927603C /* RocketFontManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C54A48170057D2D08A7396E3E832CD /* RocketFontManagerProtocol.swift */; };
+		C7F4F7BD51A648E57C64B7C000CF8390 /* RocketComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BE42B0B232A9791522DAA0644C0A96 /* RocketComponent.swift */; };
+		CC14092F9D121539B0E7093115C2F09A /* RocketBaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E780EE730DD1B11DCF2B329118FF641 /* RocketBaseObject.swift */; };
+		D9298DB6C493997E4CE7006ED283836D /* RocketLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADE6B14F4C88ABC949FE7DAE04E9C5 /* RocketLayout.swift */; };
+		E0A91C24AC289B2A098E653CE92E689E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
+		F05865C810CB76C5934140EF2F25C30F /* Pods-RocketTestMacObjc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B52D11C4B683D02347B85FF01ACBDED /* Pods-RocketTestMacObjc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5E6BBE889D34D0564D4B31ABD849F5E /* Pods-RocketTestMacObjc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CEB075D9CC35E7FF5996BD66D987FE /* Pods-RocketTestMacObjc-dummy.m */; };
+		FE6EB888E833FFFCF5D8271C28903DD5 /* RocketKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CBE2FBB016A9948D979079CE09144E7 /* RocketKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		215878F8425D7A9D8DD3287772181711 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 438C54AD17FCA0A5F98752AB6879D651;
+			remoteInfo = RocketKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08C31D5BC8D6A70D1FAE3D2DD77AFB4A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FF161EB1F181A8996276AF3BCBFCD65 /* NSColor+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
+		18185D86488662AB3832E004277553D2 /* RocketViewProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketViewProtocol.swift; sourceTree = "<group>"; };
+		1B52D11C4B683D02347B85FF01ACBDED /* Pods-RocketTestMacObjc-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RocketTestMacObjc-umbrella.h"; sourceTree = "<group>"; };
+		21A8B8150F7F1EBBF25645AAAF7AAAD0 /* Pods_RocketTestMacObjc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RocketTestMacObjc.framework; path = "Pods-RocketTestMacObjc.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F518E456966EF76884F38F75E6A6B3 /* RocketLayoutMeta.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutMeta.swift; sourceTree = "<group>"; };
+		270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		2D8D65E6D6FC9FA1171A977A06FE358F /* Pods-RocketTestMacObjc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RocketTestMacObjc.debug.xcconfig"; sourceTree = "<group>"; };
+		3381E21391C1796B69E4F41B80F8F520 /* RocketViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketViewController.swift; sourceTree = "<group>"; };
+		36BBDD292FF9D148BDF0CC9A19742736 /* RocketLayoutBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutBinder.swift; sourceTree = "<group>"; };
+		4536C763C6B10AC1035D7D589446EAA2 /* RocketKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RocketKit.modulemap; sourceTree = "<group>"; };
+		48CEB075D9CC35E7FF5996BD66D987FE /* Pods-RocketTestMacObjc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RocketTestMacObjc-dummy.m"; sourceTree = "<group>"; };
+		58C54A48170057D2D08A7396E3E832CD /* RocketFontManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketFontManagerProtocol.swift; sourceTree = "<group>"; };
+		5EC4AE0BA9B30390C4E3EFC8DD6C357A /* RocketDefaultTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketDefaultTextContentProvider.swift; sourceTree = "<group>"; };
+		60BE42B0B232A9791522DAA0644C0A96 /* RocketComponent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketComponent.swift; sourceTree = "<group>"; };
+		60DC93D6455E6357EE8455C77D72CE76 /* Pods-RocketTestMacObjc-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RocketTestMacObjc-resources.sh"; sourceTree = "<group>"; };
+		63CCA7216D8C24D08DC79C999D6826C4 /* RocketComponentViewBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketComponentViewBinder.swift; sourceTree = "<group>"; };
+		6D3E4DAA041DCC8BD32632E40A2096BA /* RocketKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RocketKit-prefix.pch"; sourceTree = "<group>"; };
+		6E780EE730DD1B11DCF2B329118FF641 /* RocketBaseObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketBaseObject.swift; sourceTree = "<group>"; };
+		7AC32C0D9D5093838B150F4260A676C9 /* RocketFontFamilyMember.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketFontFamilyMember.swift; sourceTree = "<group>"; };
+		7CBE2FBB016A9948D979079CE09144E7 /* RocketKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RocketKit-umbrella.h"; sourceTree = "<group>"; };
+		7F7B070E03C62B7F7B7476FF9B527178 /* Pods-RocketTestMacObjc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RocketTestMacObjc.modulemap"; sourceTree = "<group>"; };
+		8C37A4B5204699A0F5B601D8B5609197 /* RocketLocalizedTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLocalizedTextContentProvider.swift; sourceTree = "<group>"; };
+		8FD05F80DCD5B5150523947EC313977C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		97DB2A254887F08F9BE1AE4BBBE37C98 /* RocketTextAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTextAttributes.swift; sourceTree = "<group>"; };
+		9B563D38FCA8A62138E273ABD90876C4 /* Pods-RocketTestMacObjc-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RocketTestMacObjc-frameworks.sh"; sourceTree = "<group>"; };
+		9ECCA97130C853F4F1CA607A9B6E575C /* RocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTypes.swift; sourceTree = "<group>"; };
+		A55CC205B3BDABE355EA11750DCF6568 /* RocketView+TextLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "RocketView+TextLayout.swift"; sourceTree = "<group>"; };
+		A66889D7F27B01AA073E58A0BC6C626E /* RocketTextDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTextDescriptor.swift; sourceTree = "<group>"; };
+		B15BA10BAA53FDAD5E6147C8CF192785 /* RocketLayoutProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutProvider.swift; sourceTree = "<group>"; };
+		B49A550B45F83FC8D842FC1C5B1FFE77 /* RocketLocalize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLocalize.swift; sourceTree = "<group>"; };
+		BA08BE39F0F7B7D58766C6BF52A5C2E8 /* RocketViewFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketViewFactory.swift; sourceTree = "<group>"; };
+		BB9E82C650E1D8F7CC5A8382F30BC605 /* Pods-RocketTestMacObjc-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RocketTestMacObjc-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BD49FBB01ACE638AD53E81263CE1F92A /* Pods-RocketTestMacObjc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RocketTestMacObjc.release.xcconfig"; sourceTree = "<group>"; };
+		BDF1FC17307E053A6FDBAC4C6EFE747A /* RocketKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RocketKit-dummy.m"; sourceTree = "<group>"; };
+		BE4B2DA22F42CAF89B07BF1530B7770B /* RocketKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RocketKit.xcconfig; sourceTree = "<group>"; };
+		C62BC6FE38959541F326EA11F6DB9A94 /* RocketLayoutSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutSource.swift; sourceTree = "<group>"; };
+		CB4B9A36A25F2F9A1662C1F8CA20A702 /* RocketLayoutMetaBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutMetaBinder.swift; sourceTree = "<group>"; };
+		D0ADE6B14F4C88ABC949FE7DAE04E9C5 /* RocketLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayout.swift; sourceTree = "<group>"; };
+		D300314DF4199F42F945AD429BC416BA /* RocketKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RocketKit.framework; path = RocketKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5D52123E8CF13E1EC75369E5172135F /* Pods-RocketTestMacObjc-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RocketTestMacObjc-acknowledgements.plist"; sourceTree = "<group>"; };
+		D6DB1FCB82B662FB3BA013AF2DA83119 /* RocketTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTextContentProvider.swift; sourceTree = "<group>"; };
+		DBD83DF46C720C78141FECEEBF2594D7 /* RocketView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		11688BFC87238F6BE24313800E1CB053 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0A91C24AC289B2A098E653CE92E689E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8ED9C341141BB49BE3CC63C8903AA27A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F71F49CADAA02DD655A42AC07A5C4C8 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0096953317E30317505E21144936B3B9 /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				978347E6FF31CF95EDEE732B11A7D96A /* layout */,
+				8FABDAFF275345DF0B5EF4182F274995 /* model */,
+				F1FEA1EE04630168F9837AE4013B9340 /* text */,
+				CEA41FBCEE81FB049C300FE14F1D1944 /* util */,
+				B36B6A3E3DA5C41A7805590E86878FF4 /* view */,
+			);
+			name = shared;
+			path = Source/shared;
+			sourceTree = "<group>";
+		};
+		04C068A18C5413F804A2959126093416 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		22FA09F5E8852A8D68BAB56443C3A090 /* RocketKit */ = {
+			isa = PBXGroup;
+			children = (
+				90A33A95A5F17C83FF764AC14E9F395A /* osx */,
+				0096953317E30317505E21144936B3B9 /* shared */,
+				9964DB5460F8EE492C7C85578EB815AA /* Support Files */,
+			);
+			name = RocketKit;
+			path = /Users/deuce/src/pixelbleed/RocketKit;
+			sourceTree = "<absolute>";
+		};
+		254F64439E5684BECFBA8EE07319F28C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				DBD83DF46C720C78141FECEEBF2594D7 /* RocketView.swift */,
+			);
+			name = view;
+			path = view;
+			sourceTree = "<group>";
+		};
+		2CE85528B161AA8CC0AD1475858F35AC /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				22FA09F5E8852A8D68BAB56443C3A090 /* RocketKit */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04C068A18C5413F804A2959126093416 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		610EA76371441815A949BD119E7F8527 /* Pods-RocketTestMacObjc */ = {
+			isa = PBXGroup;
+			children = (
+				8FD05F80DCD5B5150523947EC313977C /* Info.plist */,
+				7F7B070E03C62B7F7B7476FF9B527178 /* Pods-RocketTestMacObjc.modulemap */,
+				BB9E82C650E1D8F7CC5A8382F30BC605 /* Pods-RocketTestMacObjc-acknowledgements.markdown */,
+				D5D52123E8CF13E1EC75369E5172135F /* Pods-RocketTestMacObjc-acknowledgements.plist */,
+				48CEB075D9CC35E7FF5996BD66D987FE /* Pods-RocketTestMacObjc-dummy.m */,
+				9B563D38FCA8A62138E273ABD90876C4 /* Pods-RocketTestMacObjc-frameworks.sh */,
+				60DC93D6455E6357EE8455C77D72CE76 /* Pods-RocketTestMacObjc-resources.sh */,
+				1B52D11C4B683D02347B85FF01ACBDED /* Pods-RocketTestMacObjc-umbrella.h */,
+				2D8D65E6D6FC9FA1171A977A06FE358F /* Pods-RocketTestMacObjc.debug.xcconfig */,
+				BD49FBB01ACE638AD53E81263CE1F92A /* Pods-RocketTestMacObjc.release.xcconfig */,
+			);
+			name = "Pods-RocketTestMacObjc";
+			path = "Target Support Files/Pods-RocketTestMacObjc";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				2CE85528B161AA8CC0AD1475858F35AC /* Development Pods */,
+				39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */,
+				8135A6B06764198BBBDFC2742AF38CED /* Products */,
+				7DC1FC7A28B99046185054A6E1E53B91 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7DC1FC7A28B99046185054A6E1E53B91 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				610EA76371441815A949BD119E7F8527 /* Pods-RocketTestMacObjc */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		8135A6B06764198BBBDFC2742AF38CED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				21A8B8150F7F1EBBF25645AAAF7AAAD0 /* Pods_RocketTestMacObjc.framework */,
+				D300314DF4199F42F945AD429BC416BA /* RocketKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8FABDAFF275345DF0B5EF4182F274995 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6E780EE730DD1B11DCF2B329118FF641 /* RocketBaseObject.swift */,
+				60BE42B0B232A9791522DAA0644C0A96 /* RocketComponent.swift */,
+				B15BA10BAA53FDAD5E6147C8CF192785 /* RocketLayoutProvider.swift */,
+				C62BC6FE38959541F326EA11F6DB9A94 /* RocketLayoutSource.swift */,
+			);
+			name = model;
+			path = model;
+			sourceTree = "<group>";
+		};
+		90A33A95A5F17C83FF764AC14E9F395A /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				F65F2E0830DCAB013E01C6199843E1A4 /* utils */,
+				254F64439E5684BECFBA8EE07319F28C /* view */,
+				A68BD6DE77AC252CFEE0E1EFC8B77F79 /* viewController */,
+			);
+			name = osx;
+			path = Source/osx;
+			sourceTree = "<group>";
+		};
+		978347E6FF31CF95EDEE732B11A7D96A /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				D0ADE6B14F4C88ABC949FE7DAE04E9C5 /* RocketLayout.swift */,
+				36BBDD292FF9D148BDF0CC9A19742736 /* RocketLayoutBinder.swift */,
+				23F518E456966EF76884F38F75E6A6B3 /* RocketLayoutMeta.swift */,
+				CB4B9A36A25F2F9A1662C1F8CA20A702 /* RocketLayoutMetaBinder.swift */,
+			);
+			name = layout;
+			path = layout;
+			sourceTree = "<group>";
+		};
+		9964DB5460F8EE492C7C85578EB815AA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				08C31D5BC8D6A70D1FAE3D2DD77AFB4A /* Info.plist */,
+				4536C763C6B10AC1035D7D589446EAA2 /* RocketKit.modulemap */,
+				BE4B2DA22F42CAF89B07BF1530B7770B /* RocketKit.xcconfig */,
+				BDF1FC17307E053A6FDBAC4C6EFE747A /* RocketKit-dummy.m */,
+				6D3E4DAA041DCC8BD32632E40A2096BA /* RocketKit-prefix.pch */,
+				7CBE2FBB016A9948D979079CE09144E7 /* RocketKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../../../Downloads/RocketTestMacObjc/Pods/Target Support Files/RocketKit";
+			sourceTree = "<group>";
+		};
+		A68BD6DE77AC252CFEE0E1EFC8B77F79 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				3381E21391C1796B69E4F41B80F8F520 /* RocketViewController.swift */,
+			);
+			name = viewController;
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		B36B6A3E3DA5C41A7805590E86878FF4 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				63CCA7216D8C24D08DC79C999D6826C4 /* RocketComponentViewBinder.swift */,
+				BA08BE39F0F7B7D58766C6BF52A5C2E8 /* RocketViewFactory.swift */,
+				18185D86488662AB3832E004277553D2 /* RocketViewProtocol.swift */,
+			);
+			name = view;
+			path = view;
+			sourceTree = "<group>";
+		};
+		CEA41FBCEE81FB049C300FE14F1D1944 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				9ECCA97130C853F4F1CA607A9B6E575C /* RocketTypes.swift */,
+			);
+			name = util;
+			path = util;
+			sourceTree = "<group>";
+		};
+		F1FEA1EE04630168F9837AE4013B9340 /* text */ = {
+			isa = PBXGroup;
+			children = (
+				5EC4AE0BA9B30390C4E3EFC8DD6C357A /* RocketDefaultTextContentProvider.swift */,
+				7AC32C0D9D5093838B150F4260A676C9 /* RocketFontFamilyMember.swift */,
+				58C54A48170057D2D08A7396E3E832CD /* RocketFontManagerProtocol.swift */,
+				B49A550B45F83FC8D842FC1C5B1FFE77 /* RocketLocalize.swift */,
+				8C37A4B5204699A0F5B601D8B5609197 /* RocketLocalizedTextContentProvider.swift */,
+				97DB2A254887F08F9BE1AE4BBBE37C98 /* RocketTextAttributes.swift */,
+				D6DB1FCB82B662FB3BA013AF2DA83119 /* RocketTextContentProvider.swift */,
+				A66889D7F27B01AA073E58A0BC6C626E /* RocketTextDescriptor.swift */,
+				A55CC205B3BDABE355EA11750DCF6568 /* RocketView+TextLayout.swift */,
+			);
+			name = text;
+			path = text;
+			sourceTree = "<group>";
+		};
+		F65F2E0830DCAB013E01C6199843E1A4 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				0FF161EB1F181A8996276AF3BCBFCD65 /* NSColor+Hex.swift */,
+			);
+			name = utils;
+			path = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		01FBF458C3D9C873A33269DD47D49303 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F05865C810CB76C5934140EF2F25C30F /* Pods-RocketTestMacObjc-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AAE8C740AADD67296CFA8285D215F03 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE6EB888E833FFFCF5D8271C28903DD5 /* RocketKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1B59982877C06E7EFE45DB7F311ACB55 /* Pods-RocketTestMacObjc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4613DDAAC4AA81D109338A8AD74958E5 /* Build configuration list for PBXNativeTarget "Pods-RocketTestMacObjc" */;
+			buildPhases = (
+				3926F82646A3A4FEC96F8D8E3B74C97F /* Sources */,
+				8ED9C341141BB49BE3CC63C8903AA27A /* Frameworks */,
+				01FBF458C3D9C873A33269DD47D49303 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8ACD4772AC359A90CBC96A5F86851FBA /* PBXTargetDependency */,
+			);
+			name = "Pods-RocketTestMacObjc";
+			productName = "Pods-RocketTestMacObjc";
+			productReference = 21A8B8150F7F1EBBF25645AAAF7AAAD0 /* Pods_RocketTestMacObjc.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		438C54AD17FCA0A5F98752AB6879D651 /* RocketKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 587FBD481A13021F8D442C39DAAD65A2 /* Build configuration list for PBXNativeTarget "RocketKit" */;
+			buildPhases = (
+				2FB453F78AA9AA301920E1088D8AD0BE /* Sources */,
+				11688BFC87238F6BE24313800E1CB053 /* Frameworks */,
+				3AAE8C740AADD67296CFA8285D215F03 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RocketKit;
+			productName = RocketKit;
+			productReference = D300314DF4199F42F945AD429BC416BA /* RocketKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 8135A6B06764198BBBDFC2742AF38CED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B59982877C06E7EFE45DB7F311ACB55 /* Pods-RocketTestMacObjc */,
+				438C54AD17FCA0A5F98752AB6879D651 /* RocketKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FB453F78AA9AA301920E1088D8AD0BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEFE56E39E4DDBB68928C56066D4FFEE /* NSColor+Hex.swift in Sources */,
+				CC14092F9D121539B0E7093115C2F09A /* RocketBaseObject.swift in Sources */,
+				C7F4F7BD51A648E57C64B7C000CF8390 /* RocketComponent.swift in Sources */,
+				31672A39197D9EC546DBD832E1A9F3EF /* RocketComponentViewBinder.swift in Sources */,
+				BC20B9E8C2DD6EBCFB8E7B8D50772CA0 /* RocketDefaultTextContentProvider.swift in Sources */,
+				39AC0E13FE2D741DC5198077B36EA949 /* RocketFontFamilyMember.swift in Sources */,
+				BFE09DDC8DE56112EC863A034927603C /* RocketFontManagerProtocol.swift in Sources */,
+				49B92A8B5CCF2750CD609A3C6956A5B1 /* RocketKit-dummy.m in Sources */,
+				D9298DB6C493997E4CE7006ED283836D /* RocketLayout.swift in Sources */,
+				75A543D299D960D07634932997F433D7 /* RocketLayoutBinder.swift in Sources */,
+				41B94F0BCC12A29CE4CC588967F08CCB /* RocketLayoutMeta.swift in Sources */,
+				73E9751FE6C4D357172AD498ED576E97 /* RocketLayoutMetaBinder.swift in Sources */,
+				208DE08E8CC77E064347F83F584F4382 /* RocketLayoutProvider.swift in Sources */,
+				3EE6476B53F0AE52646010418F7CAEF5 /* RocketLayoutSource.swift in Sources */,
+				30D8B681382593CFB8B26050C8964B96 /* RocketLocalize.swift in Sources */,
+				776EF64A415B338C31046ADA4C24E587 /* RocketLocalizedTextContentProvider.swift in Sources */,
+				915998B3882782A73DD13AE97F770FFA /* RocketTextAttributes.swift in Sources */,
+				946B5CD826EC493E8853C9681C6DC5C5 /* RocketTextContentProvider.swift in Sources */,
+				3F180EA0EB32AF623979F8F6CFC6160A /* RocketTextDescriptor.swift in Sources */,
+				0F3C28F924B250DB93BBCBA8FFA789AC /* RocketTypes.swift in Sources */,
+				304DF4EEDEF9F695F2EE1FE2CE27F28F /* RocketView+TextLayout.swift in Sources */,
+				B2B3FDDF55E5D586239B073C8B36B668 /* RocketView.swift in Sources */,
+				B3B0E1E6387EAFDE49F67C3E5FF59D1C /* RocketViewController.swift in Sources */,
+				ADE3EA444D52AF9FFE46EAD6C2A72551 /* RocketViewFactory.swift in Sources */,
+				9169FC8CA7ACCF6592B2F80AE9B48D49 /* RocketViewProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3926F82646A3A4FEC96F8D8E3B74C97F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5E6BBE889D34D0564D4B31ABD849F5E /* Pods-RocketTestMacObjc-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8ACD4772AC359A90CBC96A5F86851FBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RocketKit;
+			target = 438C54AD17FCA0A5F98752AB6879D651 /* RocketKit */;
+			targetProxy = 215878F8425D7A9D8DD3287772181711 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		68BB9769521785C6226215E1D4E163D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D8D65E6D6FC9FA1171A977A06FE358F /* Pods-RocketTestMacObjc.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RocketTestMacObjc/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-RocketTestMacObjc/Pods-RocketTestMacObjc.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RocketTestMacObjc;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		774D345C1316346D6149B25F10444935 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		89631C4EE654203639359B297768DA39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD49FBB01ACE638AD53E81263CE1F92A /* Pods-RocketTestMacObjc.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RocketTestMacObjc/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-RocketTestMacObjc/Pods-RocketTestMacObjc.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RocketTestMacObjc;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		945EB9E2C47E9C30E16985278CFFC5AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9B21EFA23D52A93263B9612CED0B3680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE4B2DA22F42CAF89B07BF1530B7770B /* RocketKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RocketKit/RocketKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RocketKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/RocketKit/RocketKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = RocketKit;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D2F675F67EBF15D13E639617A3DD7DCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE4B2DA22F42CAF89B07BF1530B7770B /* RocketKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RocketKit/RocketKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RocketKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/RocketKit/RocketKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RocketKit;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				774D345C1316346D6149B25F10444935 /* Debug */,
+				945EB9E2C47E9C30E16985278CFFC5AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4613DDAAC4AA81D109338A8AD74958E5 /* Build configuration list for PBXNativeTarget "Pods-RocketTestMacObjc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68BB9769521785C6226215E1D4E163D9 /* Debug */,
+				89631C4EE654203639359B297768DA39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		587FBD481A13021F8D442C39DAAD65A2 /* Build configuration list for PBXNativeTarget "RocketKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2F675F67EBF15D13E639617A3DD7DCB /* Debug */,
+				9B21EFA23D52A93263B9612CED0B3680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

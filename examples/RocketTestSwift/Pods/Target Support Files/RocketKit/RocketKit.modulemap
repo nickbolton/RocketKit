@@ -1,0 +1,6 @@
+framework module RocketKit {
+  umbrella header "RocketKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

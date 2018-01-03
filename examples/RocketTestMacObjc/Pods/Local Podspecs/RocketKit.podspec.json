@@ -1,0 +1,25 @@
+{
+  "name": "RocketKit",
+  "version": "0.0.1",
+  "license": "Apache2.0",
+  "summary": "Rocket runtime library.",
+  "homepage": "http://www.rocketapp.com",
+  "authors": {
+    "Nick Bolton": "rocket@darkpixel.io"
+  },
+  "source": {
+    "git": "https://github.com/nickbolton/RocketKit.git"
+  },
+  "platforms": {
+    "ios": "9.0",
+    "osx": "10.10"
+  },
+  "source_files": "Source/**/*.swift",
+  "ios": {
+    "exclude_files": "Source/osx"
+  },
+  "osx": {
+    "exclude_files": "Source/ios"
+  },
+  "requires_arc": true
+}

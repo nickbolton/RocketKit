@@ -1,0 +1,6 @@
+framework module Pods_RocketTestObjc {
+  umbrella header "Pods-RocketTestObjc-umbrella.h"
+
+  export *
+  module * { export * }
+}
