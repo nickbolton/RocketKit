@@ -27,7 +27,7 @@ class RocketComponentViewBinder: NSObject {
         rocketView.applyComponentProperties()
         applyLayout(component: component, layoutProvider: layoutProvider)
         for child in component.childComponents {
-            let childView = viewFactory.buildView(with: child)
+            var childView = viewFactory.buildView(with: child)
             childView.layoutProvider = layoutProvider
             view.addSubview(childView.view)
             #if os(iOS)

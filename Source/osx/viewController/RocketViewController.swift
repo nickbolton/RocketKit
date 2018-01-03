@@ -3,7 +3,7 @@ import Cocoa
 
 public class RocketViewController: NSViewController {
     
-    var componentId = ""
+    var componentId: String?
     
     public convenience init(componentId: String) {
         self.init()
@@ -11,13 +11,16 @@ public class RocketViewController: NSViewController {
     }
     
     override public func loadView() {
-        let rocketView = RocketLayoutProvider.shared.buildView(withIdentifier: componentId)
-        rocketView?.isRootView = true
-        rocketView?.layoutProvider = RocketLayoutProvider.shared
-        if let v = rocketView?.view {
-            view = v
-        } else {
-            view = NSView()
+        var v: NSView?
+        if  let componentId = componentId {
+            var rocketView = RocketLayoutProvider.shared.buildView(withIdentifier: componentId)
+            rocketView?.isRootView = true
+            rocketView?.layoutProvider = RocketLayoutProvider.shared
+            v = rocketView?.view
         }
+        if v == nil {
+            v = NSView()
+        }
+        view = v!
     }
 }

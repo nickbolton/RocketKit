@@ -16,6 +16,15 @@ public enum RocketComponentType: Int {
     case container
 }
 
+struct AutoConstrainingTextType: OptionSet {
+    let rawValue: Int
+    
+    static let none  = AutoConstrainingTextType(rawValue: 0)
+    static let width = AutoConstrainingTextType(rawValue: 1 << 0)
+    static let height  = AutoConstrainingTextType(rawValue: 1 << 1)
+    static let widthAndHeight: AutoConstrainingTextType = [.width, .height]
+}
+
 public class RocketComponent: RocketBaseObject {
     
     let componentType: RocketComponentType
@@ -28,6 +37,9 @@ public class RocketComponent: RocketBaseObject {
     let alpha: CGFloat
     var borderColor: RocketColorType?
     var backgroundColor: RocketColorType?
+    
+    var textDescriptor: RocketTextDescriptor?
+    var autoConstrainingTextType = AutoConstrainingTextType.none
     
     let layoutObjects: [RocketLayout]
     let defaultLayoutObjects: [RocketLayout]
@@ -49,8 +61,6 @@ public class RocketComponent: RocketBaseObject {
         return self
     }
     
-    var isContainer: Bool { return componentType == .container }
-    
     private static let typeKey = "type"
     private static let nameKey = "name"
     private static let cornerRadiusKey = "cornerRadius"
@@ -58,13 +68,14 @@ public class RocketComponent: RocketBaseObject {
     private static let clippedKey = "clipped"
     private static let rasterizedKey = "rasterized"
     private static let alphaKey = "alpha"
-    internal static let borderColorKey = "borderColor"
-    internal static let backgroundColorKey = "backgroundColor"
-    internal static let borderColorProjectColorIdKey = "borderColorProjectColorID"
-    internal static let backgroundProjectColorIdKey = "backgroundProjectColorID"
+    private static let borderColorKey = "borderColor"
+    private static let backgroundColorKey = "backgroundColor"
+    private static let borderColorProjectColorIdKey = "borderColorProjectColorID"
+    private static let backgroundProjectColorIdKey = "backgroundProjectColorID"
     private static let layoutObjectsKey = "layoutObjects"
     private static let defaultLayoutObjectsKey = "defaultLayoutObjects"
     private static let childComponentsKey = "childComponents"
+    private static let textDescriptorKey = "textDescriptor"
 
     required public init(dictionary: [String: Any], layoutSource: RocketLayoutSource) {
         self.componentType = RocketComponentType(rawValue: dictionary[RocketComponent.typeKey] as? Int ?? 0) ?? .container
@@ -79,6 +90,11 @@ public class RocketComponent: RocketBaseObject {
         self.defaultLayoutObjects = RocketComponent.initializeLayoutObjects(dictionary[RocketComponent.defaultLayoutObjectsKey] as? [[String: Any]] ?? [], layoutSource: layoutSource)
         self.borderColor = RocketComponent.resolveColor(dict: dictionary, colorKey: RocketComponent.borderColorKey, projectColorKey: RocketComponent.borderColorProjectColorIdKey, layoutSource: layoutSource)
         self.backgroundColor = RocketComponent.resolveColor(dict: dictionary, colorKey: RocketComponent.backgroundColorKey, projectColorKey: RocketComponent.backgroundProjectColorIdKey, layoutSource: layoutSource)
+        
+        if let textDescriptorDict = dictionary[RocketComponent.textDescriptorKey] as? [String: Any] {
+            self.textDescriptor = RocketTextDescriptor(dictionary: textDescriptorDict)
+        }
+        
         super.init(dictionary: dictionary, layoutSource: layoutSource)
     }
     

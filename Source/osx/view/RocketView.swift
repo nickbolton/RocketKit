@@ -8,27 +8,23 @@
 
 import Cocoa
 
-public typealias RocketBaseView = NSView
+public class RocketView: NSView, RocketViewProtocol {
 
-class RocketView: NSView, RocketViewProtocol {
-
-    var view: RocketBaseView { return self }
-    var layoutProvider: RocketLayoutProvider?
-    var component: RocketComponent?
-    var isRootView: Bool = false
+    public var view: RocketBaseView { return self }
+    public var layoutProvider: RocketLayoutProvider?
+    public var component: RocketComponent?
+    public var isRootView: Bool = false
+    var label: NSTextField?
     
+    public override var isFlipped: Bool { return true }
+
     private let binder = RocketComponentViewBinder()
     
     deinit {
         binder.cleanUp(for: self, component: component, layoutProvider: layoutProvider)
     }
     
-    override func layout() {
-        binder.buildViewIfNecessary(for: self, component: component, layoutProvider: layoutProvider)
-        super.layout()
-    }
-    
-    func applyComponentProperties() {
+    public func applyComponentProperties() {
         guard let component = component else { return }
         wantsLayer = true
         layer?.masksToBounds = component.isClipped
@@ -37,5 +33,41 @@ class RocketView: NSView, RocketViewProtocol {
         layer?.cornerRadius = component.cornerRadius
         layer?.borderColor = component.borderColor?.cgColor
         layer?.backgroundColor = component.backgroundColor?.cgColor
+        applyLabelPropertiesIfNeeded()
+    }
+    
+    private func applyLabelPropertiesIfNeeded() {
+        cleanUpLabel()
+        guard let textDescriptor = component?.textDescriptor else { return }
+        setUpLabel(textDescriptor)
+    }
+    
+    private func cleanUpLabel() {
+        label?.removeFromSuperview()
+        label = nil
+    }
+    
+    private func setUpLabel(_ textDescriptor: RocketTextDescriptor) {
+        label = NSTextField()
+        label?.isBezeled = false
+        label?.isEditable = false
+        label?.maximumNumberOfLines = 0
+        label?.backgroundColor = NSColor.clear
+        label?.attributedStringValue = textDescriptor.attributedString
+        addSubview(label!)
+    }
+    
+    // MARK: Layout
+    
+    override public func layout() {
+        binder.buildViewIfNecessary(for: self, component: component, layoutProvider: layoutProvider)
+        super.layout()
+        layoutLabelIfNecessary()
+    }
+    
+    private func layoutLabelIfNecessary() {
+        guard let label = label else { return }
+        guard let textDescriptor = component?.textDescriptor else { return }
+        label.frame = labelTextFrameWith(textDescriptor: textDescriptor)
     }
 }

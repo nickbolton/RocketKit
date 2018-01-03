@@ -12,7 +12,7 @@
     import Cocoa
 #endif
 
-@objc public protocol RocketViewProtocol {
+public protocol RocketViewProtocol {
     var isRootView: Bool { get set }
     var view: RocketBaseView { get }
     var component: RocketComponent? { get set }

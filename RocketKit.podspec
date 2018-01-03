@@ -7,8 +7,8 @@ Pod::Spec.new do |spec|
   spec.author = {'Nick Bolton' => 'rocket@darkpixel.io'}
   spec.source = {:git => 'https://github.com/nickbolton/RocketKit.git'}
 
-  spec.ios.deployment_target = '9.0'
-  spec.osx.deployment_target = '10.10'
+  spec.ios.deployment_target = '11.0'
+  spec.osx.deployment_target = '10.11'
 
   spec.source_files = 'Source/**/*.swift'
   spec.ios.exclude_files = 'Source/osx'

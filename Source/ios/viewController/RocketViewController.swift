@@ -13,7 +13,7 @@ public class RocketViewController: UIViewController {
     override public func loadView() {
         var v: UIView?
         if  let componentId = componentId {
-            let rocketView = RocketLayoutProvider.shared.buildView(withIdentifier: componentId)
+            var rocketView = RocketLayoutProvider.shared.buildView(withIdentifier: componentId)
             rocketView?.isRootView = true
             rocketView?.layoutProvider = RocketLayoutProvider.shared
             v = rocketView?.view
@@ -21,6 +21,6 @@ public class RocketViewController: UIViewController {
         if v == nil {
             v = UIView()
         }
-        view = v
+        view = v!
     }
 }

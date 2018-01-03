@@ -20,10 +20,12 @@ class RocketViewFactory: NSObject {
     // MARK: Public
     
     public func buildView(with component: RocketComponent) -> RocketViewProtocol {
-        guard let viewType = typeMap[component.componentType] else {
-            assert(false, "No type defined for component type: \(component.componentType)")
+        var viewType = typeMap[component.componentType]
+        if viewType == nil {
+            print("No type defined for component type: \(component.componentType)")
+            viewType = typeMap[.container]
         }
-        let view = viewType.init()
+        let view = viewType!.init()
         view.component = component
         return view
     }
