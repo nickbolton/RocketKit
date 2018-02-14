@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class RocketView: UIView, RocketViewProtocol {
+public class RocketView: UIView, ComponentView {
 
     public var view: RocketBaseView { return self }
-    public var layoutProvider: RocketLayoutProvider?
+    public var layoutProvider: LayoutProvider?
     public var component: RocketComponent?
     public var isRootView: Bool = false
     var label: UILabel?
     
-    private let binder = RocketComponentViewBinder()
+    private let binder = ComponentViewBinder()
     
     deinit {
         binder.cleanUp(for: self, component: component, layoutProvider: layoutProvider)
@@ -44,7 +44,7 @@ public class RocketView: UIView, RocketViewProtocol {
         label = nil
     }
     
-    private func setUpLabel(_ textDescriptor: RocketTextDescriptor) {
+    private func setUpLabel(_ textDescriptor: TextDescriptor) {
         label = UILabel()
         label?.attributedText = textDescriptor.attributedString
         addSubview(label!)

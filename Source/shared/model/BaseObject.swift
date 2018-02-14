@@ -1,5 +1,5 @@
 //
-//  RocketBaseObject.swift
+//  BaseObject.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/5/17.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class RocketBaseObject: NSObject {
+public class BaseObject: NSObject {
 
     let identifier: String
     
     private static let identifierKey = "identifier"
     
-    required public init(dictionary: [String: Any], layoutSource: RocketLayoutSource) {
-        self.identifier = dictionary[RocketBaseObject.identifierKey] as? String ?? ""
+    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
+        self.identifier = dictionary[BaseObject.identifierKey] as? String ?? ""
         super.init()
     }
 }

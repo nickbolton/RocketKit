@@ -1,5 +1,5 @@
 //
-//  RocketLayoutProvider.swift
+//  LayoutProvider.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/5/17.
@@ -12,21 +12,21 @@
     import Cocoa
 #endif
 
-public class RocketLayoutProvider: NSObject {
-    static public let shared = RocketLayoutProvider()
+public class LayoutProvider: NSObject {
+    static public let shared = LayoutProvider()
     private override init() {
         super.init()
         loadDefaultLayoutSource()
     }
     
-    private let viewFactory = RocketViewFactory()
-    private (set) var layoutSource: RocketLayoutSource?
+    private let viewFactory = ViewFactory()
+    private (set) var layoutSource: LayoutSource?
     
-    private var viewRegistry = [String: RocketViewProtocol]()
+    private var viewRegistry = [String: ComponentView]()
     
     public func loadLayoutSource(from dict:[String: Any]) {
         viewRegistry.removeAll()
-        layoutSource = RocketLayoutSource(dictionary: dict)
+        layoutSource = LayoutSource(dictionary: dict)
         guard layoutSource != nil else {
             print("Couldn't load layout source.")
             return
@@ -74,7 +74,7 @@ public class RocketLayoutProvider: NSObject {
     }
     
     private func loadDictionary(_ dict: [String: Any], from url: URL) {
-        layoutSource = RocketLayoutSource(dictionary: dict)
+        layoutSource = LayoutSource(dictionary: dict)
         guard layoutSource != nil else {
             print("Couldn't load url: \(url)")
             return
@@ -83,14 +83,14 @@ public class RocketLayoutProvider: NSObject {
     
     // MARK: Public
     
-    public func buildView(withIdentifier identifier: String) -> RocketViewProtocol? {
+    public func buildView(withIdentifier identifier: String) -> ComponentView? {
         if let component = componentByIdentifier(identifier) {
             return viewFactory.buildView(with: component)
         }
         return nil
     }
     
-    public func buildView(withName name: String) -> RocketViewProtocol? {
+    public func buildView(withName name: String) -> ComponentView? {
         if let component = componentByName(name) {
             return viewFactory.buildView(with: component)
         }
@@ -120,18 +120,18 @@ public class RocketLayoutProvider: NSObject {
         return layoutSource?.componentByName(name)
     }
     
-    internal func view(with identifier: String?) -> RocketViewProtocol? {
+    internal func view(with identifier: String?) -> ComponentView? {
         guard let identifier = identifier else {
             return nil
         }
         return viewRegistry[identifier]
     }
     
-    internal func registerView(_ view: RocketViewProtocol, for component: RocketComponent) {
+    internal func registerView(_ view: ComponentView, for component: RocketComponent) {
         viewRegistry[component.identifier] = view
     }
 
-    internal func unregisterView(_ view: RocketViewProtocol, for component: RocketComponent) {
+    internal func unregisterView(_ view: ComponentView, for component: RocketComponent) {
         viewRegistry.removeValue(forKey: component.identifier)
     }
 }

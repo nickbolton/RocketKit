@@ -1,5 +1,5 @@
 //
-//  RocketFontManager.swift
+//  FontManager.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 12/31/17.
@@ -7,20 +7,20 @@
 
 import UIKit
 
-public struct RocketFontManager: RocketFontManagerProtocol {
+public struct FontManager: FontManagerProtocol {
     
-    public static let shared: RocketFontManagerProtocol = RocketFontManager()
+    public static let shared: FontManagerProtocol = FontManager()
     
-    fileprivate static var memberCache = [String: [RocketFontFamilyMember]]()
+    fileprivate static var memberCache = [String: [FontFamilyMember]]()
     
-    public var availableFontNames: [String] { return RocketFontType.familyNames }
+    public var availableFontNames: [String] { return FontType.familyNames }
     
     public var defaultWeight: CGFloat { return UIFontWeightRegular }
     
-    public var systemFamilyName: String { return RocketFontType.systemFont(ofSize: RocketFontType.largeTestPointSize).familyName }
+    public var systemFamilyName: String { return FontType.systemFont(ofSize: FontType.largeTestPointSize).familyName }
     
     @discardableResult
-    public func defaultFontForFamily(_ familyName: String, with size: CGFloat) -> RocketFontType {
+    public func defaultFontForFamily(_ familyName: String, with size: CGFloat) -> FontType {
         let attributes: [String: Any] = [
             UIFontDescriptorFamilyAttribute: familyName,
             UIFontDescriptorSizeAttribute: size,
@@ -30,12 +30,12 @@ public struct RocketFontManager: RocketFontManagerProtocol {
             ]
         ]
         let descriptor = UIFontDescriptor(fontAttributes: attributes)
-        return RocketFontType(descriptor: descriptor, size: size)
+        return FontType(descriptor: descriptor, size: size)
     }
     
-    public func fontMembersForFamily(_ familyName: String) -> [RocketFontFamilyMember] {
+    public func fontMembersForFamily(_ familyName: String) -> [FontFamilyMember] {
         
-        var result = RocketFontManager.memberCache[familyName]
+        var result = FontManager.memberCache[familyName]
         
         if result != nil {
             return result!
@@ -43,9 +43,9 @@ public struct RocketFontManager: RocketFontManagerProtocol {
         
         result = []
         
-        let names = RocketFontType.fontNames(forFamilyName: familyName)
+        let names = FontType.fontNames(forFamilyName: familyName)
         for name in names {
-            guard let font = RocketFontType(name: name, size: RocketFontType.largeTestPointSize) else { continue }
+            guard let font = FontType(name: name, size: FontType.largeTestPointSize) else { continue }
             let descriptor = font.fontDescriptor
             var isItalic = name.lowercased().contains("italic")
             var weight = weightFor(fontName: name)
@@ -58,11 +58,11 @@ public struct RocketFontManager: RocketFontManagerProtocol {
                 }
             }
             
-            let member = RocketFontFamilyMember(name: name, familyName: familyName, weight: weight, isItalic: isItalic, isSystemFont: font.isSystemFont)
+            let member = FontFamilyMember(name: name, familyName: familyName, weight: weight, isItalic: isItalic, isSystemFont: font.isSystemFont)
             result?.append(member)
         }
         
-        RocketFontManager.memberCache[familyName] = result
+        FontManager.memberCache[familyName] = result
         
         return result!
     }
@@ -99,31 +99,31 @@ public struct RocketFontManager: RocketFontManagerProtocol {
         return UIFontWeightRegular
     }
         
-    public func memberFont(_ member: RocketFontFamilyMember, with size: CGFloat) -> RocketFontType {
+    public func memberFont(_ member: FontFamilyMember, with size: CGFloat) -> FontType {
         if member.isSystemFont {
             if member.weight == UIFontWeightBold {
-                return RocketFontType.boldSystemFont(ofSize: size)
+                return FontType.boldSystemFont(ofSize: size)
             }
             if member.isItalic {
-                return RocketFontType.italicSystemFont(ofSize: size)
+                return FontType.italicSystemFont(ofSize: size)
             }
-            return RocketFontType.systemFont(ofSize: size)
+            return FontType.systemFont(ofSize: size)
         }
         
-        let defaultFont = RocketFontType.systemFont(ofSize: size)
-        var font = RocketFontType(name: member.name, size: size)
+        let defaultFont = FontType.systemFont(ofSize: size)
+        var font = FontType(name: member.name, size: size)
         if font == nil {
             font = applyMember(member, to: defaultFont)
         }
         return font ?? defaultFont
     }
     
-    public func applyMember(_ member: RocketFontFamilyMember, to font: RocketFontType) -> RocketFontType {
+    public func applyMember(_ member: FontFamilyMember, to font: FontType) -> FontType {
         let traits: UIFontDescriptorSymbolicTraits = member.isItalic ? .traitItalic : []
         return applyWeight(member.weight, traits: traits, to: font)
     }
     
-    fileprivate func applyWeight(_ weight: CGFloat, traits: UIFontDescriptorSymbolicTraits, to font: RocketFontType) -> RocketFontType {
+    fileprivate func applyWeight(_ weight: CGFloat, traits: UIFontDescriptorSymbolicTraits, to font: FontType) -> FontType {
         let attributes: [String: Any] = [
             UIFontDescriptorTraitsAttribute :
             [
@@ -132,12 +132,12 @@ public struct RocketFontManager: RocketFontManagerProtocol {
             ]
         ]
         let descriptor = font.fontDescriptor.addingAttributes(attributes)
-        return RocketFontType(descriptor: descriptor, size: font.pointSize)
+        return FontType(descriptor: descriptor, size: font.pointSize)
     }
     
     public func loadFonts() {
         for name in availableFontNames {
-            defaultFontForFamily(name, with: RocketFontType.largeTestPointSize)
+            defaultFontForFamily(name, with: FontType.largeTestPointSize)
         }
     }
 }

@@ -16,16 +16,16 @@
     import Cocoa
     
     typealias UIEdgeInsets = NSEdgeInsets
-    
+
     public typealias RocketBaseView = NSView
     typealias RocketLabel = NSTextField
     typealias RocketTextField = NSTextField
     typealias RocketTextView = NSTextView
 #endif
 
-typealias RocketFailureHandler = ((Error?)->Void)
+typealias FailureHandler = ((Error?)->Void)
 
-public enum RocketTextAlignment : Int {
+public enum TextAlignment : Int {
     case left // Visually left aligned
     case center // Visually centered
     case right // Visually right aligned

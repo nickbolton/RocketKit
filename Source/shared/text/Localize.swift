@@ -60,7 +60,7 @@ public extension String {
     func localized() -> String {
         UserDefaults.standard.set(true, forKey: "NSShowNonLocalizedStrings")
         
-        if let path = Bundle.main.path(forResource: RocketLocalize.currentLanguage(), ofType: "lproj"), let bundle = Bundle(path: path) {
+        if let path = Bundle.main.path(forResource: Localize.currentLanguage(), ofType: "lproj"), let bundle = Bundle(path: path) {
             return bundle.localizedString(forKey: self, value: nil, table: nil)
         }
         else if let path = Bundle.main.path(forResource: LCLBaseBundle, ofType: "lproj"), let bundle = Bundle(path: path) {
@@ -89,7 +89,7 @@ public extension String {
     }
 }
 
-public class RocketLocalize: NSObject {
+public class Localize: NSObject {
     
     /**
      List available languages

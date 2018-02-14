@@ -7,7 +7,7 @@
 //
 import Cocoa
 
-public typealias RocketColorType = NSColor
+public typealias ColorType = NSColor
 
 public extension NSColor {
     

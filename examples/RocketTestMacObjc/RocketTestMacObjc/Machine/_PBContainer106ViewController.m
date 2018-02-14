@@ -4,9 +4,9 @@
 @implementation _PBContainer106ViewController
 
 - (void)loadView {
-    id<RocketViewProtocol> rocketView = [RocketLayoutProvider.shared buildViewWithIdentifier:@"78595176-65AE-466F-B747-B17724C1AA17"];
+    id<ComponentView> rocketView = [LayoutProvider.shared buildViewWithIdentifier:@"78595176-65AE-466F-B747-B17724C1AA17"];
     rocketView.isRootView = YES;
-    rocketView.layoutProvider = RocketLayoutProvider.shared;
+    rocketView.layoutProvider = LayoutProvider.shared;
     self.view = rocketView.view;
 }
 

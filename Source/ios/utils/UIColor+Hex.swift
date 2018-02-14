@@ -7,7 +7,7 @@
 //
 import UIKit
 
-public typealias RocketColorType = UIColor
+public typealias ColorType = UIColor
 
 public extension UIColor {
     

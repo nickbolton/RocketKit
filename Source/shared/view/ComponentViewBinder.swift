@@ -1,5 +1,5 @@
 //
-//  RocketComponentViewBinder.swift
+//  ComponentViewBinder.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/6/17.
@@ -12,13 +12,13 @@
     import Cocoa
 #endif
 
-class RocketComponentViewBinder: NSObject {
+class ComponentViewBinder: NSObject {
     
     private var isSetup = false
-    private let viewFactory = RocketViewFactory()
-    private let layoutBinder = RocketLayoutBinder()
+    private let viewFactory = ViewFactory()
+    private let layoutBinder = LayoutBinder()
     
-    internal func buildViewIfNecessary(for rocketView: RocketViewProtocol, component: RocketComponent?, layoutProvider: RocketLayoutProvider?) {
+    internal func buildViewIfNecessary(for rocketView: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?) {
         guard !isSetup, let component = component, let layoutProvider = layoutProvider else { return }
         isSetup = true
         let view = rocketView.view
@@ -36,13 +36,13 @@ class RocketComponentViewBinder: NSObject {
         }
     }
     
-    internal func cleanUp(for view: RocketViewProtocol, component: RocketComponent?, layoutProvider: RocketLayoutProvider?) {
+    internal func cleanUp(for view: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?) {
         guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
         layoutProvider.unregisterView(view, for: component)
         isSetup = false
     }
     
-    private func applyLayout(component: RocketComponent, layoutProvider: RocketLayoutProvider) {
+    private func applyLayout(component: RocketComponent, layoutProvider: LayoutProvider) {
         for layoutObject in component.allLayoutObjects {
             layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
         }

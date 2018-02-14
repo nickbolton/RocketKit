@@ -7,9 +7,9 @@ import RocketKit
 class _PBContainer14ViewController: UIViewController {
 
     override func loadView() {
-        var rocketView = RocketLayoutProvider.shared.buildView(withIdentifier: "F92E05D8-6772-459A-9FC9-368CEA8F8C86")
+        var rocketView: ComponentView? = LayoutProvider.shared.buildView(withIdentifier: "F92E05D8-6772-459A-9FC9-368CEA8F8C86")
         rocketView?.isRootView = true
-        rocketView?.layoutProvider = RocketLayoutProvider.shared
+        rocketView?.layoutProvider = LayoutProvider.shared
         if let v = rocketView?.view {
             view = v
         } else {

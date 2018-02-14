@@ -15,8 +15,7 @@
 		925566E81EBF77FE000A3A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 925566E71EBF77FE000A3A14 /* Assets.xcassets */; };
 		925566EB1EBF77FE000A3A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 925566E91EBF77FE000A3A14 /* LaunchScreen.storyboard */; };
 		9255673E1EBF85B0000A3A14 /* layoutSource.rocket in Resources */ = {isa = PBXBuildFile; fileRef = 9255673D1EBF85B0000A3A14 /* layoutSource.rocket */; };
-		925567461EBF8601000A3A14 /* PBContainer106ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 925567411EBF8601000A3A14 /* PBContainer106ViewController.m */; };
-		925567471EBF8601000A3A14 /* _PBContainer106ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 925567441EBF8601000A3A14 /* _PBContainer106ViewController.m */; };
+		926DB4E020346025007C7362 /* _PBContainer106ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 925567441EBF8601000A3A14 /* _PBContainer106ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -265,9 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				925567461EBF8601000A3A14 /* PBContainer106ViewController.m in Sources */,
+				926DB4E020346025007C7362 /* _PBContainer106ViewController.m in Sources */,
 				925566E31EBF77FE000A3A14 /* ViewController.m in Sources */,
-				925567471EBF8601000A3A14 /* _PBContainer106ViewController.m in Sources */,
 				925566E01EBF77FE000A3A14 /* AppDelegate.m in Sources */,
 				925566DD1EBF77FE000A3A14 /* main.m in Sources */,
 			);
@@ -336,7 +334,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -379,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -394,6 +392,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5ES339A7SN;
 				INFOPLIST_FILE = RocketTestObjc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelbleed.RocketTestObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -408,6 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5ES339A7SN;
 				INFOPLIST_FILE = RocketTestObjc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelbleed.RocketTestObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";

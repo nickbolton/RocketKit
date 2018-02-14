@@ -1,5 +1,5 @@
 //
-//  RocketViewFactory.swift
+//  ViewFactory.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/6/17.
@@ -12,14 +12,14 @@
     import Cocoa
 #endif
 
-class RocketViewFactory: NSObject {
+class ViewFactory: NSObject {
     
     private let typeMap =
-        [RocketComponentType.container : RocketView.self]
+        [ComponentType.container : RocketView.self]
 
     // MARK: Public
     
-    public func buildView(with component: RocketComponent) -> RocketViewProtocol {
+    public func buildView(with component: RocketComponent) -> ComponentView {
         var viewType = typeMap[component.componentType]
         if viewType == nil {
             print("No type defined for component type: \(component.componentType)")

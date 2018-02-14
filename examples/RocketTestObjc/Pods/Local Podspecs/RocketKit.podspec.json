@@ -11,8 +11,8 @@
     "git": "https://github.com/nickbolton/RocketKit.git"
   },
   "platforms": {
-    "ios": "9.0",
-    "osx": "10.10"
+    "ios": "11.0",
+    "osx": "10.11"
   },
   "source_files": "Source/**/*.swift",
   "ios": {

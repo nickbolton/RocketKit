@@ -6,13 +6,9 @@
 //  Copyright © 2017 Nick Bolton. All rights reserved.
 //
 
-#if os(iOS)
-    import UIKit
-#else
-    import Cocoa
-#endif
+import Foundation
 
-public enum RocketComponentType: Int {
+public enum ComponentType: Int {
     case container
 }
 
@@ -25,9 +21,9 @@ struct AutoConstrainingTextType: OptionSet {
     static let widthAndHeight: AutoConstrainingTextType = [.width, .height]
 }
 
-public class RocketComponent: RocketBaseObject {
+public class RocketComponent: BaseObject {
     
-    let componentType: RocketComponentType
+    let componentType: ComponentType
     let name: String
 
     let cornerRadius: CGFloat
@@ -35,16 +31,17 @@ public class RocketComponent: RocketBaseObject {
     let isClipped: Bool
     let isRasterized: Bool
     let alpha: CGFloat
-    var borderColor: RocketColorType?
-    var backgroundColor: RocketColorType?
+    var borderColor: ColorType?
+    var backgroundColor: ColorType?
     
-    var textDescriptor: RocketTextDescriptor?
+    var textDescriptor: TextDescriptor?
     var autoConstrainingTextType = AutoConstrainingTextType.none
+    var usePreciseTextAlignments = false
     
-    let layoutObjects: [RocketLayout]
-    let defaultLayoutObjects: [RocketLayout]
-    var allLayoutObjects: [RocketLayout] {
-        var result = [RocketLayout]()
+    let layoutObjects: [Layout]
+    let defaultLayoutObjects: [Layout]
+    var allLayoutObjects: [Layout] {
+        var result = [Layout]()
         result.append(contentsOf: defaultLayoutObjects)
         result.append(contentsOf: layoutObjects)
         return result
@@ -76,9 +73,11 @@ public class RocketComponent: RocketBaseObject {
     private static let defaultLayoutObjectsKey = "defaultLayoutObjects"
     private static let childComponentsKey = "childComponents"
     private static let textDescriptorKey = "textDescriptor"
+    private static let autoConstrainingTextTypeKey = "autoConstrainingTextType"
+    private static let usePreciseTextAlignmentsKey = "usePreciseTextAlignments"
 
-    required public init(dictionary: [String: Any], layoutSource: RocketLayoutSource) {
-        self.componentType = RocketComponentType(rawValue: dictionary[RocketComponent.typeKey] as? Int ?? 0) ?? .container
+    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
+        self.componentType = ComponentType(rawValue: dictionary[RocketComponent.typeKey] as? Int ?? 0) ?? .container
         self.name = dictionary[RocketComponent.nameKey] as? String ?? ""
         self.cornerRadius = dictionary[RocketComponent.cornerRadiusKey] as? CGFloat ?? 0.0
         self.borderWidth = dictionary[RocketComponent.borderWidthKey] as? CGFloat ?? 0.0
@@ -91,14 +90,19 @@ public class RocketComponent: RocketBaseObject {
         self.borderColor = RocketComponent.resolveColor(dict: dictionary, colorKey: RocketComponent.borderColorKey, projectColorKey: RocketComponent.borderColorProjectColorIdKey, layoutSource: layoutSource)
         self.backgroundColor = RocketComponent.resolveColor(dict: dictionary, colorKey: RocketComponent.backgroundColorKey, projectColorKey: RocketComponent.backgroundProjectColorIdKey, layoutSource: layoutSource)
         
+        let autoConstrainingTextTypeRawValue = dictionary[RocketComponent.autoConstrainingTextTypeKey] as? Int ?? 0
+        self.autoConstrainingTextType = AutoConstrainingTextType(rawValue: autoConstrainingTextTypeRawValue)
+        
+        self.usePreciseTextAlignments = dictionary[RocketComponent.usePreciseTextAlignmentsKey] as? Bool ?? false
+        
         if let textDescriptorDict = dictionary[RocketComponent.textDescriptorKey] as? [String: Any] {
-            self.textDescriptor = RocketTextDescriptor(dictionary: textDescriptorDict)
+            self.textDescriptor = TextDescriptor(dictionary: textDescriptorDict)
         }
         
         super.init(dictionary: dictionary, layoutSource: layoutSource)
     }
     
-    private static func resolveColor(dict: [String: Any], colorKey: String, projectColorKey: String, layoutSource: RocketLayoutSource) -> RocketColorType? {
+    private static func resolveColor(dict: [String: Any], colorKey: String, projectColorKey: String, layoutSource: LayoutSource) -> ColorType? {
         var colorHexCode = dict[colorKey] as? String
         if colorHexCode == nil {
             if  let borderColorProjectColorId = dict[projectColorKey] as? String {
@@ -108,12 +112,12 @@ public class RocketComponent: RocketBaseObject {
             }
         }
         if colorHexCode != nil {
-            return RocketColorType(hex: colorHexCode!)
+            return ColorType(hex: colorHexCode!)
         }
         return nil
     }
     
-    internal func layoutObject(with attribute: NSLayoutAttribute) -> RocketLayout? {
+    internal func layoutObject(with attribute: NSLayoutAttribute) -> Layout? {
         for layoutObject in layoutObjects {
             if layoutObject.attribute == attribute {
                 return layoutObject;
@@ -190,15 +194,15 @@ public class RocketComponent: RocketBaseObject {
         return positionConstraintCount < 2
     }
 
-    private static func initializeLayoutObjects(_ layoutObjectArray: [[String: Any]], layoutSource: RocketLayoutSource) -> [RocketLayout] {
-        var result = [RocketLayout]()
+    private static func initializeLayoutObjects(_ layoutObjectArray: [[String: Any]], layoutSource: LayoutSource) -> [Layout] {
+        var result = [Layout]()
         for dict in layoutObjectArray {
-            result.append(RocketLayout(dictionary: dict, layoutSource: layoutSource))
+            result.append(Layout(dictionary: dict, layoutSource: layoutSource))
         }
         return result
     }
     
-    private static func initializeChildComponents(_ components: [String: [String: Any]], layoutSource: RocketLayoutSource) -> [RocketComponent] {
+    private static func initializeChildComponents(_ components: [String: [String: Any]], layoutSource: LayoutSource) -> [RocketComponent] {
         var result = [RocketComponent]()
         for dict in components.values {
             result.append(RocketComponent(dictionary: dict, layoutSource: layoutSource))

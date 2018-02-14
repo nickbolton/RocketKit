@@ -13,10 +13,8 @@
 
 public extension RocketView {
 
-    public func labelTextFrameWith(textDescriptor: RocketTextDescriptor) -> CGRect {
-        guard let label = label else { return .zero }
-        return textDescriptor.textFrame(boundBy: CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude),
-                                        componentFrame: frame,
-                                        textView: label)
+    public func labelTextFrameWith(textDescriptor: TextDescriptor) -> CGRect {
+        guard let component = component else { return .zero }
+        return textDescriptor.textFrame(textType: .label, boundBy: CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments, componentFrame: frame)
     }
 }

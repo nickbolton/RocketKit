@@ -1,5 +1,5 @@
 //
-//  RocketLayoutSource.swift
+//  LayoutSource.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 5/5/17.
@@ -12,7 +12,7 @@
     import Cocoa
 #endif
 
-public class RocketLayoutSource: NSObject {
+public class LayoutSource: NSObject {
 
     private (set) var topLevelComponents = [String: RocketComponent]()
     
@@ -34,7 +34,7 @@ public class RocketLayoutSource: NSObject {
 
     required public init(dictionary: [String: Any]) {
         self.version = dictionary[versionKey] as? Int ?? 1
-        self.projectColors = RocketLayoutSource.initializeProjectColors(dictionary[projectColorsKey] as? [[String: Any]] ?? [])
+        self.projectColors = LayoutSource.initializeProjectColors(dictionary[projectColorsKey] as? [[String: Any]] ?? [])
         self.rootComponentId = dictionary[rootComponentIdKey] as? String
         super.init()
         topLevelComponents = initializeComponents(dictionary[componentsKey] as? [[String: Any]] ?? [])

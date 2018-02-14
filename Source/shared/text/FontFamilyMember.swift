@@ -1,5 +1,5 @@
 //
-//  RocketFontFamilyMember.swift
+//  FontFamilyMember.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 12/31/17.
@@ -11,7 +11,7 @@
     import Cocoa
 #endif
 
-public struct RocketFontFamilyMember {
+public struct FontFamilyMember {
 
     public let name: String
     public let familyName: String
@@ -34,10 +34,10 @@ public struct RocketFontFamilyMember {
     }
 
     public init(dictionary: [String: Any]) {
-        self.name = dictionary[RocketFontFamilyMember.nameKey] as? String ?? ""
-        self.familyName = dictionary[RocketFontFamilyMember.familyNameKey] as? String ?? ""
-        self.weight = dictionary[RocketFontFamilyMember.weightKey] as? UIFontWeight ?? 0
-        self.isItalic = dictionary[RocketFontFamilyMember.isItalicKey] as? Bool ?? false
-        self.isSystemFont = dictionary[RocketFontFamilyMember.isSystemFontKey] as? Bool ?? false
+        self.name = dictionary[FontFamilyMember.nameKey] as? String ?? ""
+        self.familyName = dictionary[FontFamilyMember.familyNameKey] as? String ?? ""
+        self.weight = dictionary[FontFamilyMember.weightKey] as? UIFontWeight ?? 0
+        self.isItalic = dictionary[FontFamilyMember.isItalicKey] as? Bool ?? false
+        self.isSystemFont = dictionary[FontFamilyMember.isSystemFontKey] as? Bool ?? false
     }
 }

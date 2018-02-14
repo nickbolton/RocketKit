@@ -7,39 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1258846C28E4EA431C600085E9056386 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4514144C48D0917D2DCAFE51E108C238 /* Layout.swift */; };
+		145F6F86E154BE93701BA699868D389C /* NSFont+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D21FA4C6DE4893BC97451D5A59823 /* NSFont+Rocket.swift */; };
+		1571CED7614B664778456376352AF220 /* NSValue+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7489C0F4BEF0F97891D2DF79EE874E5F /* NSValue+Rocket.swift */; };
 		2958F06F581DAB19BD0EE3DA92763958 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
-		2DC2DE7ECA47CCE2D8A5DAF8B7360070 /* RocketComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1284782CAA87CA44B887CF62FE2CA /* RocketComponent.swift */; };
-		2EE899B70C683929839D81F731BCBD40 /* RocketView+TextLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A6EC7192B989ED277B2DCB29783CA0 /* RocketView+TextLayout.swift */; };
+		34DEA3BB9B724CEB47A73DA728829482 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40EA57255E7BFBF9C0D2044D8D68279 /* TextAttributes.swift */; };
 		3CCDF88E9737087FBF8704FC61444EB0 /* Pods-RocketTestMacSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 10617A822BF6C782E7B480F0E37AB42A /* Pods-RocketTestMacSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4026F94B58EB8D4E7A0F702968832DB7 /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48EBCB2E16EE8624F47BE32C098C1C6 /* RocketViewController.swift */; };
-		4155FA92F24CDEC74ED6659E68D94515 /* RocketLayoutBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538363907634C8601E00BD09DC7095D /* RocketLayoutBinder.swift */; };
-		4828C90495211CE9D31C5E8A0FBDCA45 /* RocketFontManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE6908DCE02573942283850AEDA1A93 /* RocketFontManagerProtocol.swift */; };
-		511067EF549E4C9E4C2372006CBF0B3B /* RocketLayoutMetaBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F5D41FA4EC0F212DC742715D3F43D4 /* RocketLayoutMetaBinder.swift */; };
+		489F6352C8809B6A13DF58A1E70ECE9F /* CGFloat+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714E526DAC667B1A72D032F755E190E /* CGFloat+Rocket.swift */; };
+		554D6459AA6865D878445A7B8915AEA5 /* TextDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8B58D142023451AAFA05AC77AD96C /* TextDescriptor.swift */; };
+		554F7B956C1232A6AFEBEFE373FD37AB /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA453BFBFFF65E581F7A3B7B094E0A /* NSColor+Hex.swift */; };
+		55C57C4314C08ADC68D3E195A7D0A17A /* LayoutBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E850E03807FB67F1BBC985645DBEB /* LayoutBinder.swift */; };
+		5C815520BF483C2B07E5E0C1F8BEC7C4 /* LocalizedTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4E9733C20A58DD2278A28249E6470 /* LocalizedTextContentProvider.swift */; };
 		605D96C137E30AC9E2878E4C10D6E597 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
-		720721F09E097F8C02A17C5AD7FEAFA1 /* RocketViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496866EABA8C582C9ECB1EA244010338 /* RocketViewFactory.swift */; };
-		73FBBCB4957B61796F2162D348B38BA0 /* RocketLayoutSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179282D930258137037252862CF1D6AF /* RocketLayoutSource.swift */; };
-		759D2709F0508CA28A304A48A886DE76 /* RocketKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E0E54B1C1A9D4E633B95663D5797994F /* RocketKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		83F08D68A74708E8851543EF6BD834EB /* RocketLocalize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F75A5723089ECCA8C493F274BFF67D /* RocketLocalize.swift */; };
-		8A803D8064C287315C3747AB313C99EC /* RocketTextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66EAEE17B83FEFA366E6279C8EEEEEC /* RocketTextAttributes.swift */; };
-		92A6ABAD1FFCF3E4009AA090 /* RocketTextDescriptor+Measurements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A6ABA81FFCF2EF009AA090 /* RocketTextDescriptor+Measurements.swift */; };
-		92A6ABC71FFCFDAB009AA090 /* RocketRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A6ABC61FFCFDAB009AA090 /* RocketRootViewController.swift */; };
-		99EDF26BC6CC444A818002D1A44F3263 /* RocketViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27EEF1F312B393A107D427FF5DAB0B9 /* RocketViewProtocol.swift */; };
-		A85F2CD1518DE1CE7E08ED14EA039CBF /* RocketFontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFE1DC2561223B20EACFE1AE159BA0C /* RocketFontManager.swift */; };
-		AD94B6EA4FD524F77D3E29CE53331606 /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92BDB832E4A89DD1BDA197B7723CC23 /* NSColor+Hex.swift */; };
-		AF931FFB2B0FC931AAF0304A2D751A3A /* NSFont+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F6E42FE31D183D121338BFF498DDA6 /* NSFont+Rocket.swift */; };
-		C2A88D8303E54A0BD03A5438F3CF2C15 /* RocketKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF70996018B8F99B047F3AE878EC9CC0 /* RocketKit-dummy.m */; };
-		C3926C6CED5D83EDD469FA49C46FDA7B /* RocketFontFamilyMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB0949E420B250671D3BC48F36D19EC /* RocketFontFamilyMember.swift */; };
-		CDC5EEEBFD770B268FAD2253666B00D5 /* RocketLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456E1AEDF46E2673ED241D421BC3D3F0 /* RocketLayout.swift */; };
-		D6AAEF0E97F4D85F4193E8F2E06C9B2A /* RocketLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C037023E4CEA28ACDD51537009F5D2F /* RocketLayoutProvider.swift */; };
-		D6E0292034F4F82D3F58AE0671833DC4 /* RocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E570B5ACC074889624CF0BF2E084AA /* RocketTypes.swift */; };
-		DF0D2B0EF9E2505AD845B4BAB4C32C91 /* RocketLayoutMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51B713171FF9B5E5173CC4F1BD20D7D /* RocketLayoutMeta.swift */; };
-		E147F82A29A83106D114C7A86F9A5F46 /* RocketBaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915D2A5F276B0D061BAF7DB8E3562BFC /* RocketBaseObject.swift */; };
-		E58C0A5976FB08E3ABF9732B6D5A2455 /* RocketLocalizedTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5564A7039CFA1D1FC8E15ECAFA614 /* RocketLocalizedTextContentProvider.swift */; };
-		E7EF5779DD2D4FAE7FF5A85EFE741257 /* RocketTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDEFCE312604D7409AFBCD79D41861C /* RocketTextContentProvider.swift */; };
-		E83DFD7A192F55E2BC6AC86B76626BCE /* RocketComponentViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C07CF058666A3B870188869479A1E6 /* RocketComponentViewBinder.swift */; };
-		E8894B27D50B71D7197A56DF639A898F /* RocketTextDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC50151FE65C18758319B50124636AB5 /* RocketTextDescriptor.swift */; };
-		E8F6BFC7087B40F0B9A62599A0CC3A02 /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9539D61DB3E13B5D9BA440ACD6CFA1 /* RocketView.swift */; };
-		F1D7CB6BACE49642403E5E6E4D6C8C0D /* RocketDefaultTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D65F72653638C03FDF7AA594A7908EA /* RocketDefaultTextContentProvider.swift */; };
+		61BAF36996DD8225BBA7076EC2E0B6AB /* NSEdgeInsets+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FFB7926A4DA833EF1723B50D7A8A89 /* NSEdgeInsets+Rocket.swift */; };
+		657DE866A548BD08A2C7D05CE9CDD54F /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D319FB68DBF0709B41A5424F568E0F /* ViewFactory.swift */; };
+		716385A5E32C91E389BA14B6185BE462 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E63F9933449079ED72B43FAD5020F /* BaseObject.swift */; };
+		73BDBE66C96AD4F006CB168F01360A92 /* LayoutMetaBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BD04C512B892CFE1AA4C6320EA2960 /* LayoutMetaBinder.swift */; };
+		75694038B439D57BF69C6381684DA7BE /* RocketKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22869275B7E9A08B973DD422B26B85D8 /* RocketKit-dummy.m */; };
+		759D2709F0508CA28A304A48A886DE76 /* RocketKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 68CE3A2A33E7F33488629FD291D1D6E3 /* RocketKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7D6747B996A1C1D4615A1A402A01E116 /* RocketTextView+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A956A49E465116FFE6B51DBDF850861 /* RocketTextView+Rocket.swift */; };
+		7EF78CBFF20655A600EEA84F0D119BB3 /* RocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC14CB6D336FCB5CD769C9A2D73BA5 /* RocketTypes.swift */; };
+		855458C14586D45CFD41F1522184C703 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD0176FAAFEE2FC58FB90BA47460BE4 /* Localize.swift */; };
+		90C9163E7DEEB5CBB0CF160A2E63EA86 /* LayoutSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC66B68BE7619CFF62D94BFA00128B /* LayoutSource.swift */; };
+		92ADF734414149ED611AAF9D66A7FA34 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710C17D6DD1EC05B795D425E7FF4394 /* FontManager.swift */; };
+		999349CDCE57B9535C2C57DD11F9B938 /* RocketLabel+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592EE09FBA30B4119BE68C4D84AB1BD3 /* RocketLabel+Rocket.swift */; };
+		9C08191B6B10E22DD8C1CF1605675F66 /* RocketComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F991AABA7536CC9EFA3F7B6CDB909654 /* RocketComponent.swift */; };
+		9C5194B7FF8834678DCB9056FFD76E5A /* DefaultTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE95A26F752D244D351F5E991B9264F /* DefaultTextContentProvider.swift */; };
+		9E3CAC48A5F50696585EE32B7DEEED20 /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01CA8BF3CC18AC21F4606D20C84E8A /* RocketViewController.swift */; };
+		ABA356212FAC6CCC14EA508C55B41B66 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D93D3D7B9D377A4245E06095596048 /* RootViewController.swift */; };
+		B9D2ECB3814E4143EDDF03ABBB6CB83C /* FontManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25FD67B707475AE9689A6E07E883CBA /* FontManagerProtocol.swift */; };
+		BAA73AFD13DB2EB30DB93A8B550229DB /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8089CAD755EEC571414B98CBACAAEB /* ComponentView.swift */; };
+		C8F37642EC1CC1423A1582C4624D14D3 /* ComponentViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3CB510BFB63A01C1B0B58AB83E601E /* ComponentViewBinder.swift */; };
+		D21D1F4774FCCD0E307714D4ECCB03C5 /* String+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B85C2609541B6A09A4EC37A1E8028E /* String+Rocket.swift */; };
+		D5521F63C3E62A5C8EE6FBE1D8F9B222 /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEC25E020BDAC12DB0203BCDA4E543 /* RocketView.swift */; };
+		DE6C51AE817EFA357989F5BAF718EF70 /* RocketView+TextLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115446BF485D89FBD9EF9C7C9333D83 /* RocketView+TextLayout.swift */; };
+		DEAEEA426D050FF97BFFF220FE6B1FC5 /* LayoutMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40237CB0DD88933C756D4BDA41ED4 /* LayoutMeta.swift */; };
+		E86AC404565F102164D729502AB085B8 /* FontFamilyMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4FCFF93148D1116B67D77B94332C80 /* FontFamilyMember.swift */; };
+		E91254BE755D59DAA45FC8183C4256DA /* TextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A730999C08935276373DE1701B08A667 /* TextContentProvider.swift */; };
+		FAF807A9C6463B4A13AFB51AB065EE3E /* LayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC71FDDBB21B66F71B2A69DEF14CE9 /* LayoutProvider.swift */; };
 		FD7AB133A1A357CFFB5F0808BEFF634E /* Pods-RocketTestMacSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00515469C88FB50D6AB9F68B2FC2B41D /* Pods-RocketTestMacSwift-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -55,53 +60,58 @@
 
 /* Begin PBXFileReference section */
 		00515469C88FB50D6AB9F68B2FC2B41D /* Pods-RocketTestMacSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RocketTestMacSwift-dummy.m"; sourceTree = "<group>"; };
+		04EEC25E020BDAC12DB0203BCDA4E543 /* RocketView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
 		0AFAF9C3AD10BFC0BB18AA2DE9ED954E /* Pods-RocketTestMacSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RocketTestMacSwift.release.xcconfig"; sourceTree = "<group>"; };
-		0BDEFCE312604D7409AFBCD79D41861C /* RocketTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTextContentProvider.swift; sourceTree = "<group>"; };
+		0E01CA8BF3CC18AC21F4606D20C84E8A /* RocketViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketViewController.swift; sourceTree = "<group>"; };
 		10617A822BF6C782E7B480F0E37AB42A /* Pods-RocketTestMacSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RocketTestMacSwift-umbrella.h"; sourceTree = "<group>"; };
-		179282D930258137037252862CF1D6AF /* RocketLayoutSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutSource.swift; sourceTree = "<group>"; };
-		187571AF0634F2B8A3BCEC172F36CB82 /* RocketKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RocketKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		19455162029031E923296A89756729E9 /* Pods-RocketTestMacSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RocketTestMacSwift.modulemap"; sourceTree = "<group>"; };
-		1D65F72653638C03FDF7AA594A7908EA /* RocketDefaultTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketDefaultTextContentProvider.swift; sourceTree = "<group>"; };
-		1EFE1DC2561223B20EACFE1AE159BA0C /* RocketFontManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketFontManager.swift; sourceTree = "<group>"; };
+		11FF1853FB812AC1B1EBDCAB0ADAF720 /* RocketKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RocketKit.modulemap; sourceTree = "<group>"; };
+		13EC71FDDBB21B66F71B2A69DEF14CE9 /* LayoutProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutProvider.swift; sourceTree = "<group>"; };
+		152E63F9933449079ED72B43FAD5020F /* BaseObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
+		187571AF0634F2B8A3BCEC172F36CB82 /* RocketKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RocketKit.framework; path = RocketKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19455162029031E923296A89756729E9 /* Pods-RocketTestMacSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RocketTestMacSwift.modulemap"; sourceTree = "<group>"; };
+		1FA8B58D142023451AAFA05AC77AD96C /* TextDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextDescriptor.swift; sourceTree = "<group>"; };
+		20BD04C512B892CFE1AA4C6320EA2960 /* LayoutMetaBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutMetaBinder.swift; sourceTree = "<group>"; };
+		218D21FA4C6DE4893BC97451D5A59823 /* NSFont+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSFont+Rocket.swift"; sourceTree = "<group>"; };
+		22869275B7E9A08B973DD422B26B85D8 /* RocketKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RocketKit-dummy.m"; sourceTree = "<group>"; };
 		270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		27A6EC7192B989ED277B2DCB29783CA0 /* RocketView+TextLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "RocketView+TextLayout.swift"; sourceTree = "<group>"; };
+		2BAC66B68BE7619CFF62D94BFA00128B /* LayoutSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutSource.swift; sourceTree = "<group>"; };
+		2CE40237CB0DD88933C756D4BDA41ED4 /* LayoutMeta.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutMeta.swift; sourceTree = "<group>"; };
+		2F8089CAD755EEC571414B98CBACAAEB /* ComponentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		3B3DBEF365C7E7C346F328823BB0D896 /* Pods-RocketTestMacSwift-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RocketTestMacSwift-acknowledgements.plist"; sourceTree = "<group>"; };
-		456E1AEDF46E2673ED241D421BC3D3F0 /* RocketLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayout.swift; sourceTree = "<group>"; };
+		3BC1F338C5084082B0025F6F69510DDE /* RocketKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RocketKit-prefix.pch"; sourceTree = "<group>"; };
+		3CAC14CB6D336FCB5CD769C9A2D73BA5 /* RocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTypes.swift; sourceTree = "<group>"; };
+		4514144C48D0917D2DCAFE51E108C238 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		4598FDA95170D9BDDB994C987680727D /* Pods-RocketTestMacSwift-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RocketTestMacSwift-resources.sh"; sourceTree = "<group>"; };
-		496866EABA8C582C9ECB1EA244010338 /* RocketViewFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketViewFactory.swift; sourceTree = "<group>"; };
-		60C07CF058666A3B870188869479A1E6 /* RocketComponentViewBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketComponentViewBinder.swift; sourceTree = "<group>"; };
-		6C037023E4CEA28ACDD51537009F5D2F /* RocketLayoutProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutProvider.swift; sourceTree = "<group>"; };
+		4710C17D6DD1EC05B795D425E7FF4394 /* FontManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		592EE09FBA30B4119BE68C4D84AB1BD3 /* RocketLabel+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "RocketLabel+Rocket.swift"; sourceTree = "<group>"; };
+		5A4FCFF93148D1116B67D77B94332C80 /* FontFamilyMember.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FontFamilyMember.swift; sourceTree = "<group>"; };
+		5BD0176FAAFEE2FC58FB90BA47460BE4 /* Localize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
+		68CE3A2A33E7F33488629FD291D1D6E3 /* RocketKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RocketKit-umbrella.h"; sourceTree = "<group>"; };
+		6A956A49E465116FFE6B51DBDF850861 /* RocketTextView+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "RocketTextView+Rocket.swift"; sourceTree = "<group>"; };
 		70136F9B4355CC5111AEF033B61A2F5C /* Pods-RocketTestMacSwift-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RocketTestMacSwift-frameworks.sh"; sourceTree = "<group>"; };
-		76F5564A7039CFA1D1FC8E15ECAFA614 /* RocketLocalizedTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLocalizedTextContentProvider.swift; sourceTree = "<group>"; };
-		7D24758F4736861A2F0C680C8D4477A1 /* RocketKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RocketKit.modulemap; sourceTree = "<group>"; };
-		7EB0949E420B250671D3BC48F36D19EC /* RocketFontFamilyMember.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketFontFamilyMember.swift; sourceTree = "<group>"; };
+		70B85C2609541B6A09A4EC37A1E8028E /* String+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Rocket.swift"; sourceTree = "<group>"; };
+		7489C0F4BEF0F97891D2DF79EE874E5F /* NSValue+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSValue+Rocket.swift"; sourceTree = "<group>"; };
 		82EA4741B36A74F8AE6417E560296491 /* Pods-RocketTestMacSwift-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RocketTestMacSwift-acknowledgements.markdown"; sourceTree = "<group>"; };
-		82F75A5723089ECCA8C493F274BFF67D /* RocketLocalize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLocalize.swift; sourceTree = "<group>"; };
-		915D2A5F276B0D061BAF7DB8E3562BFC /* RocketBaseObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketBaseObject.swift; sourceTree = "<group>"; };
-		92A6ABA81FFCF2EF009AA090 /* RocketTextDescriptor+Measurements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RocketTextDescriptor+Measurements.swift"; sourceTree = "<group>"; };
-		92A6ABC61FFCFDAB009AA090 /* RocketRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketRootViewController.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		98327F4FC75DB7C798B65F58311A8776 /* RocketKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RocketKit.xcconfig; sourceTree = "<group>"; };
-		9CC1284782CAA87CA44B887CF62FE2CA /* RocketComponent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketComponent.swift; sourceTree = "<group>"; };
-		A66EAEE17B83FEFA366E6279C8EEEEEC /* RocketTextAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTextAttributes.swift; sourceTree = "<group>"; };
-		AC50151FE65C18758319B50124636AB5 /* RocketTextDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTextDescriptor.swift; sourceTree = "<group>"; };
-		B0E570B5ACC074889624CF0BF2E084AA /* RocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTypes.swift; sourceTree = "<group>"; };
-		B27EEF1F312B393A107D427FF5DAB0B9 /* RocketViewProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketViewProtocol.swift; sourceTree = "<group>"; };
-		BEA96FA38712A301697910FE86A5A9E3 /* RocketKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RocketKit-prefix.pch"; sourceTree = "<group>"; };
-		C0F6E42FE31D183D121338BFF498DDA6 /* NSFont+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSFont+Rocket.swift"; sourceTree = "<group>"; };
-		C3F5D41FA4EC0F212DC742715D3F43D4 /* RocketLayoutMetaBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutMetaBinder.swift; sourceTree = "<group>"; };
-		C48EBCB2E16EE8624F47BE32C098C1C6 /* RocketViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketViewController.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		95D93D3D7B9D377A4245E06095596048 /* RootViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		9714E526DAC667B1A72D032F755E190E /* CGFloat+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CGFloat+Rocket.swift"; sourceTree = "<group>"; };
+		9C2DFDF6973B4E01175230F4F3A0786B /* RocketKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RocketKit.xcconfig; sourceTree = "<group>"; };
+		A40EA57255E7BFBF9C0D2044D8D68279 /* TextAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
+		A4FFB7926A4DA833EF1723B50D7A8A89 /* NSEdgeInsets+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSEdgeInsets+Rocket.swift"; sourceTree = "<group>"; };
+		A730999C08935276373DE1701B08A667 /* TextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextContentProvider.swift; sourceTree = "<group>"; };
 		CAE78C0A868CA83EA95347EF609A02ED /* Pods-RocketTestMacSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RocketTestMacSwift.debug.xcconfig"; sourceTree = "<group>"; };
-		CEA6137DAB844201BCF1FFD72632A21B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF70996018B8F99B047F3AE878EC9CC0 /* RocketKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RocketKit-dummy.m"; sourceTree = "<group>"; };
-		E0E54B1C1A9D4E633B95663D5797994F /* RocketKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RocketKit-umbrella.h"; sourceTree = "<group>"; };
+		D6D319FB68DBF0709B41A5424F568E0F /* ViewFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		E115446BF485D89FBD9EF9C7C9333D83 /* RocketView+TextLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "RocketView+TextLayout.swift"; sourceTree = "<group>"; };
+		E25FD67B707475AE9689A6E07E883CBA /* FontManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FontManagerProtocol.swift; sourceTree = "<group>"; };
+		E8A4E9733C20A58DD2278A28249E6470 /* LocalizedTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalizedTextContentProvider.swift; sourceTree = "<group>"; };
 		EA3D3902189EF7B93150C3DF11D4DB38 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EEE6908DCE02573942283850AEDA1A93 /* RocketFontManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketFontManagerProtocol.swift; sourceTree = "<group>"; };
-		F3EA5CDE544933C515262764366A424E /* Pods_RocketTestMacSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RocketTestMacSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F51B713171FF9B5E5173CC4F1BD20D7D /* RocketLayoutMeta.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutMeta.swift; sourceTree = "<group>"; };
-		F538363907634C8601E00BD09DC7095D /* RocketLayoutBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketLayoutBinder.swift; sourceTree = "<group>"; };
-		F92BDB832E4A89DD1BDA197B7723CC23 /* NSColor+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
-		FA9539D61DB3E13B5D9BA440ACD6CFA1 /* RocketView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketView.swift; sourceTree = "<group>"; };
+		EADA453BFBFFF65E581F7A3B7B094E0A /* NSColor+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
+		EC3CB510BFB63A01C1B0B58AB83E601E /* ComponentViewBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentViewBinder.swift; sourceTree = "<group>"; };
+		F3EA5CDE544933C515262764366A424E /* Pods_RocketTestMacSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RocketTestMacSwift.framework; path = "Pods-RocketTestMacSwift.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F991AABA7536CC9EFA3F7B6CDB909654 /* RocketComponent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketComponent.swift; sourceTree = "<group>"; };
+		FAE95A26F752D244D351F5E991B9264F /* DefaultTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefaultTextContentProvider.swift; sourceTree = "<group>"; };
+		FC4E850E03807FB67F1BBC985645DBEB /* LayoutBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutBinder.swift; sourceTree = "<group>"; };
+		FE7623C1E4FD8C1DCFBB0FD64E1A49A6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +142,28 @@
 			name = "OS X";
 			sourceTree = "<group>";
 		};
+		0DDD56ECDE90F5574D575228FE3891EE /* util */ = {
+			isa = PBXGroup;
+			children = (
+				9714E526DAC667B1A72D032F755E190E /* CGFloat+Rocket.swift */,
+				3CAC14CB6D336FCB5CD769C9A2D73BA5 /* RocketTypes.swift */,
+				70B85C2609541B6A09A4EC37A1E8028E /* String+Rocket.swift */,
+			);
+			name = util;
+			path = util;
+			sourceTree = "<group>";
+		};
+		18A663D3F6F45EB9F9B2BD681E7C94B1 /* RocketKit */ = {
+			isa = PBXGroup;
+			children = (
+				57399D12820F9B1934A6AD9D710F79C5 /* osx */,
+				47BA28865F3BDC2A11F6FFECB7E7731F /* shared */,
+				DDDB0A56C5CC393A8023F52B39594475 /* Support Files */,
+			);
+			name = RocketKit;
+			path = /Users/deuce/src/pixelbleed/RocketKit;
+			sourceTree = "<absolute>";
+		};
 		190DA20330D9113DFA56C6AED5983904 /* Pods-RocketTestMacSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,51 +182,12 @@
 			path = "Target Support Files/Pods-RocketTestMacSwift";
 			sourceTree = "<group>";
 		};
-		1C9E29EC34EB2213B350ADE8C686F949 /* RocketKit */ = {
-			isa = PBXGroup;
-			children = (
-				3D5D6D08F18A840AF0D5CD7AD3186625 /* osx */,
-				488ECCFA45B7BFDB98EBFBAF31BE5A23 /* shared */,
-				EE71F072B769E116A5373637DA6DDC70 /* Support Files */,
-			);
-			name = RocketKit;
-			path = /Users/deuce/src/pixelbleed/RocketKit;
-			sourceTree = "<absolute>";
-		};
-		2668D08CD2AEA2EEBF1B1E5E57DFB81C /* viewController */ = {
-			isa = PBXGroup;
-			children = (
-				C48EBCB2E16EE8624F47BE32C098C1C6 /* RocketViewController.swift */,
-				92A6ABC61FFCFDAB009AA090 /* RocketRootViewController.swift */,
-			);
-			path = viewController;
-			sourceTree = "<group>";
-		};
 		2CE85528B161AA8CC0AD1475858F35AC /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1C9E29EC34EB2213B350ADE8C686F949 /* RocketKit */,
+				18A663D3F6F45EB9F9B2BD681E7C94B1 /* RocketKit */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		2E2EEB05A43CD20F0D16AB59C6AA8D24 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				FA9539D61DB3E13B5D9BA440ACD6CFA1 /* RocketView.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		360E652732F0EC7A89D0D9DB54E2079C /* layout */ = {
-			isa = PBXGroup;
-			children = (
-				456E1AEDF46E2673ED241D421BC3D3F0 /* RocketLayout.swift */,
-				F538363907634C8601E00BD09DC7095D /* RocketLayoutBinder.swift */,
-				F51B713171FF9B5E5173CC4F1BD20D7D /* RocketLayoutMeta.swift */,
-				C3F5D41FA4EC0F212DC742715D3F43D4 /* RocketLayoutMetaBinder.swift */,
-			);
-			path = layout;
 			sourceTree = "<group>";
 		};
 		39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */ = {
@@ -205,47 +198,51 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3D5D6D08F18A840AF0D5CD7AD3186625 /* osx */ = {
+		46BE85E5D766CB8EFB0F0306A4AE2393 /* viewController */ = {
 			isa = PBXGroup;
 			children = (
-				7D0F9CABA856116DC9DFAA8DB15D411C /* text */,
-				553EFD8952FB0499850D105219F338EA /* utils */,
-				2E2EEB05A43CD20F0D16AB59C6AA8D24 /* view */,
-				2668D08CD2AEA2EEBF1B1E5E57DFB81C /* viewController */,
+				0E01CA8BF3CC18AC21F4606D20C84E8A /* RocketViewController.swift */,
+				95D93D3D7B9D377A4245E06095596048 /* RootViewController.swift */,
 			);
-			name = osx;
-			path = Source/osx;
+			name = viewController;
+			path = viewController;
 			sourceTree = "<group>";
 		};
-		488ECCFA45B7BFDB98EBFBAF31BE5A23 /* shared */ = {
+		47BA28865F3BDC2A11F6FFECB7E7731F /* shared */ = {
 			isa = PBXGroup;
 			children = (
-				360E652732F0EC7A89D0D9DB54E2079C /* layout */,
-				85415BD607A4616BC82B410F4A2F1574 /* model */,
-				B0FBB61D9219EDFE93E7DE3DF69A68E0 /* text */,
-				AC53FE122C69E5DEA9904EC62701A968 /* util */,
-				9A7548C50FCFB0F1DF720039391710DA /* view */,
+				FCC4AFDE896653F6AB90596ED6F2295A /* layout */,
+				5FF5E4154305453A6CDE609A4B2F1B72 /* model */,
+				CCFE9AACDB4757C917E73E1194BD3F3A /* text */,
+				0DDD56ECDE90F5574D575228FE3891EE /* util */,
+				E409C237365F457DB197918DF922E161 /* view */,
 			);
 			name = shared;
 			path = Source/shared;
 			sourceTree = "<group>";
 		};
-		553EFD8952FB0499850D105219F338EA /* utils */ = {
+		57399D12820F9B1934A6AD9D710F79C5 /* osx */ = {
 			isa = PBXGroup;
 			children = (
-				F92BDB832E4A89DD1BDA197B7723CC23 /* NSColor+Hex.swift */,
-				C0F6E42FE31D183D121338BFF498DDA6 /* NSFont+Rocket.swift */,
+				F20A73C5A81BAA0DAC9058105083BB55 /* text */,
+				CD864B0AFB2D17EBAF4F8314C91EEDA9 /* utils */,
+				DBCEAAA063038AAFCA5A2321007216AC /* view */,
+				46BE85E5D766CB8EFB0F0306A4AE2393 /* viewController */,
 			);
-			path = utils;
+			name = osx;
+			path = Source/osx;
 			sourceTree = "<group>";
 		};
-		7D0F9CABA856116DC9DFAA8DB15D411C /* text */ = {
+		5FF5E4154305453A6CDE609A4B2F1B72 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				1EFE1DC2561223B20EACFE1AE159BA0C /* RocketFontManager.swift */,
-				92A6ABA81FFCF2EF009AA090 /* RocketTextDescriptor+Measurements.swift */,
+				152E63F9933449079ED72B43FAD5020F /* BaseObject.swift */,
+				13EC71FDDBB21B66F71B2A69DEF14CE9 /* LayoutProvider.swift */,
+				2BAC66B68BE7619CFF62D94BFA00128B /* LayoutSource.swift */,
+				F991AABA7536CC9EFA3F7B6CDB909654 /* RocketComponent.swift */,
 			);
-			path = text;
+			name = model;
+			path = model;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -259,57 +256,12 @@
 			);
 			sourceTree = "<group>";
 		};
-		85415BD607A4616BC82B410F4A2F1574 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				915D2A5F276B0D061BAF7DB8E3562BFC /* RocketBaseObject.swift */,
-				9CC1284782CAA87CA44B887CF62FE2CA /* RocketComponent.swift */,
-				6C037023E4CEA28ACDD51537009F5D2F /* RocketLayoutProvider.swift */,
-				179282D930258137037252862CF1D6AF /* RocketLayoutSource.swift */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		9A7548C50FCFB0F1DF720039391710DA /* view */ = {
-			isa = PBXGroup;
-			children = (
-				60C07CF058666A3B870188869479A1E6 /* RocketComponentViewBinder.swift */,
-				496866EABA8C582C9ECB1EA244010338 /* RocketViewFactory.swift */,
-				B27EEF1F312B393A107D427FF5DAB0B9 /* RocketViewProtocol.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		9ABD39EE77E96D843AC73B9B30C52CEC /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				190DA20330D9113DFA56C6AED5983904 /* Pods-RocketTestMacSwift */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		AC53FE122C69E5DEA9904EC62701A968 /* util */ = {
-			isa = PBXGroup;
-			children = (
-				B0E570B5ACC074889624CF0BF2E084AA /* RocketTypes.swift */,
-			);
-			path = util;
-			sourceTree = "<group>";
-		};
-		B0FBB61D9219EDFE93E7DE3DF69A68E0 /* text */ = {
-			isa = PBXGroup;
-			children = (
-				1D65F72653638C03FDF7AA594A7908EA /* RocketDefaultTextContentProvider.swift */,
-				7EB0949E420B250671D3BC48F36D19EC /* RocketFontFamilyMember.swift */,
-				EEE6908DCE02573942283850AEDA1A93 /* RocketFontManagerProtocol.swift */,
-				82F75A5723089ECCA8C493F274BFF67D /* RocketLocalize.swift */,
-				76F5564A7039CFA1D1FC8E15ECAFA614 /* RocketLocalizedTextContentProvider.swift */,
-				A66EAEE17B83FEFA366E6279C8EEEEEC /* RocketTextAttributes.swift */,
-				0BDEFCE312604D7409AFBCD79D41861C /* RocketTextContentProvider.swift */,
-				AC50151FE65C18758319B50124636AB5 /* RocketTextDescriptor.swift */,
-				27A6EC7192B989ED277B2DCB29783CA0 /* RocketView+TextLayout.swift */,
-			);
-			path = text;
 			sourceTree = "<group>";
 		};
 		CC5B2196D0726DB957606F73820BBDFA /* Products */ = {
@@ -321,18 +273,90 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EE71F072B769E116A5373637DA6DDC70 /* Support Files */ = {
+		CCFE9AACDB4757C917E73E1194BD3F3A /* text */ = {
 			isa = PBXGroup;
 			children = (
-				CEA6137DAB844201BCF1FFD72632A21B /* Info.plist */,
-				7D24758F4736861A2F0C680C8D4477A1 /* RocketKit.modulemap */,
-				98327F4FC75DB7C798B65F58311A8776 /* RocketKit.xcconfig */,
-				CF70996018B8F99B047F3AE878EC9CC0 /* RocketKit-dummy.m */,
-				BEA96FA38712A301697910FE86A5A9E3 /* RocketKit-prefix.pch */,
-				E0E54B1C1A9D4E633B95663D5797994F /* RocketKit-umbrella.h */,
+				FAE95A26F752D244D351F5E991B9264F /* DefaultTextContentProvider.swift */,
+				5A4FCFF93148D1116B67D77B94332C80 /* FontFamilyMember.swift */,
+				E25FD67B707475AE9689A6E07E883CBA /* FontManagerProtocol.swift */,
+				5BD0176FAAFEE2FC58FB90BA47460BE4 /* Localize.swift */,
+				E8A4E9733C20A58DD2278A28249E6470 /* LocalizedTextContentProvider.swift */,
+				E115446BF485D89FBD9EF9C7C9333D83 /* RocketView+TextLayout.swift */,
+				A40EA57255E7BFBF9C0D2044D8D68279 /* TextAttributes.swift */,
+				A730999C08935276373DE1701B08A667 /* TextContentProvider.swift */,
+				1FA8B58D142023451AAFA05AC77AD96C /* TextDescriptor.swift */,
+			);
+			name = text;
+			path = text;
+			sourceTree = "<group>";
+		};
+		CD864B0AFB2D17EBAF4F8314C91EEDA9 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				EADA453BFBFFF65E581F7A3B7B094E0A /* NSColor+Hex.swift */,
+				A4FFB7926A4DA833EF1723B50D7A8A89 /* NSEdgeInsets+Rocket.swift */,
+				218D21FA4C6DE4893BC97451D5A59823 /* NSFont+Rocket.swift */,
+				7489C0F4BEF0F97891D2DF79EE874E5F /* NSValue+Rocket.swift */,
+				592EE09FBA30B4119BE68C4D84AB1BD3 /* RocketLabel+Rocket.swift */,
+				6A956A49E465116FFE6B51DBDF850861 /* RocketTextView+Rocket.swift */,
+			);
+			name = utils;
+			path = utils;
+			sourceTree = "<group>";
+		};
+		DBCEAAA063038AAFCA5A2321007216AC /* view */ = {
+			isa = PBXGroup;
+			children = (
+				04EEC25E020BDAC12DB0203BCDA4E543 /* RocketView.swift */,
+			);
+			name = view;
+			path = view;
+			sourceTree = "<group>";
+		};
+		DDDB0A56C5CC393A8023F52B39594475 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FE7623C1E4FD8C1DCFBB0FD64E1A49A6 /* Info.plist */,
+				11FF1853FB812AC1B1EBDCAB0ADAF720 /* RocketKit.modulemap */,
+				9C2DFDF6973B4E01175230F4F3A0786B /* RocketKit.xcconfig */,
+				22869275B7E9A08B973DD422B26B85D8 /* RocketKit-dummy.m */,
+				3BC1F338C5084082B0025F6F69510DDE /* RocketKit-prefix.pch */,
+				68CE3A2A33E7F33488629FD291D1D6E3 /* RocketKit-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../rocket/examples/RocketTestMacSwift/Pods/Target Support Files/RocketKit";
+			path = "examples/RocketTestMacSwift/Pods/Target Support Files/RocketKit";
+			sourceTree = "<group>";
+		};
+		E409C237365F457DB197918DF922E161 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				2F8089CAD755EEC571414B98CBACAAEB /* ComponentView.swift */,
+				EC3CB510BFB63A01C1B0B58AB83E601E /* ComponentViewBinder.swift */,
+				D6D319FB68DBF0709B41A5424F568E0F /* ViewFactory.swift */,
+			);
+			name = view;
+			path = view;
+			sourceTree = "<group>";
+		};
+		F20A73C5A81BAA0DAC9058105083BB55 /* text */ = {
+			isa = PBXGroup;
+			children = (
+				4710C17D6DD1EC05B795D425E7FF4394 /* FontManager.swift */,
+			);
+			name = text;
+			path = text;
+			sourceTree = "<group>";
+		};
+		FCC4AFDE896653F6AB90596ED6F2295A /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				4514144C48D0917D2DCAFE51E108C238 /* Layout.swift */,
+				FC4E850E03807FB67F1BBC985645DBEB /* LayoutBinder.swift */,
+				2CE40237CB0DD88933C756D4BDA41ED4 /* LayoutMeta.swift */,
+				20BD04C512B892CFE1AA4C6320EA2960 /* LayoutMetaBinder.swift */,
+			);
+			name = layout;
+			path = layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,7 +385,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 257E629E4B27F9ED4C18407AB0DAB448 /* Build configuration list for PBXNativeTarget "RocketKit" */;
 			buildPhases = (
-				495C1A5733D20775AD790D45CC349E69 /* Sources */,
+				6AC6620B554C24D36F0BE906FDFD75B1 /* Sources */,
 				BA89E3E1B33C684DF5005819D460FBE1 /* Frameworks */,
 				D8D0984F9A357E39C00F0824AD57B302 /* Headers */,
 			);
@@ -400,11 +424,6 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
-				TargetAttributes = {
-					7BE9D842406B1031A18DEFBB531B3FCA = {
-						LastSwiftMigration = 0920;
-					};
-				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -433,39 +452,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		495C1A5733D20775AD790D45CC349E69 /* Sources */ = {
+		6AC6620B554C24D36F0BE906FDFD75B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD94B6EA4FD524F77D3E29CE53331606 /* NSColor+Hex.swift in Sources */,
-				AF931FFB2B0FC931AAF0304A2D751A3A /* NSFont+Rocket.swift in Sources */,
-				92A6ABC71FFCFDAB009AA090 /* RocketRootViewController.swift in Sources */,
-				92A6ABAD1FFCF3E4009AA090 /* RocketTextDescriptor+Measurements.swift in Sources */,
-				E147F82A29A83106D114C7A86F9A5F46 /* RocketBaseObject.swift in Sources */,
-				2DC2DE7ECA47CCE2D8A5DAF8B7360070 /* RocketComponent.swift in Sources */,
-				E83DFD7A192F55E2BC6AC86B76626BCE /* RocketComponentViewBinder.swift in Sources */,
-				F1D7CB6BACE49642403E5E6E4D6C8C0D /* RocketDefaultTextContentProvider.swift in Sources */,
-				C3926C6CED5D83EDD469FA49C46FDA7B /* RocketFontFamilyMember.swift in Sources */,
-				A85F2CD1518DE1CE7E08ED14EA039CBF /* RocketFontManager.swift in Sources */,
-				4828C90495211CE9D31C5E8A0FBDCA45 /* RocketFontManagerProtocol.swift in Sources */,
-				C2A88D8303E54A0BD03A5438F3CF2C15 /* RocketKit-dummy.m in Sources */,
-				CDC5EEEBFD770B268FAD2253666B00D5 /* RocketLayout.swift in Sources */,
-				4155FA92F24CDEC74ED6659E68D94515 /* RocketLayoutBinder.swift in Sources */,
-				DF0D2B0EF9E2505AD845B4BAB4C32C91 /* RocketLayoutMeta.swift in Sources */,
-				511067EF549E4C9E4C2372006CBF0B3B /* RocketLayoutMetaBinder.swift in Sources */,
-				D6AAEF0E97F4D85F4193E8F2E06C9B2A /* RocketLayoutProvider.swift in Sources */,
-				73FBBCB4957B61796F2162D348B38BA0 /* RocketLayoutSource.swift in Sources */,
-				83F08D68A74708E8851543EF6BD834EB /* RocketLocalize.swift in Sources */,
-				E58C0A5976FB08E3ABF9732B6D5A2455 /* RocketLocalizedTextContentProvider.swift in Sources */,
-				8A803D8064C287315C3747AB313C99EC /* RocketTextAttributes.swift in Sources */,
-				E7EF5779DD2D4FAE7FF5A85EFE741257 /* RocketTextContentProvider.swift in Sources */,
-				E8894B27D50B71D7197A56DF639A898F /* RocketTextDescriptor.swift in Sources */,
-				D6E0292034F4F82D3F58AE0671833DC4 /* RocketTypes.swift in Sources */,
-				2EE899B70C683929839D81F731BCBD40 /* RocketView+TextLayout.swift in Sources */,
-				E8F6BFC7087B40F0B9A62599A0CC3A02 /* RocketView.swift in Sources */,
-				4026F94B58EB8D4E7A0F702968832DB7 /* RocketViewController.swift in Sources */,
-				720721F09E097F8C02A17C5AD7FEAFA1 /* RocketViewFactory.swift in Sources */,
-				99EDF26BC6CC444A818002D1A44F3263 /* RocketViewProtocol.swift in Sources */,
+				716385A5E32C91E389BA14B6185BE462 /* BaseObject.swift in Sources */,
+				489F6352C8809B6A13DF58A1E70ECE9F /* CGFloat+Rocket.swift in Sources */,
+				BAA73AFD13DB2EB30DB93A8B550229DB /* ComponentView.swift in Sources */,
+				C8F37642EC1CC1423A1582C4624D14D3 /* ComponentViewBinder.swift in Sources */,
+				9C5194B7FF8834678DCB9056FFD76E5A /* DefaultTextContentProvider.swift in Sources */,
+				E86AC404565F102164D729502AB085B8 /* FontFamilyMember.swift in Sources */,
+				92ADF734414149ED611AAF9D66A7FA34 /* FontManager.swift in Sources */,
+				B9D2ECB3814E4143EDDF03ABBB6CB83C /* FontManagerProtocol.swift in Sources */,
+				1258846C28E4EA431C600085E9056386 /* Layout.swift in Sources */,
+				55C57C4314C08ADC68D3E195A7D0A17A /* LayoutBinder.swift in Sources */,
+				DEAEEA426D050FF97BFFF220FE6B1FC5 /* LayoutMeta.swift in Sources */,
+				73BDBE66C96AD4F006CB168F01360A92 /* LayoutMetaBinder.swift in Sources */,
+				FAF807A9C6463B4A13AFB51AB065EE3E /* LayoutProvider.swift in Sources */,
+				90C9163E7DEEB5CBB0CF160A2E63EA86 /* LayoutSource.swift in Sources */,
+				855458C14586D45CFD41F1522184C703 /* Localize.swift in Sources */,
+				5C815520BF483C2B07E5E0C1F8BEC7C4 /* LocalizedTextContentProvider.swift in Sources */,
+				554F7B956C1232A6AFEBEFE373FD37AB /* NSColor+Hex.swift in Sources */,
+				61BAF36996DD8225BBA7076EC2E0B6AB /* NSEdgeInsets+Rocket.swift in Sources */,
+				145F6F86E154BE93701BA699868D389C /* NSFont+Rocket.swift in Sources */,
+				1571CED7614B664778456376352AF220 /* NSValue+Rocket.swift in Sources */,
+				9C08191B6B10E22DD8C1CF1605675F66 /* RocketComponent.swift in Sources */,
+				75694038B439D57BF69C6381684DA7BE /* RocketKit-dummy.m in Sources */,
+				999349CDCE57B9535C2C57DD11F9B938 /* RocketLabel+Rocket.swift in Sources */,
+				7D6747B996A1C1D4615A1A402A01E116 /* RocketTextView+Rocket.swift in Sources */,
+				7EF78CBFF20655A600EEA84F0D119BB3 /* RocketTypes.swift in Sources */,
+				DE6C51AE817EFA357989F5BAF718EF70 /* RocketView+TextLayout.swift in Sources */,
+				D5521F63C3E62A5C8EE6FBE1D8F9B222 /* RocketView.swift in Sources */,
+				9E3CAC48A5F50696585EE32B7DEEED20 /* RocketViewController.swift in Sources */,
+				ABA356212FAC6CCC14EA508C55B41B66 /* RootViewController.swift in Sources */,
+				D21D1F4774FCCD0E307714D4ECCB03C5 /* String+Rocket.swift in Sources */,
+				34DEA3BB9B724CEB47A73DA728829482 /* TextAttributes.swift in Sources */,
+				E91254BE755D59DAA45FC8183C4256DA /* TextContentProvider.swift in Sources */,
+				554D6459AA6865D878445A7B8915AEA5 /* TextDescriptor.swift in Sources */,
+				657DE866A548BD08A2C7D05CE9CDD54F /* ViewFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,7 +551,7 @@
 		};
 		68CAC54E2CB859B60CF6A7601C6FA100 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98327F4FC75DB7C798B65F58311A8776 /* RocketKit.xcconfig */;
+			baseConfigurationReference = 9C2DFDF6973B4E01175230F4F3A0786B /* RocketKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -565,7 +589,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0AFAF9C3AD10BFC0BB18AA2DE9ED954E /* Pods-RocketTestMacSwift.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -654,7 +677,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CAE78C0A868CA83EA95347EF609A02ED /* Pods-RocketTestMacSwift.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -693,7 +715,7 @@
 		};
 		FCCAC45F3B1F907FFE8736DAF6958365 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98327F4FC75DB7C798B65F58311A8776 /* RocketKit.xcconfig */;
+			baseConfigurationReference = 9C2DFDF6973B4E01175230F4F3A0786B /* RocketKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

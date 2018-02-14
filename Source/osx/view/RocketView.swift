@@ -8,17 +8,17 @@
 
 import Cocoa
 
-public class RocketView: NSView, RocketViewProtocol {
+public class RocketView: NSView, ComponentView {
 
     public var view: RocketBaseView { return self }
-    public var layoutProvider: RocketLayoutProvider?
+    public var layoutProvider: LayoutProvider?
     public var component: RocketComponent?
     public var isRootView: Bool = false
     var label: NSTextField?
     
     public override var isFlipped: Bool { return true }
 
-    private let binder = RocketComponentViewBinder()
+    private let binder = ComponentViewBinder()
     
     deinit {
         binder.cleanUp(for: self, component: component, layoutProvider: layoutProvider)
@@ -47,7 +47,7 @@ public class RocketView: NSView, RocketViewProtocol {
         label = nil
     }
     
-    private func setUpLabel(_ textDescriptor: RocketTextDescriptor) {
+    private func setUpLabel(_ textDescriptor: TextDescriptor) {
         label = NSTextField()
         label?.isBezeled = false
         label?.isEditable = false

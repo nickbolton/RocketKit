@@ -13,7 +13,7 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vc = RocketLayoutProvider.shared.buildViewController(withIdentifier: "78595176-65AE-466F-B747-B17724C1AA17")
+        let vc = LayoutProvider.shared.buildViewController(withIdentifier: "78595176-65AE-466F-B747-B17724C1AA17")
         addChildViewController(vc)
         vc.view.frame = view.bounds
         vc.view.autoresizingMask = NSAutoresizingMaskOptions.viewWidthSizable.union(.viewHeightSizable)
