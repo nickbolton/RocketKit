@@ -58,6 +58,8 @@ public class RocketComponent: BaseObject {
         return self
     }
     
+    public var isContentConstrainedBySafeArea = false
+    
     private static let typeKey = "type"
     private static let nameKey = "name"
     private static let cornerRadiusKey = "cornerRadius"

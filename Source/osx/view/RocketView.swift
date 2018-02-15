@@ -67,7 +67,8 @@ public class RocketView: NSView, ComponentView {
     
     private func layoutLabelIfNecessary() {
         guard let label = label else { return }
-        guard let textDescriptor = component?.textDescriptor else { return }
-        label.frame = labelTextFrameWith(textDescriptor: textDescriptor)
+        guard let component = component else { return }
+        guard let textDescriptor = component.textDescriptor else { return }
+        label.frame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: .label, containerSize: frame.size)
     }
 }

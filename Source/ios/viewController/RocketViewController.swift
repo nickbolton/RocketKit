@@ -1,26 +1,32 @@
 
 import UIKit
 
-public class RocketViewController: UIViewController {
+@IBDesignable open class RocketViewController: UIViewController {
     
     var componentId: String?
+    public var componentView: ComponentView?
+    public var component: RocketComponent? { return componentView?.component }
+    
+    @IBInspectable var isContentConstrainedBySafeArea: Bool = false {
+        didSet {
+            component?.isContentConstrainedBySafeArea = isContentConstrainedBySafeArea
+        }
+    }
     
     public convenience init(componentId: String) {
         self.init()
         self.componentId = componentId
     }
     
-    override public func loadView() {
+    override open func loadView() {
         var v: UIView?
         if  let componentId = componentId {
-            var rocketView = LayoutProvider.shared.buildView(withIdentifier: componentId)
-            rocketView?.isRootView = true
-            rocketView?.layoutProvider = LayoutProvider.shared
-            v = rocketView?.view
+            componentView = LayoutProvider.shared.buildView(withIdentifier: componentId)
+            componentView?.component?.isContentConstrainedBySafeArea = isContentConstrainedBySafeArea
+            componentView?.isRootView = true
+            componentView?.layoutProvider = LayoutProvider.shared
+            v = componentView?.view
         }
-        if v == nil {
-            v = UIView()
-        }
-        view = v!
+        view = v ?? UIView()
     }
 }

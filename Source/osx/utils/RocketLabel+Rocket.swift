@@ -10,10 +10,10 @@ import Foundation
 public extension RocketLabel {
     public var attributedText: NSAttributedString {
         get { return attributedStringValue }
-        set { attributedStringValue = attributedText }
+        set { attributedStringValue = newValue }
     }
     public var numberOfLines: Int {
         get { return maximumNumberOfLines }
-        set { maximumNumberOfLines = numberOfLines }
+        set { maximumNumberOfLines = newValue }
     }
 }

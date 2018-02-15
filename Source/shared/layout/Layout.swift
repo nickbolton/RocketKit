@@ -23,6 +23,7 @@ public class Layout: BaseObject {
     let minMeta: LayoutMeta
     let maxMeta: LayoutMeta
     let commonAncestorComponentIdentifier: String?
+    let isLinkedToTextSize: Bool
     
     var isSizing: Bool { return attribute == .width || attribute == .height }
     
@@ -61,7 +62,8 @@ public class Layout: BaseObject {
     private static let idealMetaKey = "idealMeta"
     private static let minMetaKey = "minMeta"
     private static let maxMetaKey = "maxMeta"
-    
+    private static let isLinkedToTextSizeKey = "linkedToTextSize"
+
     required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
         self.componentIdentifier = dictionary[Layout.componentIdentifierKey] as? String ?? ""
         self.attribute = NSLayoutAttribute(rawValue: dictionary[Layout.attributeKey] as? Int ?? 0) ?? .notAnAttribute
@@ -72,6 +74,7 @@ public class Layout: BaseObject {
         self.idealMeta = LayoutMeta(dictionary: dictionary[Layout.idealMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
         self.minMeta = LayoutMeta(dictionary: dictionary[Layout.minMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
         self.maxMeta = LayoutMeta(dictionary: dictionary[Layout.maxMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
+        self.isLinkedToTextSize = dictionary[Layout.isLinkedToTextSizeKey] as? Bool ?? false
         super.init(dictionary: dictionary, layoutSource: layoutSource)
     }
 }

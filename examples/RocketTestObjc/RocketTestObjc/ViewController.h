@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RocketKit/RocketKit-Swift.h>
 
 @interface ViewController : UIViewController
 

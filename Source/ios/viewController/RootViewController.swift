@@ -8,9 +8,8 @@
 
 import UIKit
 
-public class RootViewController: RocketViewController {
-
-    public override func loadView() {
+open class RootViewController: RocketViewController {
+    open override func loadView() {
         componentId = LayoutProvider.shared.layoutSource?.rootComponentId
         super.loadView()
     }

@@ -30,17 +30,69 @@ public struct TextDescriptor {
         }
     }
     
+    public init(text: String) {
+        self.text = text
+    }
+    
+    static func textFrame(for component: RocketComponent, text: String, textType: TargetTextType, containerSize: CGSize) -> CGRect {
+        
+        let boundBy = textBoundingSize(for: component, textIn: text, textType: textType, containerSize: containerSize, forceContainerWidth: true)
+
+        return component.textDescriptor?.textFrame(for: text, textType: textType, boundBy: boundBy, usePreciseTextAlignments: component.usePreciseTextAlignments, containerSize: containerSize) ?? .zero
+    }
+    
+    private static func textBoundingSize(for component: RocketComponent, textIn: String?, textType: TargetTextType, containerSize: CGSize, forceContainerWidth: Bool) -> CGSize {
+        guard var descriptor = component.textDescriptor else { return .zero }
+        var text = textIn
+        if text == nil {
+            text = descriptor.text
+        }
+    
+        var attributes = descriptor.textAttributes.attributes
+        if attributes.count == 0 {
+            descriptor = TextDescriptor(text: "")
+            attributes = descriptor.textAttributes.attributes
+        }
+    
+        let widthLayout = component.layoutObject(with: .width)
+        let heightLayout = component.layoutObject(with: .height)
+    
+        let hasDiscreteWidthConstraint = widthLayout?.isLinkedToTextSize ?? false
+        let hasDiscreteHeightConstraint = heightLayout?.isLinkedToTextSize ?? false
+    
+        var horizontalPadding: CGFloat = 0.0
+        var verticalPadding: CGFloat = 0.0
+        var width = CGFloat.greatestFiniteMagnitude
+        var height = CGFloat.greatestFiniteMagnitude
+    
+        if component.usePreciseTextAlignments {
+            let sideMargins = TextMetricsCache.shared.textMargins(for: descriptor, textType: textType)
+            horizontalPadding = sideMargins.left + sideMargins.right
+            verticalPadding = sideMargins.top + sideMargins.bottom
+        }
+        
+        if forceContainerWidth || hasDiscreteWidthConstraint || component.autoConstrainingTextType == .height {
+            width = containerSize.width + horizontalPadding;
+        }
+        
+        if hasDiscreteHeightConstraint || component.autoConstrainingTextType == .width {
+            height = containerSize.height + verticalPadding;
+        }
+        
+        return CGSize(width: width, height: height)
+    }
+    
     public func containerFrame(for text: String? = nil, textType: TargetTextType, boundBy: CGSize, usePreciseTextAlignments: Bool) -> CGRect {
-        let (containerFrame, _) = textAndContainerFrames(for: text, textType: textType, boundBy: boundBy, usePreciseTextAlignments: usePreciseTextAlignments, componentFrame: .zero)
+        let (containerFrame, _) = textAndContainerFrames(for: text, textType: textType, boundBy: boundBy, usePreciseTextAlignments: usePreciseTextAlignments)
         return containerFrame
     }
 
-    public func textFrame(for text: String? = nil, textType: TargetTextType, boundBy: CGSize, usePreciseTextAlignments: Bool, componentFrame: CGRect) -> CGRect {
-        let (_, textFrame) = textAndContainerFrames(for: text, textType: textType, boundBy: boundBy, usePreciseTextAlignments: usePreciseTextAlignments, componentFrame: componentFrame)
+    public func textFrame(for text: String? = nil, textType: TargetTextType, boundBy: CGSize, usePreciseTextAlignments: Bool, containerSize: CGSize) -> CGRect {
+        let (_, textFrame) = textAndContainerFrames(for: text, textType: textType, boundBy: boundBy, usePreciseTextAlignments: usePreciseTextAlignments, containerSize: containerSize)
         return textFrame
     }
     
-    public func textAndContainerFrames(for textIn: String? = nil, textType: TargetTextType, boundBy: CGSize, usePreciseTextAlignments: Bool, componentFrame: CGRect) -> (CGRect, CGRect) {
+    public func textAndContainerFrames(for textIn: String? = nil, textType: TargetTextType, boundBy: CGSize, usePreciseTextAlignments: Bool, containerSize: CGSize = .zero) -> (CGRect, CGRect) {
         
         let text = textIn ?? self.text
         let textAttributes = self.textAttributes
@@ -56,35 +108,33 @@ public struct TextDescriptor {
             size = CGSize(width: rect.width.halfPointCeilValue, height: rect.height.halfPointCeilValue)
         }
 
-        let maxValue = CGFloat.greatestFiniteMagnitude
-        let width = boundBy.width < maxValue ? boundBy.width: size.width
-        let height = (boundBy.height < maxValue ? boundBy.height : size.height) - textAttributes.baselineAdjustment
+        let width = boundBy.width < CGFloat.greatestFiniteMagnitude ? boundBy.width: size.width
+        let height = (boundBy.height < CGFloat.greatestFiniteMagnitude ? boundBy.height: size.height) - textAttributes.baselineAdjustment
+        
+        size = CGSize(width: width.halfPointCeilValue, height: height.halfPointCeilValue)
 
         let sideMargins = TextMetricsCache.shared.textMargins(for: self, textType: textType)
         let horizontalPadding = sideMargins.left + sideMargins.right
         let verticalPadding = sideMargins.top + sideMargins.bottom
 
-        let containerSize = CGSize(width: width.halfPointCeilValue, height: height.halfPointCeilValue)
         var containerFrame = CGRect.zero
-        containerFrame.size = containerSize
+        containerFrame.size = size
         if usePreciseTextAlignments {
             containerFrame.size.width -= horizontalPadding
             containerFrame.size.height -= verticalPadding
         }
         containerFrame.size.height = containerFrame.height.halfPointRoundValue
 
-        var textFrame = CGRect.zero
+        var textFrame = containerFrame
 
         if usePreciseTextAlignments {
             textFrame = CGRect(x: -sideMargins.left, y: 0.0, width: size.width, height: size.height)
             if textAttributes.textAlignment == .center || textAttributes.textAlignment == .justified {
                 textFrame.origin.x = -(sideMargins.left + sideMargins.right) / 2.0
             }
-        } else {
-            textFrame = containerFrame
         }
 
-        let heightDiff = componentFrame.height - size.height
+        let heightDiff = containerSize.height - size.height
 
         switch textAttributes.verticalAlignment {
         case .top:
@@ -217,8 +267,11 @@ struct TextMetricsCache {
     private func textMetricsInLabel(for attributedString: NSAttributedString, multipleLine: Bool, boundBy: CGSize, aligned: Bool) -> TextMetrics {
         let result = TextMetrics()
         let view = RocketLabel()
-        view.attributedText = attributedString;
-        view.numberOfLines = multipleLine ? 0 : 1;
+        #if !os(iOS)
+        view.isBezeled = false
+        #endif
+        view.attributedText = attributedString
+        view.numberOfLines = multipleLine ? 0 : 1
         result.textSize = view.sizeThatFits(boundBy)
         if aligned {
             result.textSize = CGSize(width: result.textSize.width.halfPointCeilValue, height: result.textSize.height.halfPointCeilValue)
