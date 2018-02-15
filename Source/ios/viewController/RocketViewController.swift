@@ -7,7 +7,7 @@ import UIKit
     public var componentView: ComponentView?
     public var component: RocketComponent? { return componentView?.component }
     
-    @IBInspectable var isContentConstrainedBySafeArea: Bool = false {
+    @IBInspectable public var isContentConstrainedBySafeArea: Bool = false {
         didSet {
             component?.isContentConstrainedBySafeArea = isContentConstrainedBySafeArea
         }
