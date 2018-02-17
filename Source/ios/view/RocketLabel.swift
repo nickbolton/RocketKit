@@ -13,10 +13,14 @@ class RocketLabel: UILabel, TextHavingView {
         get { return attributedText }
         set { attributedText = newValue }
     }
+    
+    var textSize: CGSize = .zero
+    override var intrinsicContentSize: CGSize { return textSize }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         numberOfLines = 0
+        backgroundColor = .clear
     }
     
     required init?(coder aDecoder: NSCoder) {

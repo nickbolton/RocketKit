@@ -115,7 +115,7 @@ public class RocketView: UIView, ComponentView {
     }
     
     private func layoutLabelIfNecessary() {
-        guard let textView = textView else { return }
+        guard var textView = textView else { return }
         guard let component = component else { return }
         guard let textDescriptor = component.textDescriptor else { return }
         var componentFrame = useSafeArea ? safeContainer.frame : frame
@@ -125,6 +125,9 @@ public class RocketView: UIView, ComponentView {
         }
         
         let labelFrame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: component.textDescriptor?.targetTextType ?? .label, containerSize: componentFrame.size)
+        textView.textSize = labelFrame.size
         textView.view.frame = labelFrame
+        
+        print("frame: \(labelFrame)")
     }
 }

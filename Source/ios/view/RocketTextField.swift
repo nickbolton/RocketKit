@@ -13,4 +13,16 @@ class RocketTextField: UITextField, TextHavingView {
         get { return attributedText }
         set { attributedText = newValue }
     }
+    
+    var textSize: CGSize = .zero
+    override var intrinsicContentSize: CGSize { return textSize }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .clear
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

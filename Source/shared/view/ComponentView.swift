@@ -30,6 +30,7 @@ public protocol ComponentView {
 protocol TextHavingView {
     var view: RocketBaseView { get }
     var attributedString: NSAttributedString? { get set }
+    var textSize: CGSize { get set }
 }
 
 //extension TextHavingView where Self: RocketBaseView {

@@ -27,6 +27,8 @@ public struct TextDescriptor {
     private static let targetTextTypeKey = "targetTextType"
     private static let textAttributesKey = "textAttributes"
     
+    fileprivate static let testString = "H"
+    
     public var attributedString: NSAttributedString {
         return NSAttributedString(string: text, attributes: textAttributes.attributes)
     }
@@ -103,7 +105,11 @@ public struct TextDescriptor {
     
     public func textAndContainerFrames(for textIn: String? = nil, textType: TargetTextType, boundBy: CGSize, usePreciseTextAlignments: Bool, containerSize: CGSize = .zero) -> (CGRect, CGRect) {
         
-        let text = textIn ?? self.text
+        var text = textIn ?? self.text
+        if targetTextType == .field {
+            text = TextDescriptor.testString
+        }
+        
         let textAttributes = self.textAttributes
         let attributes = textAttributes.attributes
         let attributedString = NSAttributedString(string: text, attributes: attributes)
@@ -190,10 +196,8 @@ struct TextMetricsCache {
         var glyph = [CGGlyph](repeating: 0, count: 1)
         var glyphRects = [CGRect](repeating: .zero, count: 1)
         
-        let testString = "H"
-        
         let font = descriptorIn.textAttributes.font
-        let unichars = [UniChar](testString.utf16)
+        let unichars = [UniChar](TextDescriptor.testString.utf16)
         
         CTFontGetGlyphsForCharacters(font, unichars, &glyph, 1)
         CTFontGetBoundingRectsForGlyphs(font, .default, &glyph, &glyphRects, 1)
@@ -201,7 +205,7 @@ struct TextMetricsCache {
         let glyphRect = glyphRects.first ?? .zero
         
         var descriptor = descriptorIn
-        descriptor.text = testString
+        descriptor.text = TextDescriptor.testString
         descriptor.textAttributes.kerning = 0.0
         
         let metrics = textMetrics(for: descriptor.attributedString, textAttributes: descriptor.textAttributes, textType: textType, multipleLine: false, boundedBy: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), aligned: false)
@@ -257,7 +261,7 @@ struct TextMetricsCache {
             case .label:
                 result = textMetricsInLabel(for: attributedString, multipleLine: multipleLine, boundBy: boundedBy, aligned: aligned)
             case .field:
-                result = textMetricsInTextField(for: attributedString, multipleLine: multipleLine, boundBy: boundedBy, aligned: aligned)
+                result = textMetricsInTextField(for: attributedString, boundBy: boundedBy, aligned: aligned)
             case .view:
                 result = textMetricsInTextView(for: attributedString, multipleLine: multipleLine, boundBy: boundedBy, aligned: aligned)
         }
@@ -276,6 +280,8 @@ struct TextMetricsCache {
         view.attributedText = attributedString
         view.numberOfLines = multipleLine ? 0 : 1
         result.textSize = view.sizeThatFits(boundBy)
+        result.textSize.width = min(result.textSize.width, boundBy.width)
+        result.textSize.height = min(result.textSize.height, boundBy.height)
         if aligned {
             result.textSize = CGSize(width: result.textSize.width.halfPointCeilValue, height: result.textSize.height.halfPointCeilValue)
         }
@@ -283,14 +289,16 @@ struct TextMetricsCache {
         return result
     }
     
-    private func textMetricsInTextField(for attributedString: NSAttributedString, multipleLine: Bool, boundBy: CGSize, aligned: Bool) -> TextMetrics {
+    private func textMetricsInTextField(for attributedString: NSAttributedString, boundBy: CGSize, aligned: Bool) -> TextMetrics {
         let result = TextMetrics()
         let view = RocketTextField()
         view.attributedText = attributedString
         #if !os(iOS)
-            view.numberOfLines = multipleLine ? 0 : 1
+            view.maximumNumberOfLines = 1
         #endif
         result.textSize = view.sizeThatFits(boundBy)
+        result.textSize.width = min(result.textSize.width, boundBy.width)
+        result.textSize.height = min(result.textSize.height, boundBy.height)
         if aligned {
             result.textSize = CGSize(width: result.textSize.width.halfPointCeilValue, height: result.textSize.height.halfPointCeilValue)
         }
@@ -324,6 +332,9 @@ struct TextMetricsCache {
             result.viewInsets = view.textContainerInset
         #endif
     
+        result.textSize.width = min(result.textSize.width, boundBy.width)
+        result.textSize.height = min(result.textSize.height, boundBy.height)
+
         if aligned {
             result.viewSize = CGSize(width: result.viewSize.width.halfPointCeilValue, height: result.viewSize.height.halfPointCeilValue)
             result.textSize = CGSize(width: result.textSize.width.halfPointCeilValue, height: result.textSize.height.halfPointCeilValue)
