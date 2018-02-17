@@ -14,10 +14,16 @@ public class RocketView: UIView, ComponentView {
     public var contentView: RocketBaseView {
         return useSafeArea ? safeContainer : self
     }
-    public var layoutProvider: LayoutProvider?
-    public var component: RocketComponent?
     public var isRootView: Bool = false
     var textView: TextHavingView?
+    
+    public var layoutProvider: LayoutProvider? { didSet { setupViewIfNecessary() } }
+    public var component: RocketComponent? { didSet { setupViewIfNecessary() } }
+    
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        setupViewIfNecessary()
+    }
     
     public let safeContainer = UIView()
     
@@ -46,7 +52,7 @@ public class RocketView: UIView, ComponentView {
     }
     
     public func applyTextProperties() {
-        cleanUpLabel()
+        cleanUpTextView()
         guard let textDescriptor = component?.textDescriptor else { return }
         setupSafeContainerIfNecessary()
         setUpTextView(textDescriptor)
@@ -70,14 +76,15 @@ public class RocketView: UIView, ComponentView {
         safeRightContraint?.isActive = true
     }
     
-    private func cleanUpLabel() {
+    private func cleanUpTextView() {
         textView?.view.removeFromSuperview()
         textView = nil
     }
     
     private func setUpTextView(_ textDescriptor: TextDescriptor) {
+        guard let textDescriptor = component?.textDescriptor, textDescriptor.text != "" else { return }
         textView = ViewFactory().buildTextView(with: textDescriptor)
-        textView?.attributedString = textDescriptor.attributedString
+        textView?.textDescriptor = textDescriptor
         if useSafeArea {
             safeContainer.addSubview(textView!.view)
         } else {
@@ -95,26 +102,38 @@ public class RocketView: UIView, ComponentView {
         safeContainer.layoutIfNeeded()
     }
     
+    private func setupViewIfNecessary() {
+        guard let component = component else { return }
+        guard let layoutProvider = layoutProvider else { return }
+        guard superview != nil else { return }
+        binder.buildViewIfNecessary(for: self, component: component, layoutProvider: layoutProvider)
+    }
+    
     // MARK: Helpers
     
     public func updateView() {
         binder.updateView(for: self, component: component, layoutProvider: layoutProvider)
     }
     
-    public func updateText(animationDuration: TimeInterval = 0.0) {
+    public func updateText() {
         applyTextProperties()
-        binder.updateText(for: self, component: component, layoutProvider: layoutProvider, animationDuration: animationDuration)
+        binder.updateText(for: self, component: component, layoutProvider: layoutProvider)
     }
 
     // MARK: Layout
     
     override public func layoutSubviews() {
-        binder.buildViewIfNecessary(for: self, component: component, layoutProvider: layoutProvider)
+        guard let component = component, let layoutProvider = layoutProvider else {
+            super.layoutSubviews()
+            return
+        }
+        
+        binder.applyLayout(component: component, layoutProvider: layoutProvider)
         super.layoutSubviews()
-        layoutLabelIfNecessary()
+        layoutTextViewIfNecessary()
     }
     
-    private func layoutLabelIfNecessary() {
+    private func layoutTextViewIfNecessary() {
         guard var textView = textView else { return }
         guard let component = component else { return }
         guard let textDescriptor = component.textDescriptor else { return }
@@ -127,7 +146,5 @@ public class RocketView: UIView, ComponentView {
         let labelFrame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: component.textDescriptor?.targetTextType ?? .label, containerSize: componentFrame.size)
         textView.textSize = labelFrame.size
         textView.view.frame = labelFrame
-        
-        print("frame: \(labelFrame)")
     }
 }

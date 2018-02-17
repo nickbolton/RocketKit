@@ -36,10 +36,10 @@ class LayoutBinder: NSObject {
         binder(forLayout: layoutObject, meta: layoutObject.maxMeta).createConstraintIfNecessary(with: layoutObject, meta: layoutObject.maxMeta, layoutProvider: layoutProvider)
     }
     
-    internal func updateLayout(_ layoutObject: Layout, layoutProvider: LayoutProvider, animationDuration: TimeInterval = 0.0) {
-        binder(forLayout: layoutObject, meta: layoutObject.idealMeta).updateLayout(with: layoutObject, meta: layoutObject.idealMeta, layoutProvider: layoutProvider, animationDuration: animationDuration)
-        binder(forLayout: layoutObject, meta: layoutObject.minMeta).updateLayout(with: layoutObject, meta: layoutObject.minMeta, layoutProvider: layoutProvider, animationDuration: animationDuration)
-        binder(forLayout: layoutObject, meta: layoutObject.maxMeta).updateLayout(with: layoutObject, meta: layoutObject.maxMeta, layoutProvider: layoutProvider, animationDuration: animationDuration)
+    internal func updateLayout(_ layoutObject: Layout, layoutProvider: LayoutProvider) {
+        binder(forLayout: layoutObject, meta: layoutObject.idealMeta).updateLayout(with: layoutObject, meta: layoutObject.idealMeta, layoutProvider: layoutProvider)
+        binder(forLayout: layoutObject, meta: layoutObject.minMeta).updateLayout(with: layoutObject, meta: layoutObject.minMeta, layoutProvider: layoutProvider)
+        binder(forLayout: layoutObject, meta: layoutObject.maxMeta).updateLayout(with: layoutObject, meta: layoutObject.maxMeta, layoutProvider: layoutProvider)
     }
     
     internal func cleanUp() {

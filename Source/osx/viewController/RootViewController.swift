@@ -7,9 +7,9 @@
 
 import Cocoa
 
-public class RootViewController: RocketViewController {
+open class RootViewController: RocketViewController {
     
-    public override func loadView() {
+    open override func loadView() {
         componentId = LayoutProvider.shared.layoutSource?.rootComponentId
         super.loadView()
     }

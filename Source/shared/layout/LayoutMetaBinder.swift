@@ -35,7 +35,7 @@ class LayoutMetaBinder: NSObject {
         constraint = nil
     }
     
-    internal func updateLayout(with layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider, animationDuration: TimeInterval = 0.0) {
+    internal func updateLayout(with layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
         
         guard let component = layoutProvider.componentByIdentifier(layoutObject.componentIdentifier) else { return }
         guard let componentView = layoutProvider.view(with: layoutObject.componentIdentifier) as? RocketBaseView else { return }
@@ -46,16 +46,8 @@ class LayoutMetaBinder: NSObject {
             constant = component.textHeightConstrainedByWidth
         }
 
-        if animationDuration <= 0 {
-            constraint?.constant = constant
-            componentView.layoutIfNeeded()
-        } else {
-            componentView.superview?.setNeedsLayout()
-            UIView.animate(withDuration: animationDuration) {
-                self.constraint?.constant = constant
-                componentView.layoutIfNeeded()
-            }
-        }
+        constraint?.constant = constant
+        componentView.layoutIfNeeded()
     }
     
     internal func createConstraintIfNecessary(with layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
@@ -161,7 +153,7 @@ class LayoutMetaBinder: NSObject {
                 constant = containerFrame.height
             }
         }
-        
+                
         let relatedView = layoutProvider.view(with: layoutObject.relatedComponentIdentifier)?.contentView
         guard layoutObject.isSizing || relatedView != nil else { return }
         

@@ -109,8 +109,6 @@ public class LayoutProvider: NSObject {
         print("Could not find a component named: \(name)")
         return RocketViewController(componentId: "")
     }
-
-    // MARK: Internal
     
     public func componentByIdentifier(_ identifier: String) -> RocketComponent? {
         return layoutSource?.component(with: identifier)
@@ -126,6 +124,8 @@ public class LayoutProvider: NSObject {
         }
         return viewRegistry[identifier]
     }
+    
+    // MARK: Internal
     
     internal func registerView(_ view: ComponentView, for component: RocketComponent) {
         viewRegistry[component.identifier] = view

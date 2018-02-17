@@ -25,10 +25,9 @@ class ComponentViewBinder: NSObject {
         view.translatesAutoresizingMaskIntoConstraints = rocketView.isRootView
         layoutProvider.registerView(rocketView, for: component)
         rocketView.applyComponentProperties()
-        applyLayout(component: component, layoutProvider: layoutProvider)
         let contentView = rocketView.contentView
         for child in component.childComponents {
-            var childView = viewFactory.buildView(with: child)
+            let childView = viewFactory.buildView(with: child)
             childView.layoutProvider = layoutProvider
             contentView.addSubview(childView.view)
             #if os(iOS)
@@ -52,17 +51,18 @@ class ComponentViewBinder: NSObject {
         }
     }
     
-    func updateText(for rocketView: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?, animationDuration: TimeInterval = 0.0) {
+    func updateText(for rocketView: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?) {
         guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
         rocketView.applyTextProperties()
         if component.autoConstrainingTextType.contains(.height) {
             if let heightConstraint = component.layoutObject(with: .height) ?? component.defaultLayoutObject(with: .height) {
-                layoutBinder.updateLayout(heightConstraint, layoutProvider: layoutProvider, animationDuration: animationDuration)
+                layoutBinder.updateLayout(heightConstraint, layoutProvider: layoutProvider)
             }
         }
     }
     
-    private func applyLayout(component: RocketComponent, layoutProvider: LayoutProvider) {
+    internal func applyLayout(component: RocketComponent, layoutProvider: LayoutProvider) {
+        layoutBinder.cleanUp()
         for layoutObject in component.allLayoutObjects {
             layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
         }

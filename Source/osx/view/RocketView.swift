@@ -9,13 +9,19 @@
 import Cocoa
 
 public class RocketView: NSView, ComponentView {
-
+    public var contentView: RocketBaseView { return self }
     public var view: RocketBaseView { return self }
-    public var layoutProvider: LayoutProvider?
-    public var component: RocketComponent?
     public var isRootView: Bool = false
-    var label: NSTextField?
+    var textView: TextHavingView?
+
+    public var layoutProvider: LayoutProvider? { didSet { setupViewIfNecessary() } }
+    public var component: RocketComponent? { didSet { setupViewIfNecessary() } }
     
+    public override func viewDidMoveToSuperview() {
+        super.viewDidMoveToSuperview()
+        setupViewIfNecessary()
+    }
+
     public override var isFlipped: Bool { return true }
 
     private let binder = ComponentViewBinder()
@@ -33,42 +39,69 @@ public class RocketView: NSView, ComponentView {
         layer?.cornerRadius = component.cornerRadius
         layer?.borderColor = component.borderColor?.cgColor
         layer?.backgroundColor = component.backgroundColor?.cgColor
-        applyLabelPropertiesIfNeeded()
+        applyTextProperties()
     }
     
-    private func applyLabelPropertiesIfNeeded() {
-        cleanUpLabel()
-        guard let textDescriptor = component?.textDescriptor else { return }
-        setUpLabel(textDescriptor)
+    public func applyTextProperties() {
+        cleanUpTextView()
+        setUpTextViewIfNecessary()
     }
     
-    private func cleanUpLabel() {
-        label?.removeFromSuperview()
-        label = nil
+    private func cleanUpTextView() {
+        textView?.view.removeFromSuperview()
+        textView = nil
     }
     
-    private func setUpLabel(_ textDescriptor: TextDescriptor) {
-        label = NSTextField()
-        label?.isBezeled = false
-        label?.isEditable = false
-        label?.maximumNumberOfLines = 0
-        label?.backgroundColor = NSColor.clear
-        label?.attributedStringValue = textDescriptor.attributedString
-        addSubview(label!)
+    private func setUpTextViewIfNecessary() {
+        guard let textDescriptor = component?.textDescriptor, textDescriptor.text != "" else { return }
+        textView = ViewFactory().buildTextView(with: textDescriptor)
+        textView?.textDescriptor = textDescriptor
+        addSubview(textView!.view)
+    }
+    
+    private func setupViewIfNecessary() {
+        guard let component = component else { return }
+        guard let layoutProvider = layoutProvider else { return }
+        guard superview != nil else { return }
+        binder.buildViewIfNecessary(for: self, component: component, layoutProvider: layoutProvider)
+    }
+    
+    // MARK: Helpers
+    
+    public func updateView() {
+        binder.updateView(for: self, component: component, layoutProvider: layoutProvider)
+    }
+    
+    public func updateText() {
+        applyTextProperties()
+        binder.updateText(for: self, component: component, layoutProvider: layoutProvider)
     }
     
     // MARK: Layout
     
     override public func layout() {
-        binder.buildViewIfNecessary(for: self, component: component, layoutProvider: layoutProvider)
+        guard let component = component, let layoutProvider = layoutProvider else {
+            super.layout()
+            return
+        }
+
+        binder.applyLayout(component: component, layoutProvider: layoutProvider)
         super.layout()
-        layoutLabelIfNecessary()
+        layoutTextViewIfNecessary()
     }
     
-    private func layoutLabelIfNecessary() {
-        guard let label = label else { return }
+    private func layoutTextViewIfNecessary() {
+        guard var textView = textView else { return }
         guard let component = component else { return }
         guard let textDescriptor = component.textDescriptor else { return }
-        label.frame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: .label, containerSize: frame.size)
+        var componentFrame = frame
+        
+        if !component.isTopLevelComponent && component.autoConstrainingTextType.contains(.height) {
+            componentFrame.size.height = component.textHeightConstrainedByWidth
+        }
+        
+        let labelFrame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: component.textDescriptor?.targetTextType ?? .label, containerSize: componentFrame.size)
+        textView.textSize = labelFrame.size
+        textView.view.frame = labelFrame
     }
 }

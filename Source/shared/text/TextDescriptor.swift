@@ -17,9 +17,15 @@ public enum TargetTextType: Int {
     case view
 }
 
-public struct TextDescriptor {
+public class TextDescriptor {
     
-    public var text = ""
+    public var text = "" {
+        didSet {
+            if text == "H" {
+                print("ZZZZ \(text)")
+            }
+        }
+    }
     public var textAttributes = TextAttributes()
     public var targetTextType = TargetTextType.label
     
@@ -204,9 +210,10 @@ struct TextMetricsCache {
         
         let glyphRect = glyphRects.first ?? .zero
         
-        var descriptor = descriptorIn
-        descriptor.text = TextDescriptor.testString
-        descriptor.textAttributes.kerning = 0.0
+        let descriptor = TextDescriptor(text: TextDescriptor.testString)
+        var textAttributes = descriptorIn.textAttributes
+        textAttributes.kerning = 0.0
+        descriptor.textAttributes = textAttributes
         
         let metrics = textMetrics(for: descriptor.attributedString, textAttributes: descriptor.textAttributes, textType: textType, multipleLine: false, boundedBy: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), aligned: false)
         if metrics.textSize == .zero {

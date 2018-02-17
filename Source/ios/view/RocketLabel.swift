@@ -9,11 +9,8 @@ import UIKit
 
 class RocketLabel: UILabel, TextHavingView {
     var view: RocketBaseView { return self }
-    var attributedString: NSAttributedString? {
-        get { return attributedText }
-        set { attributedText = newValue }
-    }
-    
+    var textDescriptor: TextDescriptor? { didSet { attributedText = textDescriptor?.attributedString } }
+
     var textSize: CGSize = .zero
     override var intrinsicContentSize: CGSize { return textSize }
 

@@ -22,9 +22,9 @@ class ViewController: RootViewController {
                 component.textDescriptor?.textAttributes.textAlignment = .center
                 component.textDescriptor?.text = "Weeee\nYo!"
                 
-                if var view = LayoutProvider.shared.view(with: component.identifier) {
+                if let view = LayoutProvider.shared.view(with: component.identifier) {
                     view.component = component
-                    view.updateText(animationDuration: 0.0)
+                    view.updateText()
                 }
             }
         }

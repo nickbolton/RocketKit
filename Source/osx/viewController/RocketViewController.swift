@@ -1,7 +1,7 @@
 
 import Cocoa
 
-public class RocketViewController: NSViewController {
+open class RocketViewController: NSViewController {
     
     var componentId: String?
     public var componentView: ComponentView?
@@ -12,7 +12,7 @@ public class RocketViewController: NSViewController {
         self.componentId = componentId
     }
     
-    override public func loadView() {
+    override open func loadView() {
         var v: NSView?
         if  let componentId = componentId {
             componentView = LayoutProvider.shared.buildView(withIdentifier: componentId)

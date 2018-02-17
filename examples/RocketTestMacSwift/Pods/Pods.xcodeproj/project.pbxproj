@@ -7,44 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1258846C28E4EA431C600085E9056386 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4514144C48D0917D2DCAFE51E108C238 /* Layout.swift */; };
-		145F6F86E154BE93701BA699868D389C /* NSFont+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D21FA4C6DE4893BC97451D5A59823 /* NSFont+Rocket.swift */; };
-		1571CED7614B664778456376352AF220 /* NSValue+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7489C0F4BEF0F97891D2DF79EE874E5F /* NSValue+Rocket.swift */; };
+		01A24CAEE84E3AE0A815694A516F8F5B /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA06B4E842B783D501E149EAF41635 /* ComponentView.swift */; };
+		06EB2ED069652C9CB5FA70CC44F5B8B3 /* DefaultTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0660849BD98DCFF100882A149365C3A /* DefaultTextContentProvider.swift */; };
+		0C55A98B7CB10CCCBE4DD0C49943E436 /* LayoutMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9FB981B930DA0D9D0D782DDACFCE3 /* LayoutMeta.swift */; };
+		22D3ABEFA2E4D941240474F29943FCB2 /* ComponentViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361832DCF9D94A5AB71584ECA38BABAA /* ComponentViewBinder.swift */; };
 		2958F06F581DAB19BD0EE3DA92763958 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
-		34DEA3BB9B724CEB47A73DA728829482 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40EA57255E7BFBF9C0D2044D8D68279 /* TextAttributes.swift */; };
 		3CCDF88E9737087FBF8704FC61444EB0 /* Pods-RocketTestMacSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 10617A822BF6C782E7B480F0E37AB42A /* Pods-RocketTestMacSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		489F6352C8809B6A13DF58A1E70ECE9F /* CGFloat+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714E526DAC667B1A72D032F755E190E /* CGFloat+Rocket.swift */; };
-		554D6459AA6865D878445A7B8915AEA5 /* TextDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8B58D142023451AAFA05AC77AD96C /* TextDescriptor.swift */; };
-		554F7B956C1232A6AFEBEFE373FD37AB /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA453BFBFFF65E581F7A3B7B094E0A /* NSColor+Hex.swift */; };
-		55C57C4314C08ADC68D3E195A7D0A17A /* LayoutBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E850E03807FB67F1BBC985645DBEB /* LayoutBinder.swift */; };
-		5C815520BF483C2B07E5E0C1F8BEC7C4 /* LocalizedTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4E9733C20A58DD2278A28249E6470 /* LocalizedTextContentProvider.swift */; };
+		41B09848DCA14261A5DF6AAA1F170EEA /* TextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3155D8A852FCCECE3FB6C542E3B934A /* TextContentProvider.swift */; };
+		4C1C40D1191A81A643803A4EFFC202C0 /* String+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497140456FDE7896860F2C62C7A1B97F /* String+Rocket.swift */; };
+		576739B48495F54799900E9F8E5A8118 /* NSTextView+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A956A49E465116FFE6B51DBDF850861 /* NSTextView+Rocket.swift */; };
 		605D96C137E30AC9E2878E4C10D6E597 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
-		61BAF36996DD8225BBA7076EC2E0B6AB /* NSEdgeInsets+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FFB7926A4DA833EF1723B50D7A8A89 /* NSEdgeInsets+Rocket.swift */; };
-		657DE866A548BD08A2C7D05CE9CDD54F /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D319FB68DBF0709B41A5424F568E0F /* ViewFactory.swift */; };
-		716385A5E32C91E389BA14B6185BE462 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E63F9933449079ED72B43FAD5020F /* BaseObject.swift */; };
-		73BDBE66C96AD4F006CB168F01360A92 /* LayoutMetaBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BD04C512B892CFE1AA4C6320EA2960 /* LayoutMetaBinder.swift */; };
-		75694038B439D57BF69C6381684DA7BE /* RocketKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22869275B7E9A08B973DD422B26B85D8 /* RocketKit-dummy.m */; };
+		61D0901B44C6099608369884B8A070B7 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73347588A9028ECBABD51C2323097FB0 /* Layout.swift */; };
+		663850516FBF5C8A6590C2422CBD7BD3 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8F4F16FEAF6A0BD33057EF1166A72D /* Localize.swift */; };
+		6B8A9C67738EDA6193781288423C75AC /* NSValue+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7489C0F4BEF0F97891D2DF79EE874E5F /* NSValue+Rocket.swift */; };
 		759D2709F0508CA28A304A48A886DE76 /* RocketKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 68CE3A2A33E7F33488629FD291D1D6E3 /* RocketKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D6747B996A1C1D4615A1A402A01E116 /* RocketTextView+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A956A49E465116FFE6B51DBDF850861 /* RocketTextView+Rocket.swift */; };
-		7EF78CBFF20655A600EEA84F0D119BB3 /* RocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC14CB6D336FCB5CD769C9A2D73BA5 /* RocketTypes.swift */; };
-		855458C14586D45CFD41F1522184C703 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD0176FAAFEE2FC58FB90BA47460BE4 /* Localize.swift */; };
-		90C9163E7DEEB5CBB0CF160A2E63EA86 /* LayoutSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC66B68BE7619CFF62D94BFA00128B /* LayoutSource.swift */; };
-		92ADF734414149ED611AAF9D66A7FA34 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710C17D6DD1EC05B795D425E7FF4394 /* FontManager.swift */; };
-		999349CDCE57B9535C2C57DD11F9B938 /* RocketLabel+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592EE09FBA30B4119BE68C4D84AB1BD3 /* RocketLabel+Rocket.swift */; };
-		9C08191B6B10E22DD8C1CF1605675F66 /* RocketComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F991AABA7536CC9EFA3F7B6CDB909654 /* RocketComponent.swift */; };
-		9C5194B7FF8834678DCB9056FFD76E5A /* DefaultTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE95A26F752D244D351F5E991B9264F /* DefaultTextContentProvider.swift */; };
-		9E3CAC48A5F50696585EE32B7DEEED20 /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01CA8BF3CC18AC21F4606D20C84E8A /* RocketViewController.swift */; };
-		ABA356212FAC6CCC14EA508C55B41B66 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D93D3D7B9D377A4245E06095596048 /* RootViewController.swift */; };
-		B9D2ECB3814E4143EDDF03ABBB6CB83C /* FontManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25FD67B707475AE9689A6E07E883CBA /* FontManagerProtocol.swift */; };
-		BAA73AFD13DB2EB30DB93A8B550229DB /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8089CAD755EEC571414B98CBACAAEB /* ComponentView.swift */; };
-		C8F37642EC1CC1423A1582C4624D14D3 /* ComponentViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3CB510BFB63A01C1B0B58AB83E601E /* ComponentViewBinder.swift */; };
-		D21D1F4774FCCD0E307714D4ECCB03C5 /* String+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B85C2609541B6A09A4EC37A1E8028E /* String+Rocket.swift */; };
-		D5521F63C3E62A5C8EE6FBE1D8F9B222 /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEC25E020BDAC12DB0203BCDA4E543 /* RocketView.swift */; };
-		DEAEEA426D050FF97BFFF220FE6B1FC5 /* LayoutMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE40237CB0DD88933C756D4BDA41ED4 /* LayoutMeta.swift */; };
-		E86AC404565F102164D729502AB085B8 /* FontFamilyMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4FCFF93148D1116B67D77B94332C80 /* FontFamilyMember.swift */; };
-		E91254BE755D59DAA45FC8183C4256DA /* TextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A730999C08935276373DE1701B08A667 /* TextContentProvider.swift */; };
-		FAF807A9C6463B4A13AFB51AB065EE3E /* LayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC71FDDBB21B66F71B2A69DEF14CE9 /* LayoutProvider.swift */; };
+		77A156BAB9DAC6801E74E5C932FF704B /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F67CEEE6580AB05E69370416916076 /* BaseObject.swift */; };
+		8B8591E0059DB14B9C24D29ADA540A5F /* LayoutMetaBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33587CBE16C65652A22717AAC1657EA3 /* LayoutMetaBinder.swift */; };
+		8E1079A2B53FE95DCA955B5B73C94C00 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D93D3D7B9D377A4245E06095596048 /* RootViewController.swift */; };
+		8F2AC17820253316AE035373C45CE7A4 /* NSEdgeInsets+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FFB7926A4DA833EF1723B50D7A8A89 /* NSEdgeInsets+Rocket.swift */; };
+		926A2B93D29818F4327FA4BB0865C6D6 /* TextDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BA6D208BB3A5D94F792A6720E0AA7C /* TextDescriptor.swift */; };
+		92CBF40720387996003B7086 /* RocketLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF40620387996003B7086 /* RocketLabel.swift */; };
+		92CBF409203879A4003B7086 /* RocketTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF408203879A4003B7086 /* RocketTextField.swift */; };
+		92CBF40B203879B3003B7086 /* RocketTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF40A203879B3003B7086 /* RocketTextView.swift */; };
+		92CBF40D20387D5E003B7086 /* NSView+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF40C20387D5E003B7086 /* NSView+Rocket.swift */; };
+		95CDB87278448EFE91320234EF08DAFF /* FontManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576D0745FE55F66D5C73D9105C850B47 /* FontManagerProtocol.swift */; };
+		A0ACF1070901F793D56E3A66ECF24CAF /* LocalizedTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D6FFFD712CAF47DC483C37E463ADF /* LocalizedTextContentProvider.swift */; };
+		A37AB17F9379E3C70B1596B0EBD073BB /* RocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DC8E4A24750C80F447FD5AAD9812D /* RocketTypes.swift */; };
+		A4CE9324C0930E3FE191ABA5996FFB08 /* LayoutSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A4F659B9F9DA57240E2D7B08D4471D /* LayoutSource.swift */; };
+		A6BB182EB64E24B37FD6BD398BC78A07 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710C17D6DD1EC05B795D425E7FF4394 /* FontManager.swift */; };
+		AA3734B8E5C0FEDB0C77CD5C97515F73 /* FontFamilyMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = E444D2CDAE2F16050B27368A36463DB0 /* FontFamilyMember.swift */; };
+		BBAE5A99412EE72AF93721B253BBB103 /* CGFloat+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6B3F0A46E7ECFA44194303B8C6F80C /* CGFloat+Rocket.swift */; };
+		C492EBC6CF969BF2D1EED946603E72AA /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEC25E020BDAC12DB0203BCDA4E543 /* RocketView.swift */; };
+		C727681F3B2311E7CE7BC0B9B7F418C6 /* RocketComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7CFC29D483BE005596A5CA58574821 /* RocketComponent.swift */; };
+		CD6503664432B77E5F2EF360641B5579 /* NSFont+Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D21FA4C6DE4893BC97451D5A59823 /* NSFont+Rocket.swift */; };
+		D3E9C913DBA59836F7E915F358D03E7E /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83943DA609AF6C4E4975CB057E7A6403 /* ViewFactory.swift */; };
+		D9B2B9ED609D5CF14C75777BE486A03B /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7DF56814938E59AC5E27D850AD3402 /* TextAttributes.swift */; };
+		DE17F6BFEB70729319D509E76BC9C643 /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA453BFBFFF65E581F7A3B7B094E0A /* NSColor+Hex.swift */; };
+		E35E30767A49C679374CEB0D4C7F9213 /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01CA8BF3CC18AC21F4606D20C84E8A /* RocketViewController.swift */; };
+		EAAA851C82B80CB603C5AAE3073E258A /* LayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C632FB4DB6FCC13489EE3D3F15C985F /* LayoutProvider.swift */; };
+		FA3484164438A64FE72DDF60669A4990 /* RocketKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22869275B7E9A08B973DD422B26B85D8 /* RocketKit-dummy.m */; };
 		FD7AB133A1A357CFFB5F0808BEFF634E /* Pods-RocketTestMacSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00515469C88FB50D6AB9F68B2FC2B41D /* Pods-RocketTestMacSwift-dummy.m */; };
+		FDBDD4AEE2F428CA7723C6E71D120525 /* LayoutBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC08041CD160D8B4E99761923EDD067 /* LayoutBinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,51 +67,54 @@
 		0E01CA8BF3CC18AC21F4606D20C84E8A /* RocketViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketViewController.swift; sourceTree = "<group>"; };
 		10617A822BF6C782E7B480F0E37AB42A /* Pods-RocketTestMacSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RocketTestMacSwift-umbrella.h"; sourceTree = "<group>"; };
 		11FF1853FB812AC1B1EBDCAB0ADAF720 /* RocketKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RocketKit.modulemap; sourceTree = "<group>"; };
-		13EC71FDDBB21B66F71B2A69DEF14CE9 /* LayoutProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutProvider.swift; sourceTree = "<group>"; };
-		152E63F9933449079ED72B43FAD5020F /* BaseObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
 		187571AF0634F2B8A3BCEC172F36CB82 /* RocketKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RocketKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19455162029031E923296A89756729E9 /* Pods-RocketTestMacSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RocketTestMacSwift.modulemap"; sourceTree = "<group>"; };
-		1FA8B58D142023451AAFA05AC77AD96C /* TextDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextDescriptor.swift; sourceTree = "<group>"; };
-		20BD04C512B892CFE1AA4C6320EA2960 /* LayoutMetaBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutMetaBinder.swift; sourceTree = "<group>"; };
+		1A7DF56814938E59AC5E27D850AD3402 /* TextAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		218D21FA4C6DE4893BC97451D5A59823 /* NSFont+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSFont+Rocket.swift"; sourceTree = "<group>"; };
 		22869275B7E9A08B973DD422B26B85D8 /* RocketKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RocketKit-dummy.m"; sourceTree = "<group>"; };
 		270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		2BAC66B68BE7619CFF62D94BFA00128B /* LayoutSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutSource.swift; sourceTree = "<group>"; };
-		2CE40237CB0DD88933C756D4BDA41ED4 /* LayoutMeta.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutMeta.swift; sourceTree = "<group>"; };
-		2F8089CAD755EEC571414B98CBACAAEB /* ComponentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		2C632FB4DB6FCC13489EE3D3F15C985F /* LayoutProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutProvider.swift; sourceTree = "<group>"; };
+		33587CBE16C65652A22717AAC1657EA3 /* LayoutMetaBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutMetaBinder.swift; sourceTree = "<group>"; };
+		361832DCF9D94A5AB71584ECA38BABAA /* ComponentViewBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentViewBinder.swift; sourceTree = "<group>"; };
+		384DC8E4A24750C80F447FD5AAD9812D /* RocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTypes.swift; sourceTree = "<group>"; };
 		3B3DBEF365C7E7C346F328823BB0D896 /* Pods-RocketTestMacSwift-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RocketTestMacSwift-acknowledgements.plist"; sourceTree = "<group>"; };
 		3BC1F338C5084082B0025F6F69510DDE /* RocketKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RocketKit-prefix.pch"; sourceTree = "<group>"; };
-		3CAC14CB6D336FCB5CD769C9A2D73BA5 /* RocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketTypes.swift; sourceTree = "<group>"; };
-		4514144C48D0917D2DCAFE51E108C238 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		4598FDA95170D9BDDB994C987680727D /* Pods-RocketTestMacSwift-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RocketTestMacSwift-resources.sh"; sourceTree = "<group>"; };
 		4710C17D6DD1EC05B795D425E7FF4394 /* FontManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
-		592EE09FBA30B4119BE68C4D84AB1BD3 /* RocketLabel+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "RocketLabel+Rocket.swift"; sourceTree = "<group>"; };
-		5A4FCFF93148D1116B67D77B94332C80 /* FontFamilyMember.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FontFamilyMember.swift; sourceTree = "<group>"; };
-		5BD0176FAAFEE2FC58FB90BA47460BE4 /* Localize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
+		497140456FDE7896860F2C62C7A1B97F /* String+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Rocket.swift"; sourceTree = "<group>"; };
+		55C9FB981B930DA0D9D0D782DDACFCE3 /* LayoutMeta.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutMeta.swift; sourceTree = "<group>"; };
+		576D0745FE55F66D5C73D9105C850B47 /* FontManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FontManagerProtocol.swift; sourceTree = "<group>"; };
+		67F67CEEE6580AB05E69370416916076 /* BaseObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
 		68CE3A2A33E7F33488629FD291D1D6E3 /* RocketKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RocketKit-umbrella.h"; sourceTree = "<group>"; };
-		6A956A49E465116FFE6B51DBDF850861 /* RocketTextView+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "RocketTextView+Rocket.swift"; sourceTree = "<group>"; };
+		6A956A49E465116FFE6B51DBDF850861 /* NSTextView+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSTextView+Rocket.swift"; sourceTree = "<group>"; };
 		70136F9B4355CC5111AEF033B61A2F5C /* Pods-RocketTestMacSwift-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RocketTestMacSwift-frameworks.sh"; sourceTree = "<group>"; };
-		70B85C2609541B6A09A4EC37A1E8028E /* String+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Rocket.swift"; sourceTree = "<group>"; };
+		73347588A9028ECBABD51C2323097FB0 /* Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		7489C0F4BEF0F97891D2DF79EE874E5F /* NSValue+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSValue+Rocket.swift"; sourceTree = "<group>"; };
+		7E8F4F16FEAF6A0BD33057EF1166A72D /* Localize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		82EA4741B36A74F8AE6417E560296491 /* Pods-RocketTestMacSwift-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RocketTestMacSwift-acknowledgements.markdown"; sourceTree = "<group>"; };
+		83943DA609AF6C4E4975CB057E7A6403 /* ViewFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		8E7CFC29D483BE005596A5CA58574821 /* RocketComponent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketComponent.swift; sourceTree = "<group>"; };
+		92CBF40620387996003B7086 /* RocketLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketLabel.swift; sourceTree = "<group>"; };
+		92CBF408203879A4003B7086 /* RocketTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTextField.swift; sourceTree = "<group>"; };
+		92CBF40A203879B3003B7086 /* RocketTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTextView.swift; sourceTree = "<group>"; };
+		92CBF40C20387D5E003B7086 /* NSView+Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Rocket.swift"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95D93D3D7B9D377A4245E06095596048 /* RootViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		9714E526DAC667B1A72D032F755E190E /* CGFloat+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CGFloat+Rocket.swift"; sourceTree = "<group>"; };
+		9B6B3F0A46E7ECFA44194303B8C6F80C /* CGFloat+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CGFloat+Rocket.swift"; sourceTree = "<group>"; };
 		9C2DFDF6973B4E01175230F4F3A0786B /* RocketKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RocketKit.xcconfig; sourceTree = "<group>"; };
-		A40EA57255E7BFBF9C0D2044D8D68279 /* TextAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
+		A0660849BD98DCFF100882A149365C3A /* DefaultTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefaultTextContentProvider.swift; sourceTree = "<group>"; };
 		A4FFB7926A4DA833EF1723B50D7A8A89 /* NSEdgeInsets+Rocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSEdgeInsets+Rocket.swift"; sourceTree = "<group>"; };
-		A730999C08935276373DE1701B08A667 /* TextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextContentProvider.swift; sourceTree = "<group>"; };
+		BA5D6FFFD712CAF47DC483C37E463ADF /* LocalizedTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalizedTextContentProvider.swift; sourceTree = "<group>"; };
 		CAE78C0A868CA83EA95347EF609A02ED /* Pods-RocketTestMacSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RocketTestMacSwift.debug.xcconfig"; sourceTree = "<group>"; };
-		D6D319FB68DBF0709B41A5424F568E0F /* ViewFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
-		E25FD67B707475AE9689A6E07E883CBA /* FontManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FontManagerProtocol.swift; sourceTree = "<group>"; };
-		E8A4E9733C20A58DD2278A28249E6470 /* LocalizedTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalizedTextContentProvider.swift; sourceTree = "<group>"; };
+		D4FA06B4E842B783D501E149EAF41635 /* ComponentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		D6A4F659B9F9DA57240E2D7B08D4471D /* LayoutSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutSource.swift; sourceTree = "<group>"; };
+		E1BA6D208BB3A5D94F792A6720E0AA7C /* TextDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextDescriptor.swift; sourceTree = "<group>"; };
+		E444D2CDAE2F16050B27368A36463DB0 /* FontFamilyMember.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FontFamilyMember.swift; sourceTree = "<group>"; };
 		EA3D3902189EF7B93150C3DF11D4DB38 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EADA453BFBFFF65E581F7A3B7B094E0A /* NSColor+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
-		EC3CB510BFB63A01C1B0B58AB83E601E /* ComponentViewBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentViewBinder.swift; sourceTree = "<group>"; };
+		F3155D8A852FCCECE3FB6C542E3B934A /* TextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextContentProvider.swift; sourceTree = "<group>"; };
 		F3EA5CDE544933C515262764366A424E /* Pods_RocketTestMacSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RocketTestMacSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F991AABA7536CC9EFA3F7B6CDB909654 /* RocketComponent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RocketComponent.swift; sourceTree = "<group>"; };
-		FAE95A26F752D244D351F5E991B9264F /* DefaultTextContentProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefaultTextContentProvider.swift; sourceTree = "<group>"; };
-		FC4E850E03807FB67F1BBC985645DBEB /* LayoutBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutBinder.swift; sourceTree = "<group>"; };
+		FCC08041CD160D8B4E99761923EDD067 /* LayoutBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutBinder.swift; sourceTree = "<group>"; };
 		FE7623C1E4FD8C1DCFBB0FD64E1A49A6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,21 +146,11 @@
 			name = "OS X";
 			sourceTree = "<group>";
 		};
-		0DDD56ECDE90F5574D575228FE3891EE /* util */ = {
-			isa = PBXGroup;
-			children = (
-				9714E526DAC667B1A72D032F755E190E /* CGFloat+Rocket.swift */,
-				3CAC14CB6D336FCB5CD769C9A2D73BA5 /* RocketTypes.swift */,
-				70B85C2609541B6A09A4EC37A1E8028E /* String+Rocket.swift */,
-			);
-			path = util;
-			sourceTree = "<group>";
-		};
 		18A663D3F6F45EB9F9B2BD681E7C94B1 /* RocketKit */ = {
 			isa = PBXGroup;
 			children = (
 				57399D12820F9B1934A6AD9D710F79C5 /* osx */,
-				47BA28865F3BDC2A11F6FFECB7E7731F /* shared */,
+				7520C36BB415ED744C7062352C59D026 /* shared */,
 				DDDB0A56C5CC393A8023F52B39594475 /* Support Files */,
 			);
 			name = RocketKit;
@@ -204,17 +200,14 @@
 			path = viewController;
 			sourceTree = "<group>";
 		};
-		47BA28865F3BDC2A11F6FFECB7E7731F /* shared */ = {
+		4CDCCFD212BCF92CF4D724ACEC12E254 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				FCC4AFDE896653F6AB90596ED6F2295A /* layout */,
-				5FF5E4154305453A6CDE609A4B2F1B72 /* model */,
-				CCFE9AACDB4757C917E73E1194BD3F3A /* text */,
-				0DDD56ECDE90F5574D575228FE3891EE /* util */,
-				E409C237365F457DB197918DF922E161 /* view */,
+				9B6B3F0A46E7ECFA44194303B8C6F80C /* CGFloat+Rocket.swift */,
+				384DC8E4A24750C80F447FD5AAD9812D /* RocketTypes.swift */,
+				497140456FDE7896860F2C62C7A1B97F /* String+Rocket.swift */,
 			);
-			name = shared;
-			path = Source/shared;
+			path = util;
 			sourceTree = "<group>";
 		};
 		57399D12820F9B1934A6AD9D710F79C5 /* osx */ = {
@@ -229,15 +222,42 @@
 			path = Source/osx;
 			sourceTree = "<group>";
 		};
-		5FF5E4154305453A6CDE609A4B2F1B72 /* model */ = {
+		6D81F658A62D8300E32467275F5590B2 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				152E63F9933449079ED72B43FAD5020F /* BaseObject.swift */,
-				13EC71FDDBB21B66F71B2A69DEF14CE9 /* LayoutProvider.swift */,
-				2BAC66B68BE7619CFF62D94BFA00128B /* LayoutSource.swift */,
-				F991AABA7536CC9EFA3F7B6CDB909654 /* RocketComponent.swift */,
+				D4FA06B4E842B783D501E149EAF41635 /* ComponentView.swift */,
+				361832DCF9D94A5AB71584ECA38BABAA /* ComponentViewBinder.swift */,
+				83943DA609AF6C4E4975CB057E7A6403 /* ViewFactory.swift */,
 			);
-			path = model;
+			path = view;
+			sourceTree = "<group>";
+		};
+		7520C36BB415ED744C7062352C59D026 /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				86F29993499D4C82F087E9D935825561 /* layout */,
+				897AECF2C7ED4D6617FF290A91C77E9D /* model */,
+				7767EEEA5A38B6984025A08CD4F2322E /* text */,
+				4CDCCFD212BCF92CF4D724ACEC12E254 /* util */,
+				6D81F658A62D8300E32467275F5590B2 /* view */,
+			);
+			name = shared;
+			path = Source/shared;
+			sourceTree = "<group>";
+		};
+		7767EEEA5A38B6984025A08CD4F2322E /* text */ = {
+			isa = PBXGroup;
+			children = (
+				A0660849BD98DCFF100882A149365C3A /* DefaultTextContentProvider.swift */,
+				E444D2CDAE2F16050B27368A36463DB0 /* FontFamilyMember.swift */,
+				576D0745FE55F66D5C73D9105C850B47 /* FontManagerProtocol.swift */,
+				7E8F4F16FEAF6A0BD33057EF1166A72D /* Localize.swift */,
+				BA5D6FFFD712CAF47DC483C37E463ADF /* LocalizedTextContentProvider.swift */,
+				1A7DF56814938E59AC5E27D850AD3402 /* TextAttributes.swift */,
+				F3155D8A852FCCECE3FB6C542E3B934A /* TextContentProvider.swift */,
+				E1BA6D208BB3A5D94F792A6720E0AA7C /* TextDescriptor.swift */,
+			);
+			path = text;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -249,6 +269,28 @@
 				CC5B2196D0726DB957606F73820BBDFA /* Products */,
 				9ABD39EE77E96D843AC73B9B30C52CEC /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		86F29993499D4C82F087E9D935825561 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				73347588A9028ECBABD51C2323097FB0 /* Layout.swift */,
+				FCC08041CD160D8B4E99761923EDD067 /* LayoutBinder.swift */,
+				55C9FB981B930DA0D9D0D782DDACFCE3 /* LayoutMeta.swift */,
+				33587CBE16C65652A22717AAC1657EA3 /* LayoutMetaBinder.swift */,
+			);
+			path = layout;
+			sourceTree = "<group>";
+		};
+		897AECF2C7ED4D6617FF290A91C77E9D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				67F67CEEE6580AB05E69370416916076 /* BaseObject.swift */,
+				2C632FB4DB6FCC13489EE3D3F15C985F /* LayoutProvider.swift */,
+				D6A4F659B9F9DA57240E2D7B08D4471D /* LayoutSource.swift */,
+				8E7CFC29D483BE005596A5CA58574821 /* RocketComponent.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		9ABD39EE77E96D843AC73B9B30C52CEC /* Targets Support Files */ = {
@@ -268,21 +310,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CCFE9AACDB4757C917E73E1194BD3F3A /* text */ = {
-			isa = PBXGroup;
-			children = (
-				FAE95A26F752D244D351F5E991B9264F /* DefaultTextContentProvider.swift */,
-				5A4FCFF93148D1116B67D77B94332C80 /* FontFamilyMember.swift */,
-				E25FD67B707475AE9689A6E07E883CBA /* FontManagerProtocol.swift */,
-				5BD0176FAAFEE2FC58FB90BA47460BE4 /* Localize.swift */,
-				E8A4E9733C20A58DD2278A28249E6470 /* LocalizedTextContentProvider.swift */,
-				A40EA57255E7BFBF9C0D2044D8D68279 /* TextAttributes.swift */,
-				A730999C08935276373DE1701B08A667 /* TextContentProvider.swift */,
-				1FA8B58D142023451AAFA05AC77AD96C /* TextDescriptor.swift */,
-			);
-			path = text;
-			sourceTree = "<group>";
-		};
 		CD864B0AFB2D17EBAF4F8314C91EEDA9 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,8 +317,7 @@
 				A4FFB7926A4DA833EF1723B50D7A8A89 /* NSEdgeInsets+Rocket.swift */,
 				218D21FA4C6DE4893BC97451D5A59823 /* NSFont+Rocket.swift */,
 				7489C0F4BEF0F97891D2DF79EE874E5F /* NSValue+Rocket.swift */,
-				592EE09FBA30B4119BE68C4D84AB1BD3 /* RocketLabel+Rocket.swift */,
-				6A956A49E465116FFE6B51DBDF850861 /* RocketTextView+Rocket.swift */,
+				6A956A49E465116FFE6B51DBDF850861 /* NSTextView+Rocket.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -300,6 +326,10 @@
 			isa = PBXGroup;
 			children = (
 				04EEC25E020BDAC12DB0203BCDA4E543 /* RocketView.swift */,
+				92CBF40620387996003B7086 /* RocketLabel.swift */,
+				92CBF408203879A4003B7086 /* RocketTextField.swift */,
+				92CBF40A203879B3003B7086 /* RocketTextView.swift */,
+				92CBF40C20387D5E003B7086 /* NSView+Rocket.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -318,33 +348,12 @@
 			path = "examples/RocketTestMacSwift/Pods/Target Support Files/RocketKit";
 			sourceTree = "<group>";
 		};
-		E409C237365F457DB197918DF922E161 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				2F8089CAD755EEC571414B98CBACAAEB /* ComponentView.swift */,
-				EC3CB510BFB63A01C1B0B58AB83E601E /* ComponentViewBinder.swift */,
-				D6D319FB68DBF0709B41A5424F568E0F /* ViewFactory.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		F20A73C5A81BAA0DAC9058105083BB55 /* text */ = {
 			isa = PBXGroup;
 			children = (
 				4710C17D6DD1EC05B795D425E7FF4394 /* FontManager.swift */,
 			);
 			path = text;
-			sourceTree = "<group>";
-		};
-		FCC4AFDE896653F6AB90596ED6F2295A /* layout */ = {
-			isa = PBXGroup;
-			children = (
-				4514144C48D0917D2DCAFE51E108C238 /* Layout.swift */,
-				FC4E850E03807FB67F1BBC985645DBEB /* LayoutBinder.swift */,
-				2CE40237CB0DD88933C756D4BDA41ED4 /* LayoutMeta.swift */,
-				20BD04C512B892CFE1AA4C6320EA2960 /* LayoutMetaBinder.swift */,
-			);
-			path = layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,7 +382,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 257E629E4B27F9ED4C18407AB0DAB448 /* Build configuration list for PBXNativeTarget "RocketKit" */;
 			buildPhases = (
-				6AC6620B554C24D36F0BE906FDFD75B1 /* Sources */,
+				D2D719C7B8CCF9966DC86A1A326F82B2 /* Sources */,
 				BA89E3E1B33C684DF5005819D460FBE1 /* Frameworks */,
 				D8D0984F9A357E39C00F0824AD57B302 /* Headers */,
 			);
@@ -412,6 +421,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					7BE9D842406B1031A18DEFBB531B3FCA = {
+						LastSwiftMigration = 0920;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -440,43 +454,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6AC6620B554C24D36F0BE906FDFD75B1 /* Sources */ = {
+		D2D719C7B8CCF9966DC86A1A326F82B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				716385A5E32C91E389BA14B6185BE462 /* BaseObject.swift in Sources */,
-				489F6352C8809B6A13DF58A1E70ECE9F /* CGFloat+Rocket.swift in Sources */,
-				BAA73AFD13DB2EB30DB93A8B550229DB /* ComponentView.swift in Sources */,
-				C8F37642EC1CC1423A1582C4624D14D3 /* ComponentViewBinder.swift in Sources */,
-				9C5194B7FF8834678DCB9056FFD76E5A /* DefaultTextContentProvider.swift in Sources */,
-				E86AC404565F102164D729502AB085B8 /* FontFamilyMember.swift in Sources */,
-				92ADF734414149ED611AAF9D66A7FA34 /* FontManager.swift in Sources */,
-				B9D2ECB3814E4143EDDF03ABBB6CB83C /* FontManagerProtocol.swift in Sources */,
-				1258846C28E4EA431C600085E9056386 /* Layout.swift in Sources */,
-				55C57C4314C08ADC68D3E195A7D0A17A /* LayoutBinder.swift in Sources */,
-				DEAEEA426D050FF97BFFF220FE6B1FC5 /* LayoutMeta.swift in Sources */,
-				73BDBE66C96AD4F006CB168F01360A92 /* LayoutMetaBinder.swift in Sources */,
-				FAF807A9C6463B4A13AFB51AB065EE3E /* LayoutProvider.swift in Sources */,
-				90C9163E7DEEB5CBB0CF160A2E63EA86 /* LayoutSource.swift in Sources */,
-				855458C14586D45CFD41F1522184C703 /* Localize.swift in Sources */,
-				5C815520BF483C2B07E5E0C1F8BEC7C4 /* LocalizedTextContentProvider.swift in Sources */,
-				554F7B956C1232A6AFEBEFE373FD37AB /* NSColor+Hex.swift in Sources */,
-				61BAF36996DD8225BBA7076EC2E0B6AB /* NSEdgeInsets+Rocket.swift in Sources */,
-				145F6F86E154BE93701BA699868D389C /* NSFont+Rocket.swift in Sources */,
-				1571CED7614B664778456376352AF220 /* NSValue+Rocket.swift in Sources */,
-				9C08191B6B10E22DD8C1CF1605675F66 /* RocketComponent.swift in Sources */,
-				75694038B439D57BF69C6381684DA7BE /* RocketKit-dummy.m in Sources */,
-				999349CDCE57B9535C2C57DD11F9B938 /* RocketLabel+Rocket.swift in Sources */,
-				7D6747B996A1C1D4615A1A402A01E116 /* RocketTextView+Rocket.swift in Sources */,
-				7EF78CBFF20655A600EEA84F0D119BB3 /* RocketTypes.swift in Sources */,
-				D5521F63C3E62A5C8EE6FBE1D8F9B222 /* RocketView.swift in Sources */,
-				9E3CAC48A5F50696585EE32B7DEEED20 /* RocketViewController.swift in Sources */,
-				ABA356212FAC6CCC14EA508C55B41B66 /* RootViewController.swift in Sources */,
-				D21D1F4774FCCD0E307714D4ECCB03C5 /* String+Rocket.swift in Sources */,
-				34DEA3BB9B724CEB47A73DA728829482 /* TextAttributes.swift in Sources */,
-				E91254BE755D59DAA45FC8183C4256DA /* TextContentProvider.swift in Sources */,
-				554D6459AA6865D878445A7B8915AEA5 /* TextDescriptor.swift in Sources */,
-				657DE866A548BD08A2C7D05CE9CDD54F /* ViewFactory.swift in Sources */,
+				77A156BAB9DAC6801E74E5C932FF704B /* BaseObject.swift in Sources */,
+				BBAE5A99412EE72AF93721B253BBB103 /* CGFloat+Rocket.swift in Sources */,
+				01A24CAEE84E3AE0A815694A516F8F5B /* ComponentView.swift in Sources */,
+				22D3ABEFA2E4D941240474F29943FCB2 /* ComponentViewBinder.swift in Sources */,
+				06EB2ED069652C9CB5FA70CC44F5B8B3 /* DefaultTextContentProvider.swift in Sources */,
+				AA3734B8E5C0FEDB0C77CD5C97515F73 /* FontFamilyMember.swift in Sources */,
+				A6BB182EB64E24B37FD6BD398BC78A07 /* FontManager.swift in Sources */,
+				95CDB87278448EFE91320234EF08DAFF /* FontManagerProtocol.swift in Sources */,
+				61D0901B44C6099608369884B8A070B7 /* Layout.swift in Sources */,
+				FDBDD4AEE2F428CA7723C6E71D120525 /* LayoutBinder.swift in Sources */,
+				0C55A98B7CB10CCCBE4DD0C49943E436 /* LayoutMeta.swift in Sources */,
+				92CBF40B203879B3003B7086 /* RocketTextView.swift in Sources */,
+				8B8591E0059DB14B9C24D29ADA540A5F /* LayoutMetaBinder.swift in Sources */,
+				EAAA851C82B80CB603C5AAE3073E258A /* LayoutProvider.swift in Sources */,
+				A4CE9324C0930E3FE191ABA5996FFB08 /* LayoutSource.swift in Sources */,
+				92CBF409203879A4003B7086 /* RocketTextField.swift in Sources */,
+				663850516FBF5C8A6590C2422CBD7BD3 /* Localize.swift in Sources */,
+				A0ACF1070901F793D56E3A66ECF24CAF /* LocalizedTextContentProvider.swift in Sources */,
+				92CBF40D20387D5E003B7086 /* NSView+Rocket.swift in Sources */,
+				DE17F6BFEB70729319D509E76BC9C643 /* NSColor+Hex.swift in Sources */,
+				8F2AC17820253316AE035373C45CE7A4 /* NSEdgeInsets+Rocket.swift in Sources */,
+				CD6503664432B77E5F2EF360641B5579 /* NSFont+Rocket.swift in Sources */,
+				6B8A9C67738EDA6193781288423C75AC /* NSValue+Rocket.swift in Sources */,
+				C727681F3B2311E7CE7BC0B9B7F418C6 /* RocketComponent.swift in Sources */,
+				FA3484164438A64FE72DDF60669A4990 /* RocketKit-dummy.m in Sources */,
+				576739B48495F54799900E9F8E5A8118 /* NSTextView+Rocket.swift in Sources */,
+				A37AB17F9379E3C70B1596B0EBD073BB /* RocketTypes.swift in Sources */,
+				C492EBC6CF969BF2D1EED946603E72AA /* RocketView.swift in Sources */,
+				92CBF40720387996003B7086 /* RocketLabel.swift in Sources */,
+				E35E30767A49C679374CEB0D4C7F9213 /* RocketViewController.swift in Sources */,
+				8E1079A2B53FE95DCA955B5B73C94C00 /* RootViewController.swift in Sources */,
+				4C1C40D1191A81A643803A4EFFC202C0 /* String+Rocket.swift in Sources */,
+				D9B2B9ED609D5CF14C75777BE486A03B /* TextAttributes.swift in Sources */,
+				41B09848DCA14261A5DF6AAA1F170EEA /* TextContentProvider.swift in Sources */,
+				926A2B93D29818F4327FA4BB0865C6D6 /* TextDescriptor.swift in Sources */,
+				D3E9C913DBA59836F7E915F358D03E7E /* ViewFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +593,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0AFAF9C3AD10BFC0BB18AA2DE9ED954E /* Pods-RocketTestMacSwift.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -664,6 +682,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CAE78C0A868CA83EA95347EF609A02ED /* Pods-RocketTestMacSwift.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

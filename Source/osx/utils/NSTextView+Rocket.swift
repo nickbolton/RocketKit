@@ -1,5 +1,5 @@
 //
-//  RocketTextView+Rocket.swift
+//  NSTextView+Rocket.swift
 //  RocketKit
 //
 //  Created by Nick Bolton on 2/14/18.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-public extension RocketTextView {
+public extension NSTextView {
     public var attributedText: NSAttributedString {
         get { return attributedString() }
         set {
             string = ""
-            textStorage?.append(attributedText)
+            textStorage?.append(newValue)
         }
     }
     
