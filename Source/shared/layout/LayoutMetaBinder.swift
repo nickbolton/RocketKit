@@ -139,21 +139,7 @@ class LayoutMetaBinder: NSObject {
         
         guard let component = layoutProvider.componentByIdentifier(layoutObject.componentIdentifier) else { return }
         guard let view = layoutProvider.view(with: layoutObject.componentIdentifier) else { return }
-        
-        var constant = meta.constant
-        
-        if layoutObject.attribute == .height && component.autoConstrainingTextType.contains(.height) {
-            var width: CGFloat = 0.0
-            if let widthConstraint = component.layoutObject(with: .width) {
-                width = widthConstraint.idealMeta.constant
-            } else if let widthConstraint = component.defaultLayoutObject(with: .width) {
-                width = widthConstraint.idealMeta.constant
-            }
-            if let containerFrame = component.textDescriptor?.containerFrame(textType: .label, boundBy: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments) {
-                constant = containerFrame.height
-            }
-        }
-                
+                        
         let relatedView = layoutProvider.view(with: layoutObject.relatedComponentIdentifier)?.contentView
         guard layoutObject.isSizing || relatedView != nil else { return }
         
@@ -179,7 +165,7 @@ class LayoutMetaBinder: NSObject {
                                toItem: relatedView,
                                attribute: layoutObject.relatedAttribute,
                                multiplier: 1.0,
-                               constant: constant)
+                               constant: meta.constant)
     }
     
     private func buildProportionalConstraintsWithLayoutObject(_ layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {

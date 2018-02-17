@@ -16,7 +16,7 @@ class ComponentViewBinder: NSObject {
     
     private var isSetup = false
     private let viewFactory = ViewFactory()
-    private let layoutBinder = LayoutBinder()
+    internal let layoutBinder = LayoutBinder()
     
     internal func buildViewIfNecessary(for rocketView: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?) {
         guard !isSetup, let component = component, let layoutProvider = layoutProvider else { return }

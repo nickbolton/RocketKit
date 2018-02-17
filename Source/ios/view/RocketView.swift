@@ -137,14 +137,25 @@ public class RocketView: UIView, ComponentView {
         guard var textView = textView else { return }
         guard let component = component else { return }
         guard let textDescriptor = component.textDescriptor else { return }
+        guard frame.width > 0.0 && frame.height > 0.0 else { return }
+
         var componentFrame = useSafeArea ? safeContainer.frame : frame
         
         if !component.isTopLevelComponent && component.autoConstrainingTextType.contains(.height) {
-            componentFrame.size.height = component.textHeightConstrainedByWidth
+            if let containerFrame = component.textDescriptor?.containerFrame(textType: textDescriptor.targetTextType, boundBy: CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments) {
+                
+                if let heightConstraint = component.layoutObject(with: .height) {
+                    binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint?.constant = containerFrame.height
+                } else if let heightConstraint = component.defaultLayoutObject(with: .height) {
+                    binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint?.constant = containerFrame.height
+                }
+                
+                componentFrame.size.height = containerFrame.height
+            }
         }
-        
-        let labelFrame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: component.textDescriptor?.targetTextType ?? .label, containerSize: componentFrame.size)
-        textView.textSize = labelFrame.size
-        textView.view.frame = labelFrame
+
+        let textFrame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: textDescriptor.targetTextType, containerSize: componentFrame.size)
+        textView.textSize = textFrame.size
+        textView.view.frame = textFrame
     }
 }

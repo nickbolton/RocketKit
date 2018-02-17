@@ -20,7 +20,7 @@ class LayoutBinder: NSObject {
         return "\(layout.identifier):\(meta.metaType.rawValue)"
     }
     
-    private func binder(forLayout layout: Layout, meta: LayoutMeta) -> LayoutMetaBinder {
+    internal func binder(forLayout layout: Layout, meta: LayoutMeta) -> LayoutMetaBinder {
         let key = binderKey(forLayout: layout, meta: meta)
         var result = metaBinders[key]
         if result == nil {

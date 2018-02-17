@@ -92,7 +92,7 @@ public class TextDescriptor {
             width = containerSize.width + horizontalPadding;
         }
         
-        if hasDiscreteHeightConstraint || component.autoConstrainingTextType == .width {
+        if (hasDiscreteHeightConstraint || component.autoConstrainingTextType.contains(.width)) && !component.autoConstrainingTextType.contains(.height) {
             height = containerSize.height + verticalPadding;
         }
         
