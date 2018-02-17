@@ -11,12 +11,20 @@
     import Cocoa
 #endif
 
+public enum TargetTextType: Int {
+    case label
+    case field
+    case view
+}
+
 public struct TextDescriptor {
     
     public var text = ""
     public var textAttributes = TextAttributes()
+    public var targetTextType = TargetTextType.label
     
     private static let textKey = "text"
+    private static let targetTextTypeKey = "targetTextType"
     private static let textAttributesKey = "textAttributes"
     
     public var attributedString: NSAttributedString {
@@ -25,6 +33,7 @@ public struct TextDescriptor {
 
     public init(dictionary: [String: Any]) {
         self.text = dictionary[TextDescriptor.textKey] as? String ?? ""
+        self.targetTextType = TargetTextType(rawValue: dictionary[TextDescriptor.targetTextTypeKey] as? Int ?? 0) ?? .label
         if let attributesDict = dictionary[TextDescriptor.textAttributesKey] as? [String: Any] {
             self.textAttributes = TextAttributes(dictionary: attributesDict)
         }
@@ -155,12 +164,6 @@ public struct TextDescriptor {
 
         return (containerFrame, textFrame)
     }
-}
-
-public enum TargetTextType {
-    case label
-    case field
-    case view
 }
 
 struct TextMetricsCache {

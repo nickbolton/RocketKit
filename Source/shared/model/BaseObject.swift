@@ -10,7 +10,7 @@ import Foundation
 
 public class BaseObject: NSObject {
 
-    let identifier: String
+    public let identifier: String
     
     private static let identifierKey = "identifier"
     

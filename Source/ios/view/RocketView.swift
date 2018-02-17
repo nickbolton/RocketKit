@@ -11,17 +11,20 @@ import UIKit
 public class RocketView: UIView, ComponentView {
 
     public var view: RocketBaseView { return self }
+    public var contentView: RocketBaseView {
+        return useSafeArea ? safeContainer : self
+    }
     public var layoutProvider: LayoutProvider?
     public var component: RocketComponent?
     public var isRootView: Bool = false
-    var label: UILabel?
+    var textView: TextHavingView?
     
     public let safeContainer = UIView()
     
-    private (set) var safeTopContraint: NSLayoutConstraint?
-    private (set) var safeBottomContraint: NSLayoutConstraint?
-    private (set) var safeLeftContraint: NSLayoutConstraint?
-    private (set) var safeRightContraint: NSLayoutConstraint?
+    private var safeTopContraint: NSLayoutConstraint?
+    private var safeBottomContraint: NSLayoutConstraint?
+    private var safeLeftContraint: NSLayoutConstraint?
+    private var safeRightContraint: NSLayoutConstraint?
     
     private var useSafeArea: Bool { return component?.isContentConstrainedBySafeArea ?? false }
 
@@ -39,14 +42,14 @@ public class RocketView: UIView, ComponentView {
         layer.cornerRadius = component.cornerRadius
         layer.borderColor = component.borderColor?.cgColor
         backgroundColor = component.backgroundColor
-        applyLabelPropertiesIfNeeded()
+        applyTextProperties()
     }
     
-    private func applyLabelPropertiesIfNeeded() {
+    public func applyTextProperties() {
         cleanUpLabel()
         guard let textDescriptor = component?.textDescriptor else { return }
         setupSafeContainerIfNecessary()
-        setUpLabel(textDescriptor)
+        setUpTextView(textDescriptor)
     }
     
     private func setupSafeContainerIfNecessary() {
@@ -68,18 +71,17 @@ public class RocketView: UIView, ComponentView {
     }
     
     private func cleanUpLabel() {
-        label?.removeFromSuperview()
-        label = nil
+        textView?.view.removeFromSuperview()
+        textView = nil
     }
     
-    private func setUpLabel(_ textDescriptor: TextDescriptor) {
-        label = UILabel()
-        label?.attributedText = textDescriptor.attributedString
-        label?.numberOfLines = 0
+    private func setUpTextView(_ textDescriptor: TextDescriptor) {
+        textView = ViewFactory().buildTextView(with: textDescriptor)
+        textView?.attributedString = textDescriptor.attributedString
         if useSafeArea {
-            safeContainer.addSubview(label!)
+            safeContainer.addSubview(textView!.view)
         } else {
-            addSubview(label!)
+            addSubview(textView!.view)
         }
     }
     
@@ -93,6 +95,17 @@ public class RocketView: UIView, ComponentView {
         safeContainer.layoutIfNeeded()
     }
     
+    // MARK: Helpers
+    
+    public func updateView() {
+        binder.updateView(for: self, component: component, layoutProvider: layoutProvider)
+    }
+    
+    public func updateText(animationDuration: TimeInterval = 0.0) {
+        applyTextProperties()
+        binder.updateText(for: self, component: component, layoutProvider: layoutProvider, animationDuration: animationDuration)
+    }
+
     // MARK: Layout
     
     override public func layoutSubviews() {
@@ -102,11 +115,16 @@ public class RocketView: UIView, ComponentView {
     }
     
     private func layoutLabelIfNecessary() {
-        guard let label = label else { return }
+        guard let textView = textView else { return }
         guard let component = component else { return }
         guard let textDescriptor = component.textDescriptor else { return }
-        let componentFrame = useSafeArea ? safeContainer.frame : frame
+        var componentFrame = useSafeArea ? safeContainer.frame : frame
         
-        label.frame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: .label, containerSize: componentFrame.size)
+        if !component.isTopLevelComponent && component.autoConstrainingTextType.contains(.height) {
+            componentFrame.size.height = component.textHeightConstrainedByWidth
+        }
+        
+        let labelFrame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: component.textDescriptor?.targetTextType ?? .label, containerSize: componentFrame.size)
+        textView.view.frame = labelFrame
     }
 }

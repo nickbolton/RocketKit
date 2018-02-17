@@ -35,6 +35,29 @@ class LayoutMetaBinder: NSObject {
         constraint = nil
     }
     
+    internal func updateLayout(with layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider, animationDuration: TimeInterval = 0.0) {
+        
+        guard let component = layoutProvider.componentByIdentifier(layoutObject.componentIdentifier) else { return }
+        guard let componentView = layoutProvider.view(with: layoutObject.componentIdentifier) as? RocketBaseView else { return }
+
+        var constant = meta.constant
+
+        if layoutObject.attribute == .height && component.autoConstrainingTextType.contains(.height) {
+            constant = component.textHeightConstrainedByWidth
+        }
+
+        if animationDuration <= 0 {
+            constraint?.constant = constant
+            componentView.layoutIfNeeded()
+        } else {
+            componentView.superview?.setNeedsLayout()
+            UIView.animate(withDuration: animationDuration) {
+                self.constraint?.constant = constant
+                componentView.layoutIfNeeded()
+            }
+        }
+    }
+    
     internal func createConstraintIfNecessary(with layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
         
         guard let rocketView = layoutProvider.view(with: layoutObject.componentIdentifier) else { return }
@@ -52,7 +75,7 @@ class LayoutMetaBinder: NSObject {
             !layoutObject.isDefaultLayout &&
                 (layoutObject.isSizing || layoutObject.relatedComponentIdentifier != nil);
         
-        if (defaultLayoutOk || regularLayoutOk) {
+        if defaultLayoutOk || regularLayoutOk {
             
             buildConstraintsWithLayoutObject(layoutObject, meta: meta, layoutProvider: layoutProvider)
             
@@ -122,9 +145,24 @@ class LayoutMetaBinder: NSObject {
             return
         }
         
+        guard let component = layoutProvider.componentByIdentifier(layoutObject.componentIdentifier) else { return }
         guard let view = layoutProvider.view(with: layoutObject.componentIdentifier) else { return }
         
-        let relatedView = layoutProvider.view(with: layoutObject.relatedComponentIdentifier)
+        var constant = meta.constant
+        
+        if layoutObject.attribute == .height && component.autoConstrainingTextType.contains(.height) {
+            var width: CGFloat = 0.0
+            if let widthConstraint = component.layoutObject(with: .width) {
+                width = widthConstraint.idealMeta.constant
+            } else if let widthConstraint = component.defaultLayoutObject(with: .width) {
+                width = widthConstraint.idealMeta.constant
+            }
+            if let containerFrame = component.textDescriptor?.containerFrame(textType: .label, boundBy: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments) {
+                constant = containerFrame.height
+            }
+        }
+        
+        let relatedView = layoutProvider.view(with: layoutObject.relatedComponentIdentifier)?.contentView
         guard layoutObject.isSizing || relatedView != nil else { return }
         
         var relation = NSLayoutRelation.equal
@@ -149,7 +187,7 @@ class LayoutMetaBinder: NSObject {
                                toItem: relatedView,
                                attribute: layoutObject.relatedAttribute,
                                multiplier: 1.0,
-                               constant: meta.constant)
+                               constant: constant)
     }
     
     private func buildProportionalConstraintsWithLayoutObject(_ layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
@@ -158,7 +196,7 @@ class LayoutMetaBinder: NSObject {
             (layoutObject.attribute == .height && meta.proportionalAttribute == .height)) {
             
             guard let view = layoutProvider.view(with: layoutObject.componentIdentifier) else { return }
-            guard let proportionalView = proportionalView(meta: meta, layoutProvider: layoutProvider) else { return }
+            guard let proportionalView = proportionalView(meta: meta, layoutProvider: layoutProvider)?.contentView else { return }
             
             constraint =
                 NSLayoutConstraint(item: view,
@@ -182,8 +220,8 @@ class LayoutMetaBinder: NSObject {
     private func buildProportionalVerticalConstraintsWithLayoutObject(_ layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
         
         guard let view = layoutProvider.view(with: layoutObject.componentIdentifier) else { return }
-        guard let relatedView = layoutProvider.view(with: layoutObject.relatedComponentIdentifier) else { return }
-        guard let proportionalView = proportionalView(meta: meta, layoutProvider: layoutProvider) else { return }
+        guard let relatedView = layoutProvider.view(with: layoutObject.relatedComponentIdentifier)?.contentView else { return }
+        guard let proportionalView = proportionalView(meta: meta, layoutProvider: layoutProvider)?.contentView else { return }
         
         guard let spacingView = buildSpacingViewWithLayoutObject(layoutObject, layoutProvider:layoutProvider) else { return }
         
@@ -244,8 +282,8 @@ class LayoutMetaBinder: NSObject {
     
     private func buildProportionalHorizontalConstraintsWithLayoutObject(_ layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
         guard let view = layoutProvider.view(with: layoutObject.componentIdentifier) else { return }
-        guard let relatedView = layoutProvider.view(with: layoutObject.relatedComponentIdentifier) else { return }
-        guard let proportionalView = proportionalView(meta: meta, layoutProvider: layoutProvider) else { return }
+        guard let relatedView = layoutProvider.view(with: layoutObject.relatedComponentIdentifier)?.contentView else { return }
+        guard let proportionalView = proportionalView(meta: meta, layoutProvider: layoutProvider)?.contentView else { return }
         
         guard let spacingView = buildSpacingViewWithLayoutObject(layoutObject, layoutProvider:layoutProvider) else { return }
         
@@ -320,7 +358,7 @@ class LayoutMetaBinder: NSObject {
         guard let ancestorView = layoutProvider.view(with: layoutObject.commonAncestorComponentIdentifier) else { return nil }
         let view = RocketBaseView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        ancestorView.view.addSubview(view)
+        ancestorView.contentView.addSubview(view)
         return view
     }
     

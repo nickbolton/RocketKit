@@ -28,6 +28,9 @@
 		7E3A2C2A9605ABD7567BF4EE2FBE6462 /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C256B2CCE61FD2534AA14D4D77CA5 /* RocketViewController.swift */; };
 		7FD0FD20E7952374B40C16AA52BD0075 /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE461FD921B6FC542F0A0E4E63F6F3 /* RocketView.swift */; };
 		92216B7FE06A181D1A4BDFC3AFE6A3BF /* TextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11493CC969FA0D5F439BA04B8EEF166B /* TextContentProvider.swift */; };
+		92CBF4012038623B003B7086 /* RocketLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF4002038623B003B7086 /* RocketLabel.swift */; };
+		92CBF40320386264003B7086 /* RocketTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF40220386264003B7086 /* RocketTextField.swift */; };
+		92CBF4052038628C003B7086 /* RocketTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF4042038628C003B7086 /* RocketTextView.swift */; };
 		94FC08A7205FD7BD84BC1BDAA1EDDFB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		9C870D30B0D9FD10AB36F730F164814D /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1321537CF921310727B8EEA810220EDE /* Layout.swift */; };
 		9E03D1F5B83E945DBCCDE6009D0A32B4 /* DefaultTextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA63535414447C8F5D3E3C75867AB5F /* DefaultTextContentProvider.swift */; };
@@ -81,6 +84,9 @@
 		7BA56EBB9973AD963AF5190D3446BEF5 /* Localize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		8CCA81C28BFDA13E10A29BA517CEC32D /* BaseObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
 		8D6EC3248E074EA4232076E9FF12DEC2 /* ComponentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		92CBF4002038623B003B7086 /* RocketLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketLabel.swift; sourceTree = "<group>"; };
+		92CBF40220386264003B7086 /* RocketTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTextField.swift; sourceTree = "<group>"; };
+		92CBF4042038628C003B7086 /* RocketTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTextView.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		97E257830D32EABAEB959707CD2C6265 /* ComponentViewBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentViewBinder.swift; sourceTree = "<group>"; };
 		A00F093DC471A306FF25E32E62277A5A /* RocketKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RocketKit-umbrella.h"; sourceTree = "<group>"; };
@@ -139,6 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				27FE461FD921B6FC542F0A0E4E63F6F3 /* RocketView.swift */,
+				92CBF4002038623B003B7086 /* RocketLabel.swift */,
+				92CBF40220386264003B7086 /* RocketTextField.swift */,
+				92CBF4042038628C003B7086 /* RocketTextView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -439,6 +448,7 @@
 				52D10FBBEC41C9A209CE50491E92F8BE /* LayoutProvider.swift in Sources */,
 				A92CA67639788044FFF936588CB9CF01 /* LayoutSource.swift in Sources */,
 				E4C4D9A73B54AF2D071AE2AD43259833 /* Localize.swift in Sources */,
+				92CBF4012038623B003B7086 /* RocketLabel.swift in Sources */,
 				2D7654245EB6304BCF09012C0013EE95 /* LocalizedTextContentProvider.swift in Sources */,
 				BA0AF03B9E66055718CB2AB8CCEEAABE /* RocketComponent.swift in Sources */,
 				6498B2DF0D48541ECAD245A7B375DFCD /* RocketKit-dummy.m in Sources */,
@@ -446,12 +456,14 @@
 				7FD0FD20E7952374B40C16AA52BD0075 /* RocketView.swift in Sources */,
 				7E3A2C2A9605ABD7567BF4EE2FBE6462 /* RocketViewController.swift in Sources */,
 				E7D54254B24DB69431E684845C158774 /* RootViewController.swift in Sources */,
+				92CBF4052038628C003B7086 /* RocketTextView.swift in Sources */,
 				020B5899E37BB802D54E11FA92B4F0B1 /* String+Rocket.swift in Sources */,
 				A951FFFEDB1FA62A27DFB77CF5312E3E /* TextAttributes.swift in Sources */,
 				92216B7FE06A181D1A4BDFC3AFE6A3BF /* TextContentProvider.swift in Sources */,
 				64C003D58054A4729E8F689BF2D1C4F4 /* TextDescriptor.swift in Sources */,
 				64928F1BA143994771D09C17851C95BF /* UIColor+Hex.swift in Sources */,
 				CA02D81D8BAA1683406EA6165F3BE5DC /* UIFont+Rocket.swift in Sources */,
+				92CBF40320386264003B7086 /* RocketTextField.swift in Sources */,
 				AD1A2F3972F4E553FCE60F0DCAA4A719 /* ViewFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

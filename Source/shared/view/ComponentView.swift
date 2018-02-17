@@ -12,10 +12,26 @@
     import Cocoa
 #endif
 
-@objc public protocol ComponentView {
+public protocol ComponentView {
     var isRootView: Bool { get set }
     var view: RocketBaseView { get }
+    var contentView: RocketBaseView { get }
     var component: RocketComponent? { get set }
     var layoutProvider: LayoutProvider? { get set }
     func applyComponentProperties()
+    func applyTextProperties()
+    func updateView()
+    func updateText(animationDuration: TimeInterval)
 }
+
+//extension ComponentView where Self: RocketBaseView {
+//}
+
+protocol TextHavingView {
+    var view: RocketBaseView { get }
+    var attributedString: NSAttributedString? { get set }
+}
+
+//extension TextHavingView where Self: RocketBaseView {
+//}
+

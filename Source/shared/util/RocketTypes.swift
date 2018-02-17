@@ -9,18 +9,12 @@
     import UIKit
     
     public typealias RocketBaseView = UIView
-    typealias RocketLabel = UILabel
-    typealias RocketTextField = UITextField
-    typealias RocketTextView = UITextView
 #else
     import Cocoa
     
     typealias UIEdgeInsets = NSEdgeInsets
 
     public typealias RocketBaseView = NSView
-    typealias RocketLabel = NSTextField
-    typealias RocketTextField = NSTextField
-    typealias RocketTextView = NSTextView
 #endif
 
 typealias FailureHandler = ((Error?)->Void)

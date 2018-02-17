@@ -12,13 +12,15 @@ public enum ComponentType: Int {
     case container
 }
 
-struct AutoConstrainingTextType: OptionSet {
-    let rawValue: Int
+public struct AutoConstrainingTextType: OptionSet {
+    public let rawValue: Int
     
-    static let none  = AutoConstrainingTextType(rawValue: 0)
-    static let width = AutoConstrainingTextType(rawValue: 1 << 0)
-    static let height  = AutoConstrainingTextType(rawValue: 1 << 1)
-    static let widthAndHeight: AutoConstrainingTextType = [.width, .height]
+    public init(rawValue: Int) { self.rawValue = rawValue }
+    
+    public static let none  = AutoConstrainingTextType(rawValue: 0)
+    public static let width = AutoConstrainingTextType(rawValue: 1 << 0)
+    public static let height  = AutoConstrainingTextType(rawValue: 1 << 1)
+    public static let widthAndHeight: AutoConstrainingTextType = [.width, .height]
 }
 
 public class RocketComponent: BaseObject {
@@ -26,17 +28,17 @@ public class RocketComponent: BaseObject {
     let componentType: ComponentType
     let name: String
 
-    let cornerRadius: CGFloat
-    let borderWidth: CGFloat
-    let isClipped: Bool
-    let isRasterized: Bool
-    let alpha: CGFloat
-    var borderColor: ColorType?
-    var backgroundColor: ColorType?
+    public let cornerRadius: CGFloat
+    public let borderWidth: CGFloat
+    public let isClipped: Bool
+    public let isRasterized: Bool
+    public let alpha: CGFloat
+    public var borderColor: ColorType?
+    public var backgroundColor: ColorType?
     
-    var textDescriptor: TextDescriptor?
-    var autoConstrainingTextType = AutoConstrainingTextType.none
-    var usePreciseTextAlignments = false
+    public var textDescriptor: TextDescriptor?
+    public var autoConstrainingTextType = AutoConstrainingTextType.none
+    public var usePreciseTextAlignments = false
     
     let layoutObjects: [Layout]
     let defaultLayoutObjects: [Layout]
@@ -50,8 +52,8 @@ public class RocketComponent: BaseObject {
     let childComponents: [RocketComponent]
     internal (set) var parentComponent: RocketComponent?
     
-    var isTopLevelComponent: Bool { return parentComponent == nil }
-    var topLevelComponent: RocketComponent {
+    public var isTopLevelComponent: Bool { return parentComponent == nil }
+    public var topLevelComponent: RocketComponent {
         if let parentComponent = parentComponent {
             return parentComponent.topLevelComponent
         }
@@ -59,6 +61,26 @@ public class RocketComponent: BaseObject {
     }
     
     public var isContentConstrainedBySafeArea = false
+    
+    var textHeightConstrainedByWidth: CGFloat {
+        var result: CGFloat = 0.0
+        if let heightConstraint = layoutObject(with: .height) {
+            result = heightConstraint.idealMeta.constant
+        } else if let heightConstraint = defaultLayoutObject(with: .height) {
+            result = heightConstraint.idealMeta.constant
+        }
+
+        var width: CGFloat = 0.0
+        if let widthConstraint = layoutObject(with: .width) {
+            width = widthConstraint.idealMeta.constant
+        } else if let widthConstraint = defaultLayoutObject(with: .width) {
+            width = widthConstraint.idealMeta.constant
+        }
+        if let containerFrame = textDescriptor?.containerFrame(textType: .label, boundBy: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: usePreciseTextAlignments) {
+            result = containerFrame.height
+        }
+        return result
+    }
     
     private static let typeKey = "type"
     private static let nameKey = "name"
@@ -128,7 +150,17 @@ public class RocketComponent: BaseObject {
         
         return nil;
     }
-    
+
+    internal func defaultLayoutObject(with attribute: NSLayoutAttribute) -> Layout? {
+        for layoutObject in defaultLayoutObjects {
+            if layoutObject.attribute == attribute {
+                return layoutObject;
+            }
+        }
+        
+        return nil;
+    }
+
     internal func hasLayoutObject(with attribute: NSLayoutAttribute) -> Bool {
         return layoutObject(with: attribute) != nil;
     }

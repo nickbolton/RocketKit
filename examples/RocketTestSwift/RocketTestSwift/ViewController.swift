@@ -9,15 +9,25 @@
 import UIKit
 import RocketKit
 
-class ViewController: UIViewController {
+class ViewController: RootViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vc = LayoutProvider.shared.buildViewController(withIdentifier: "542EA130-F283-494A-92DD-1BD57C8F072C")
-        addChildViewController(vc)
-        vc.view.frame = view.bounds
-        view.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
+        if let component = LayoutProvider.shared.componentByIdentifier("9AF4A96E-8872-4C81-B2F9-5522214FD9D7") {
+            component.textDescriptor?.text = "What in the world is happening here??"
+            
+            let deadline = DispatchTime.now() + 3.0
+            
+            DispatchQueue.main.asyncAfter(deadline: deadline) {
+                component.textDescriptor?.textAttributes.textAlignment = .center
+                component.textDescriptor?.text = "Weeee\nYo!"
+                
+                if var view = LayoutProvider.shared.view(with: component.identifier) {
+                    view.component = component
+                    view.updateText(animationDuration: 0.0)
+                }
+            }
+        }
     }
 }
 

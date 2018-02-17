@@ -16,7 +16,7 @@ class ViewFactory: NSObject {
     
     private let typeMap =
         [ComponentType.container : RocketView.self]
-
+    
     // MARK: Public
     
     public func buildView(with component: RocketComponent) -> ComponentView {
@@ -28,5 +28,16 @@ class ViewFactory: NSObject {
         let view = viewType!.init()
         view.component = component
         return view
+    }
+    
+    public func buildTextView(with descriptor: TextDescriptor) -> TextHavingView {
+        switch descriptor.targetTextType {
+        case .label:
+            return RocketLabel()
+        case .field:
+            return RocketTextField()
+        case .view:
+            return RocketTextView()
+        }
     }
 }

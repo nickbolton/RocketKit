@@ -112,15 +112,15 @@ public class LayoutProvider: NSObject {
 
     // MARK: Internal
     
-    internal func componentByIdentifier(_ identifier: String) -> RocketComponent? {
+    public func componentByIdentifier(_ identifier: String) -> RocketComponent? {
         return layoutSource?.component(with: identifier)
     }
     
-    internal func componentByName(_ name: String) -> RocketComponent? {
+    public func componentByName(_ name: String) -> RocketComponent? {
         return layoutSource?.componentByName(name)
     }
     
-    internal func view(with identifier: String?) -> ComponentView? {
+    public func view(with identifier: String?) -> ComponentView? {
         guard let identifier = identifier else {
             return nil
         }

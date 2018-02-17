@@ -26,10 +26,11 @@ class ComponentViewBinder: NSObject {
         layoutProvider.registerView(rocketView, for: component)
         rocketView.applyComponentProperties()
         applyLayout(component: component, layoutProvider: layoutProvider)
+        let contentView = rocketView.contentView
         for child in component.childComponents {
             var childView = viewFactory.buildView(with: child)
             childView.layoutProvider = layoutProvider
-            view.addSubview(childView.view)
+            contentView.addSubview(childView.view)
             #if os(iOS)
                 childView.view.setNeedsLayout()
             #endif
@@ -40,6 +41,25 @@ class ComponentViewBinder: NSObject {
         guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
         layoutProvider.unregisterView(view, for: component)
         isSetup = false
+    }
+    
+    internal func updateView(for rocketView: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?) {
+        guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
+        rocketView.applyComponentProperties()
+        for layoutObject in component.allLayoutObjects {
+            layoutBinder.cleanUp()
+            layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
+        }
+    }
+    
+    func updateText(for rocketView: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?, animationDuration: TimeInterval = 0.0) {
+        guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
+        rocketView.applyTextProperties()
+        if component.autoConstrainingTextType.contains(.height) {
+            if let heightConstraint = component.layoutObject(with: .height) ?? component.defaultLayoutObject(with: .height) {
+                layoutBinder.updateLayout(heightConstraint, layoutProvider: layoutProvider, animationDuration: animationDuration)
+            }
+        }
     }
     
     private func applyLayout(component: RocketComponent, layoutProvider: LayoutProvider) {
