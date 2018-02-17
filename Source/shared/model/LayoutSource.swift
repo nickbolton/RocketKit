@@ -33,6 +33,7 @@ public class LayoutSource: NSObject {
     private let projectColorsKey = "projectColors"
 
     required public init(dictionary: [String: Any]) {
+        print("loading data source: \(dictionary)")
         self.version = dictionary[versionKey] as? Int ?? 1
         self.projectColors = LayoutSource.initializeProjectColors(dictionary[projectColorsKey] as? [[String: Any]] ?? [])
         self.rootComponentId = dictionary[rootComponentIdKey] as? String
