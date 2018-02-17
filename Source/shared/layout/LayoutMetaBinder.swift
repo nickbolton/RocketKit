@@ -35,21 +35,6 @@ class LayoutMetaBinder: NSObject {
         constraint = nil
     }
     
-    internal func updateLayout(with layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
-        
-        guard let component = layoutProvider.componentByIdentifier(layoutObject.componentIdentifier) else { return }
-        guard let componentView = layoutProvider.view(with: layoutObject.componentIdentifier) as? RocketBaseView else { return }
-
-        var constant = meta.constant
-
-        if layoutObject.attribute == .height && component.autoConstrainingTextType.contains(.height) {
-            constant = component.textHeightConstrainedByWidth
-        }
-
-        constraint?.constant = constant
-        componentView.layoutIfNeeded()
-    }
-    
     internal func createConstraintIfNecessary(with layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
         
         guard let rocketView = layoutProvider.view(with: layoutObject.componentIdentifier) else { return }
@@ -137,7 +122,6 @@ class LayoutMetaBinder: NSObject {
             return
         }
         
-        guard let component = layoutProvider.componentByIdentifier(layoutObject.componentIdentifier) else { return }
         guard let view = layoutProvider.view(with: layoutObject.componentIdentifier) else { return }
                         
         let relatedView = layoutProvider.view(with: layoutObject.relatedComponentIdentifier)?.contentView

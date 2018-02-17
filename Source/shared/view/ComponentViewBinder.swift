@@ -50,17 +50,7 @@ class ComponentViewBinder: NSObject {
             layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
         }
     }
-    
-    func updateText(for rocketView: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?) {
-        guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
-        rocketView.applyTextProperties()
-        if component.autoConstrainingTextType.contains(.height) {
-            if let heightConstraint = component.layoutObject(with: .height) ?? component.defaultLayoutObject(with: .height) {
-                layoutBinder.updateLayout(heightConstraint, layoutProvider: layoutProvider)
-            }
-        }
-    }
-    
+        
     internal func applyLayout(component: RocketComponent, layoutProvider: LayoutProvider) {
         layoutBinder.cleanUp()
         for layoutObject in component.allLayoutObjects {

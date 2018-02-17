@@ -117,7 +117,7 @@ public class RocketView: UIView, ComponentView {
     
     public func updateText() {
         applyTextProperties()
-        binder.updateText(for: self, component: component, layoutProvider: layoutProvider)
+        setNeedsLayout()
     }
 
     // MARK: Layout
