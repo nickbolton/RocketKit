@@ -14,7 +14,7 @@ class ViewController: RootViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let component = LayoutProvider.shared.componentByIdentifier("9AF4A96E-8872-4C81-B2F9-5522214FD9D7") {
-            component.textDescriptor?.text = "What in the world is happening here??"
+            component.textDescriptor?.text = "Hhat in the world isH happening here??"
 //
 //            let deadline = DispatchTime.now() + 3.0
 //

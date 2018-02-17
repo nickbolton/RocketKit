@@ -42,6 +42,7 @@ public class TextDescriptor {
     public init(dictionary: [String: Any]) {
         self.text = dictionary[TextDescriptor.textKey] as? String ?? ""
         self.targetTextType = TargetTextType(rawValue: dictionary[TextDescriptor.targetTextTypeKey] as? Int ?? 0) ?? .label
+//        self.targetTextType = .view
         if let attributesDict = dictionary[TextDescriptor.textAttributesKey] as? [String: Any] {
             self.textAttributes = TextAttributes(dictionary: attributesDict)
         }
@@ -54,8 +55,15 @@ public class TextDescriptor {
     static func textFrame(for component: RocketComponent, text: String, textType: TargetTextType, containerSize: CGSize) -> CGRect {
         
         let boundBy = textBoundingSize(for: component, textIn: text, textType: textType, containerSize: containerSize, forceContainerWidth: true)
-
+        
         return component.textDescriptor?.textFrame(for: text, textType: textType, boundBy: boundBy, usePreciseTextAlignments: component.usePreciseTextAlignments, containerSize: containerSize) ?? .zero
+    }
+    
+    static func containerFrame(for component: RocketComponent, text: String, textType: TargetTextType, containerSize: CGSize) -> CGRect {
+        
+        let boundBy = textBoundingSize(for: component, textIn: text, textType: textType, containerSize: containerSize, forceContainerWidth: true)
+        
+        return component.textDescriptor?.containerFrame(for: text, textType: textType, boundBy: boundBy, usePreciseTextAlignments: component.usePreciseTextAlignments) ?? .zero
     }
     
     private static func textBoundingSize(for component: RocketComponent, textIn: String?, textType: TargetTextType, containerSize: CGSize, forceContainerWidth: Bool) -> CGSize {

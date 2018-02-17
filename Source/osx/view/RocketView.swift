@@ -63,6 +63,8 @@ public class RocketView: NSView, ComponentView, RocketLayerDelegate {
         guard let textDescriptor = component?.textDescriptor, textDescriptor.text != "" else { return }
         textView = ViewFactory().buildTextView(with: textDescriptor)
         textView?.textDescriptor = textDescriptor
+        (textView?.view as? RocketLabel)?.backgroundColor = NSColor(calibratedRed: 0.0, green: 255.0, blue: 0.0, alpha: 0.2)
+
         addSubview(textView!.view)
     }
     
@@ -103,22 +105,18 @@ public class RocketView: NSView, ComponentView, RocketLayerDelegate {
         guard let textDescriptor = component.textDescriptor else { return }
         guard frame.width > 0.0 && frame.height > 0.0 else { return }
         
-        let sideMargins = TextMetricsCache.shared.textMargins(for: textDescriptor, textType: textDescriptor.targetTextType)
-
         var componentFrame = frame
-        componentFrame.size.width -= sideMargins.left + sideMargins.right
         
         if !component.isTopLevelComponent && component.autoConstrainingTextType.contains(.height) {
-            if let containerFrame = component.textDescriptor?.containerFrame(textType: textDescriptor.targetTextType, boundBy: CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments) {
-                
-                if let heightConstraint = component.layoutObject(with: .height) {
-                    binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint?.constant = containerFrame.height
-                } else if let heightConstraint = component.defaultLayoutObject(with: .height) {
-                    binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint?.constant = containerFrame.height
-                }
-                
-                componentFrame.size.height = containerFrame.height
+            let containerFrame = TextDescriptor.containerFrame(for: component, text: textDescriptor.text, textType: textDescriptor.targetTextType, containerSize: componentFrame.size)
+            
+            if let heightConstraint = component.layoutObject(with: .height) {
+                binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint?.constant = containerFrame.height
+            } else if let heightConstraint = component.defaultLayoutObject(with: .height) {
+                binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint?.constant = containerFrame.height
             }
+            
+            componentFrame.size.height = containerFrame.height
         }
         
         let textFrame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: textDescriptor.targetTextType, containerSize: componentFrame.size)
