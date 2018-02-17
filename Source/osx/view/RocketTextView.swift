@@ -17,6 +17,8 @@ class RocketTextView: NSTextView, TextHavingView {
         }
     }
     
+    public override var wantsDefaultClipping: Bool { return false }
+    
     var textSize: CGSize = .zero
     override var intrinsicContentSize: CGSize { return textSize }
     

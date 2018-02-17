@@ -178,7 +178,7 @@ public class TextDescriptor {
     }
 }
 
-struct TextMetricsCache {
+public struct TextMetricsCache {
     static let shared = TextMetricsCache()
     private init() {}
     

@@ -139,7 +139,10 @@ public class RocketView: UIView, ComponentView {
         guard let textDescriptor = component.textDescriptor else { return }
         guard frame.width > 0.0 && frame.height > 0.0 else { return }
 
+        let sideMargins = TextMetricsCache.shared.textMargins(for: textDescriptor, textType: textDescriptor.targetTextType)
+        
         var componentFrame = useSafeArea ? safeContainer.frame : frame
+        componentFrame.size.width -= sideMargins.left + sideMargins.right
         
         if !component.isTopLevelComponent && component.autoConstrainingTextType.contains(.height) {
             if let containerFrame = component.textDescriptor?.containerFrame(textType: textDescriptor.targetTextType, boundBy: CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments) {

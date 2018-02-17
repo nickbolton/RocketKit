@@ -25,6 +25,8 @@ class RocketTextField: NSTextField, TextHavingView {
         set { maximumNumberOfLines = newValue }
     }
     
+    public override var wantsDefaultClipping: Bool { return false }
+    
     var textSize: CGSize = .zero
     override var intrinsicContentSize: CGSize { return textSize }
     

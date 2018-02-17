@@ -23,7 +23,7 @@ class RocketLabel: NSTextField, TextHavingView {
         get { return maximumNumberOfLines }
         set { maximumNumberOfLines = newValue }
     }
-    
+        
     var textSize: CGSize = .zero
     override var intrinsicContentSize: CGSize { return textSize }
     

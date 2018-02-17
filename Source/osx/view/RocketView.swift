@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public class RocketView: NSView, ComponentView {
+public class RocketView: NSView, ComponentView, RocketLayerDelegate {
     public var contentView: RocketBaseView { return self }
     public var view: RocketBaseView { return self }
     public var isRootView: Bool = false
@@ -16,12 +16,20 @@ public class RocketView: NSView, ComponentView {
 
     public var layoutProvider: LayoutProvider? { didSet { setupViewIfNecessary() } }
     public var component: RocketComponent? { didSet { setupViewIfNecessary() } }
-    
+        
     public override func viewDidMoveToSuperview() {
         super.viewDidMoveToSuperview()
         setupViewIfNecessary()
     }
-
+    
+    public override func makeBackingLayer() -> CALayer {
+        let layer = RocketLayer()
+        layer.rocketDelegate = self
+        return layer
+    }
+    
+    var isLayerClipped: Bool { return component?.isClipped ?? false }
+    
     public override var isFlipped: Bool { return true }
 
     private let binder = ComponentViewBinder()
@@ -33,7 +41,6 @@ public class RocketView: NSView, ComponentView {
     public func applyComponentProperties() {
         guard let component = component else { return }
         wantsLayer = true
-        layer?.masksToBounds = component.isClipped
         alphaValue = component.alpha
         layer?.borderWidth = component.borderWidth
         layer?.cornerRadius = component.cornerRadius
@@ -96,7 +103,10 @@ public class RocketView: NSView, ComponentView {
         guard let textDescriptor = component.textDescriptor else { return }
         guard frame.width > 0.0 && frame.height > 0.0 else { return }
         
+        let sideMargins = TextMetricsCache.shared.textMargins(for: textDescriptor, textType: textDescriptor.targetTextType)
+
         var componentFrame = frame
+        componentFrame.size.width -= sideMargins.left + sideMargins.right
         
         if !component.isTopLevelComponent && component.autoConstrainingTextType.contains(.height) {
             if let containerFrame = component.textDescriptor?.containerFrame(textType: textDescriptor.targetTextType, boundBy: CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments) {
