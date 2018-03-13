@@ -55,6 +55,7 @@ class ComponentViewBinder: NSObject {
         layoutBinder.cleanUp()
         for layoutObject in component.allLayoutObjects {
             layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
+//            layoutBinder.updateLayout(layoutObject, layoutProvider: layoutProvider)
         }
     }
 }

@@ -13,6 +13,7 @@
 
 class LocalizedTextContentProvider: TextContentProvider {
     func textContent(for component: RocketComponent, onSuccess: TextContentSuccessHandler? = nil, onFailure: FailureHandler? = nil) {
-        onSuccess?(component.textDescriptor?.text.localized())
+        let result = component.textDescriptor?.textDescriptors.map { td in td.text.localized() } ?? []
+        onSuccess?(result)
     }
 }

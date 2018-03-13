@@ -35,7 +35,22 @@ class LayoutBinder: NSObject {
         binder(forLayout: layoutObject, meta: layoutObject.minMeta).createConstraintIfNecessary(with: layoutObject, meta: layoutObject.minMeta, layoutProvider: layoutProvider)
         binder(forLayout: layoutObject, meta: layoutObject.maxMeta).createConstraintIfNecessary(with: layoutObject, meta: layoutObject.maxMeta, layoutProvider: layoutProvider)
     }
-        
+
+    internal func updateLayout(_ layoutObject: Layout, layoutProvider: LayoutProvider) {
+        updateLayout(layoutObject, meta: layoutObject.idealMeta, layoutProvider: layoutProvider)
+        updateLayout(layoutObject, meta: layoutObject.minMeta, layoutProvider: layoutProvider)
+        updateLayout(layoutObject, meta: layoutObject.maxMeta, layoutProvider: layoutProvider)
+    }
+    
+    private func updateLayout(_ layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
+        let layoutBinder = binder(forLayout: layoutObject, meta: meta)
+        if layoutBinder.constraint == nil {
+            layoutBinder.createConstraintIfNecessary(with: layoutObject, meta: meta, layoutProvider: layoutProvider)
+        } else {
+            layoutBinder.updateConstraint(with: meta)
+        }
+    }
+
     internal func cleanUp() {
         for binder in metaBinders.values {
             binder.cleanUp()

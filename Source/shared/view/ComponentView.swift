@@ -29,7 +29,7 @@
 
 protocol TextHavingView {
     var view: RocketBaseView { get }
-    var textDescriptor: TextDescriptor? { get set }
+    var textDescriptor: CompositeTextDescriptor? { get set }
     var textSize: CGSize { get set }
 }
 

@@ -19,25 +19,3 @@
 
 typealias FailureHandler = ((Error?)->Void)
 
-public enum TextAlignment : Int {
-    case left // Visually left aligned
-    case center // Visually centered
-    case right // Visually right aligned
-    case justified // Fully-justified. The last line in a paragraph is natural-aligned.
-    case natural // Indicates the default alignment for script
-    
-    func nativeAlignment() -> NSTextAlignment {
-        switch self {
-        case .left:
-            return .left
-        case .center:
-            return .center
-        case .right:
-            return .right
-        case .justified:
-            return .justified
-        case .natural:
-            return .natural
-        }
-    }
-}

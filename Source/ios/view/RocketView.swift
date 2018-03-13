@@ -48,14 +48,19 @@ public class RocketView: UIView, ComponentView {
         layer.cornerRadius = component.cornerRadius
         layer.borderColor = component.borderColor?.cgColor
         backgroundColor = component.backgroundColor
+        setupSafeContainerIfNecessary()
         applyTextProperties()
     }
     
+    var didIt = false
+    
     public func applyTextProperties() {
         cleanUpTextView()
-        guard let textDescriptor = component?.textDescriptor else { return }
-        setupSafeContainerIfNecessary()
-        setUpTextView(textDescriptor)
+        setUpTextView()
+        if !didIt {
+            didIt = true
+//            doit()
+        }
     }
     
     private func setupSafeContainerIfNecessary() {
@@ -65,10 +70,10 @@ public class RocketView: UIView, ComponentView {
 //        safeContainer.backgroundColor = UIColor.green
         safeContainer.translatesAutoresizingMaskIntoConstraints = false
         addSubview(safeContainer)
-        safeTopContraint = NSLayoutConstraint(item: safeContainer, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: safeAreaInsets.top)
-        safeBottomContraint = NSLayoutConstraint(item: safeContainer, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -safeAreaInsets.bottom)
-        safeLeftContraint = NSLayoutConstraint(item: safeContainer, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: safeAreaInsets.left)
-        safeRightContraint = NSLayoutConstraint(item: safeContainer, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -safeAreaInsets.right)
+        safeTopContraint = NSLayoutConstraint(item: safeContainer, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0)
+        safeBottomContraint = NSLayoutConstraint(item: safeContainer, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        safeLeftContraint = NSLayoutConstraint(item: safeContainer, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0)
+        safeRightContraint = NSLayoutConstraint(item: safeContainer, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0)
         
         safeTopContraint?.isActive = true
         safeBottomContraint?.isActive = true
@@ -76,13 +81,29 @@ public class RocketView: UIView, ComponentView {
         safeRightContraint?.isActive = true
     }
     
+    func doit() {
+        guard var textView = textView else { return }
+        guard let component = component else { return }
+        guard let textDescriptor = component.textDescriptor else { return }
+        
+        if textDescriptor.compositeText == "-Jay Z" {
+            print("container frame: \(frame), text frame: \((textView as! UILabel).frame)")
+        }
+        
+        let delay = 1.0
+        let delayTime = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            self.doit()
+        }
+    }
+    
     private func cleanUpTextView() {
         textView?.view.removeFromSuperview()
         textView = nil
     }
     
-    private func setUpTextView(_ textDescriptor: TextDescriptor) {
-        guard let textDescriptor = component?.textDescriptor, textDescriptor.text != "" else { return }
+    private func setUpTextView() {
+        guard let textDescriptor = component?.textDescriptor, textDescriptor.compositeText.count > 0 else { return }
         textView = ViewFactory().buildTextView(with: textDescriptor)
         textView?.textDescriptor = textDescriptor
         if useSafeArea {
@@ -93,13 +114,15 @@ public class RocketView: UIView, ComponentView {
     }
     
     open override func safeAreaInsetsDidChange() {
-        super.safeAreaInsetsDidChange()
-        setupSafeContainerIfNecessary()
-        safeTopContraint?.constant = safeAreaInsets.top
-        safeBottomContraint?.constant = -safeAreaInsets.bottom
-        safeLeftContraint?.constant = safeAreaInsets.left
-        safeRightContraint?.constant = -safeAreaInsets.right
-        safeContainer.layoutIfNeeded()
+        if #available(iOS 11, *) {
+            super.safeAreaInsetsDidChange()
+            setupSafeContainerIfNecessary()
+            safeTopContraint?.constant = safeAreaInsets.top
+            safeBottomContraint?.constant = -safeAreaInsets.bottom
+            safeLeftContraint?.constant = safeAreaInsets.left
+            safeRightContraint?.constant = -safeAreaInsets.right
+            safeContainer.layoutIfNeeded()
+        }
     }
     
     private func setupViewIfNecessary() {
@@ -128,6 +151,7 @@ public class RocketView: UIView, ComponentView {
             return
         }
         
+//        print("identifier: \(component.identifier)")
         binder.applyLayout(component: component, layoutProvider: layoutProvider)
         super.layoutSubviews()
         layoutTextViewIfNecessary()
@@ -137,27 +161,33 @@ public class RocketView: UIView, ComponentView {
         guard var textView = textView else { return }
         guard let component = component else { return }
         guard let textDescriptor = component.textDescriptor else { return }
-        guard frame.width > 0.0 && frame.height > 0.0 else { return }
+        guard frame.width > 0.0 || frame.height > 0.0 else { return }
+        
+        print("frame: \(frame)")
 
-        let sideMargins = TextMetricsCache.shared.textMargins(for: textDescriptor, textType: textDescriptor.targetTextType)
+        let boundBy = CGSize(width: frame.width != 0.0 ? frame.width : CGFloat.greatestFiniteMagnitude, height: frame.height != 0.0 ? frame.height : CGFloat.greatestFiniteMagnitude)
+        let textMargins = TextMetricsCache.shared.textMetrics(for: textDescriptor, textType: textDescriptor.targetTextType, boundBy: boundBy).textMargins
         
         var componentFrame = useSafeArea ? safeContainer.frame : frame
-        componentFrame.size.width -= sideMargins.left + sideMargins.right
+        componentFrame.size.width -= textMargins.left + textMargins.right
         
+        
+//        print("identifier: \(component.identifier)")
         if !component.isTopLevelComponent && component.autoConstrainingTextType.contains(.height) {
-            let containerFrame = TextDescriptor.containerFrame(for: component, text: textDescriptor.text, textType: textDescriptor.targetTextType, containerSize: componentFrame.size)
-            
-            if let heightConstraint = component.layoutObject(with: .height) {
-                binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint?.constant = containerFrame.height
-            } else if let heightConstraint = component.defaultLayoutObject(with: .height) {
-                binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint?.constant = containerFrame.height
+            let containerFrame = textDescriptor.containerFrame(for: textDescriptor.targetTextType, boundBy: componentFrame.size, usePreciseTextAlignments: component.usePreciseTextAlignments)
+            var heightConstraint = component.layoutObject(with: .height)
+            if heightConstraint == nil {
+                heightConstraint = component.defaultLayoutObject(with: .height)
             }
-                
+            if let heightConstraint = heightConstraint, let constraint = binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint, constraint.constant != containerFrame.height {
+                constraint.constant = containerFrame.height
+            }
+            
             componentFrame.size.height = containerFrame.height
         }
 
-        var textFrame = TextDescriptor.textFrame(for: component, text: textDescriptor.text, textType: textDescriptor.targetTextType, containerSize: componentFrame.size)
-        textFrame.size.width += sideMargins.left + sideMargins.right
+        var textFrame = textDescriptor.textFrame(for: textDescriptor.targetTextType, boundBy: CGSize(width: componentFrame.width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments, containerSize: componentFrame.size) 
+        textFrame.size.width += textMargins.left + textMargins.right
         textView.textSize = textFrame.size
         textView.view.frame = textFrame
     }

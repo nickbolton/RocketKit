@@ -3,9 +3,10 @@ import UIKit
 
 @IBDesignable open class RocketViewController: UIViewController {
     
-    var componentId: String?
+    public var componentId: String?
     public var componentView: ComponentView?
     public var component: RocketComponent? { return componentView?.component }
+    public var layoutProvider = LayoutProvider.shared
     
     @IBInspectable public var isContentConstrainedBySafeArea: Bool = false {
         didSet {
@@ -21,7 +22,7 @@ import UIKit
     override open func loadView() {
         var v: UIView?
         if  let componentId = componentId {
-            componentView = LayoutProvider.shared.buildView(withIdentifier: componentId)
+            componentView = layoutProvider.buildView(withIdentifier: componentId)
             componentView?.component?.isContentConstrainedBySafeArea = isContentConstrainedBySafeArea
             componentView?.isRootView = true
             componentView?.layoutProvider = LayoutProvider.shared

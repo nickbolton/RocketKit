@@ -35,6 +35,10 @@ class LayoutMetaBinder: NSObject {
         constraint = nil
     }
     
+    internal func updateConstraint(with meta: LayoutMeta) {
+        constraint?.constant = meta.constant
+    }
+    
     internal func createConstraintIfNecessary(with layoutObject: Layout, meta: LayoutMeta, layoutProvider: LayoutProvider) {
         
         guard let rocketView = layoutProvider.view(with: layoutObject.componentIdentifier) else { return }

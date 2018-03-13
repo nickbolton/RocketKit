@@ -9,12 +9,7 @@ import UIKit
 
 class RocketTextField: UITextField, TextHavingView {
     var view: RocketBaseView { return self }
-    var textDescriptor: TextDescriptor? {
-        didSet {
-            font = textDescriptor?.textAttributes.font
-            attributedText = textDescriptor?.attributedString
-        }
-    }
+    var textDescriptor: CompositeTextDescriptor? { didSet { attributedText = textDescriptor?.attributedString } }
 
     var textSize: CGSize = .zero
     override var intrinsicContentSize: CGSize { return textSize }

@@ -25,7 +25,7 @@ public struct FontFamilyMember {
     private static let isItalicKey = "italic"
     private static let isSystemFontKey = "system"
     
-    public init(name: String, familyName: String, weight: UIFontWeight, isItalic: Bool, isSystemFont: Bool) {
+    public init(name: String = "", familyName: String = "", weight: UIFontWeight = 0.0, isItalic: Bool = false, isSystemFont: Bool = true) {
         self.name = name
         self.familyName = familyName
         self.weight = weight
@@ -36,7 +36,7 @@ public struct FontFamilyMember {
     public init(dictionary: [String: Any]) {
         self.name = dictionary[FontFamilyMember.nameKey] as? String ?? ""
         self.familyName = dictionary[FontFamilyMember.familyNameKey] as? String ?? ""
-        self.weight = dictionary[FontFamilyMember.weightKey] as? UIFontWeight ?? 0
+        self.weight = dictionary[FontFamilyMember.weightKey] as? UIFontWeight ?? 0.0
         self.isItalic = dictionary[FontFamilyMember.isItalicKey] as? Bool ?? false
         self.isSystemFont = dictionary[FontFamilyMember.isSystemFontKey] as? Bool ?? false
     }

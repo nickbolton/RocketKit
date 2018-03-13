@@ -13,9 +13,11 @@
 #endif
 
 public class LayoutProvider: NSObject {
-    static public let shared = LayoutProvider()
-    private override init() {
-        super.init()
+    static public let shared = LayoutProvider(shared: true)
+    private override init() {}
+    
+    private convenience init(shared: Bool) {
+        self.init()
         loadDefaultLayoutSource()
     }
     
@@ -23,6 +25,11 @@ public class LayoutProvider: NSObject {
     private (set) var layoutSource: LayoutSource?
     
     private var viewRegistry = [String: ComponentView]()
+    
+    public convenience init(layoutSource: LayoutSource) {
+        self.init()
+        self.layoutSource = layoutSource
+    }
     
     public func loadLayoutSource(from dict:[String: Any]) {
         viewRegistry.removeAll()

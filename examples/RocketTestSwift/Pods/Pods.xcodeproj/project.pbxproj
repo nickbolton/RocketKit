@@ -28,6 +28,7 @@
 		7E3A2C2A9605ABD7567BF4EE2FBE6462 /* RocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C256B2CCE61FD2534AA14D4D77CA5 /* RocketViewController.swift */; };
 		7FD0FD20E7952374B40C16AA52BD0075 /* RocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE461FD921B6FC542F0A0E4E63F6F3 /* RocketView.swift */; };
 		92216B7FE06A181D1A4BDFC3AFE6A3BF /* TextContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11493CC969FA0D5F439BA04B8EEF166B /* TextContentProvider.swift */; };
+		927CC0D12041A7EB0094C8A5 /* TextMetricsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927CC0D02041A7EB0094C8A5 /* TextMetricsCache.swift */; };
 		92CBF4012038623B003B7086 /* RocketLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF4002038623B003B7086 /* RocketLabel.swift */; };
 		92CBF40320386264003B7086 /* RocketTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF40220386264003B7086 /* RocketTextField.swift */; };
 		92CBF4052038628C003B7086 /* RocketTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF4042038628C003B7086 /* RocketTextView.swift */; };
@@ -84,6 +85,7 @@
 		7BA56EBB9973AD963AF5190D3446BEF5 /* Localize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		8CCA81C28BFDA13E10A29BA517CEC32D /* BaseObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
 		8D6EC3248E074EA4232076E9FF12DEC2 /* ComponentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
+		927CC0D02041A7EB0094C8A5 /* TextMetricsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMetricsCache.swift; sourceTree = "<group>"; };
 		92CBF4002038623B003B7086 /* RocketLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketLabel.swift; sourceTree = "<group>"; };
 		92CBF40220386264003B7086 /* RocketTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTextField.swift; sourceTree = "<group>"; };
 		92CBF4042038628C003B7086 /* RocketTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTextView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				F535344EFD39A419D571D270AE86AAFE /* TextAttributes.swift */,
 				11493CC969FA0D5F439BA04B8EEF166B /* TextContentProvider.swift */,
 				B87F55F7E609EB5077B45EFDCAD15FA7 /* TextDescriptor.swift */,
+				927CC0D02041A7EB0094C8A5 /* TextMetricsCache.swift */,
 			);
 			path = text;
 			sourceTree = "<group>";
@@ -409,6 +412,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					B8D9B11448FDAE73287DA713B4A02AA3 = {
+						LastSwiftMigration = 0920;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -473,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C55B2AA5A2D2A509B014A54539F6BB0A /* Pods-RocketTestSwift-dummy.m in Sources */,
+				927CC0D12041A7EB0094C8A5 /* TextMetricsCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +580,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5EF1B4E580AB6FCABDECA95E2DB6474A /* Pods-RocketTestSwift.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -610,6 +620,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A13415B16ECC6942BBD86323130A3CA5 /* Pods-RocketTestSwift.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

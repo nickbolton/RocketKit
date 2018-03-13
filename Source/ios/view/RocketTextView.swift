@@ -9,10 +9,10 @@ import UIKit
 
 class RocketTextView: UITextView, TextHavingView {
     var view: RocketBaseView { return self }
-    var textDescriptor: TextDescriptor? {
+    var textDescriptor: CompositeTextDescriptor? {
         didSet {
-            font = textDescriptor?.textAttributes.font
             attributedText = textDescriptor?.attributedString ?? NSAttributedString()
+            typingAttributes = textDescriptor?.textDescriptors.last?.attributes ?? [:]
         }
     }
 

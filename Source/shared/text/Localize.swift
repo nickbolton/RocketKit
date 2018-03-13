@@ -1,9 +1,9 @@
 //
 //  String+Localization.swift
-//  Traits
+//  Stack
 //
 //  Created by Nick Bolton on 8/10/16.
-//  Copyright © 2016 Insitome Inc. All rights reserved.
+//  Copyright © 2016 Stack. All rights reserved.
 //
 
 import Foundation
@@ -52,7 +52,7 @@ public func LocalizedPlural(string: String, argument: CVarArg) -> String {
     return string.localizedPlural(argument: argument)
 }
 
-public extension String {
+extension String {
     /**
      Swift 2 friendly localization syntax, replaces NSLocalizedString
      - Returns: The localized string.

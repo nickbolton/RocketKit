@@ -30,7 +30,7 @@ class ViewFactory: NSObject {
         return view
     }
     
-    public func buildTextView(with descriptor: TextDescriptor) -> TextHavingView {
+    public func buildTextView(with descriptor: CompositeTextDescriptor) -> TextHavingView {
         switch descriptor.targetTextType {
         case .label:
             return RocketLabel()

@@ -29,16 +29,16 @@ public enum MetaType: Int {
 
 public class LayoutMeta: BaseObject {
     
-    let constant: CGFloat
-    let multiplier: CGFloat
-    let proportionalLayoutObjectIdentifier: String?
-    let proportionalAttribute: NSLayoutAttribute
-    let layoutState: LayoutState
-    let metaType: MetaType
+    public var constant: CGFloat = 0.0
+    public var multiplier: CGFloat = 0.0
+    public var proportionalLayoutObjectIdentifier: String? = nil
+    public var proportionalAttribute = NSLayoutAttribute.notAnAttribute
+    public var layoutState = LayoutState.disabled
+    public var metaType = MetaType.none
     
-    var isProportional: Bool { return multiplier != 0.0 && proportionalLayoutObjectIdentifier != nil }
-    var isActive: Bool { return layoutState != .disabled }
-    var isLowerPriority: Bool { return layoutState == .low }
+    public var isProportional: Bool { return multiplier != 0.0 && proportionalLayoutObjectIdentifier != nil }
+    public var isActive: Bool { return layoutState != .disabled }
+    public var isLowerPriority: Bool { return layoutState == .low }
 
     private static let constantKey = "constant"
     private static let multiplierKey = "multiplier"
@@ -47,7 +47,7 @@ public class LayoutMeta: BaseObject {
     private static let stateKey = "state"
     private static let typeKey = "type"
     
-    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
+    required public override init(dictionary: [String: Any], layoutSource: LayoutSource) {
         self.constant = CGFloat(dictionary[LayoutMeta.constantKey] as? Float ?? 0.0)
         self.multiplier = CGFloat(dictionary[LayoutMeta.multiplierKey] as? Float ?? 0.0)
         self.proportionalLayoutObjectIdentifier = dictionary[LayoutMeta.proportionalLayoutObjectIdentifierKey] as? String
@@ -55,5 +55,17 @@ public class LayoutMeta: BaseObject {
         self.layoutState = LayoutState(rawValue: dictionary[LayoutMeta.stateKey] as? Int ?? 0) ?? .disabled
         self.metaType = MetaType(rawValue: dictionary[LayoutMeta.typeKey] as? Int ?? 0) ?? .none
         super.init(dictionary: dictionary, layoutSource: layoutSource)
+    }
+    
+    required public override init() {
+        super.init()
+    }
+    
+    convenience public init(multipler: CGFloat = 1.0, constant: CGFloat = 0.0, metaType: MetaType = .ideal, layoutState: LayoutState = .required) {
+        self.init()
+        self.multiplier = multipler
+        self.constant = constant
+        self.metaType = metaType
+        self.layoutState = layoutState
     }
 }

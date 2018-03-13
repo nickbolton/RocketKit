@@ -25,23 +25,23 @@ public struct AutoConstrainingTextType: OptionSet {
 
 public class RocketComponent: BaseObject {
     
-    let componentType: ComponentType
-    let name: String
+    var componentType = ComponentType.container
+    var name = ""
 
-    public let cornerRadius: CGFloat
-    public let borderWidth: CGFloat
-    public let isClipped: Bool
-    public let isRasterized: Bool
-    public let alpha: CGFloat
+    public var cornerRadius: CGFloat = 0.0
+    public var borderWidth: CGFloat = 0.0
+    public var isClipped = false
+    public var isRasterized = false
+    public var alpha: CGFloat = 1.0
     public var borderColor: ColorType?
     public var backgroundColor: ColorType?
     
-    public var textDescriptor: TextDescriptor?
+    public var textDescriptor: CompositeTextDescriptor?
     public var autoConstrainingTextType = AutoConstrainingTextType.none
     public var usePreciseTextAlignments = false
     
-    let layoutObjects: [Layout]
-    let defaultLayoutObjects: [Layout]
+    public var layoutObjects = [Layout]()
+    var defaultLayoutObjects = [Layout]()
     var allLayoutObjects: [Layout] {
         var result = [Layout]()
         result.append(contentsOf: defaultLayoutObjects)
@@ -49,8 +49,8 @@ public class RocketComponent: BaseObject {
         return result
     }
     
-    let childComponents: [RocketComponent]
-    internal (set) var parentComponent: RocketComponent?
+    public var childComponents = [RocketComponent]()
+    public var parentComponent: RocketComponent?
     
     public var isTopLevelComponent: Bool { return parentComponent == nil }
     public var topLevelComponent: RocketComponent {
@@ -61,27 +61,7 @@ public class RocketComponent: BaseObject {
     }
     
     public var isContentConstrainedBySafeArea = false
-    
-    var textHeightConstrainedByWidth: CGFloat {
-        var result: CGFloat = 0.0
-        if let heightConstraint = layoutObject(with: .height) {
-            result = heightConstraint.idealMeta.constant
-        } else if let heightConstraint = defaultLayoutObject(with: .height) {
-            result = heightConstraint.idealMeta.constant
-        }
-
-        var width: CGFloat = 0.0
-        if let widthConstraint = layoutObject(with: .width) {
-            width = widthConstraint.idealMeta.constant
-        } else if let widthConstraint = defaultLayoutObject(with: .width) {
-            width = widthConstraint.idealMeta.constant
-        }
-        if let containerFrame = textDescriptor?.containerFrame(textType: .label, boundBy: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: usePreciseTextAlignments) {
-            result = containerFrame.height
-        }
-        return result
-    }
-    
+        
     private static let typeKey = "type"
     private static let nameKey = "name"
     private static let cornerRadiusKey = "cornerRadius"
@@ -99,8 +79,8 @@ public class RocketComponent: BaseObject {
     private static let textDescriptorKey = "textDescriptor"
     private static let autoConstrainingTextTypeKey = "autoConstrainingTextType"
     private static let usePreciseTextAlignmentsKey = "usePreciseTextAlignments"
-
-    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
+    
+    required public override init(dictionary: [String: Any], layoutSource: LayoutSource) {
         self.componentType = ComponentType(rawValue: dictionary[RocketComponent.typeKey] as? Int ?? 0) ?? .container
         self.name = dictionary[RocketComponent.nameKey] as? String ?? ""
         self.cornerRadius = dictionary[RocketComponent.cornerRadiusKey] as? CGFloat ?? 0.0
@@ -120,10 +100,14 @@ public class RocketComponent: BaseObject {
         self.usePreciseTextAlignments = dictionary[RocketComponent.usePreciseTextAlignmentsKey] as? Bool ?? false
         
         if let textDescriptorDict = dictionary[RocketComponent.textDescriptorKey] as? [String: Any] {
-            self.textDescriptor = TextDescriptor(dictionary: textDescriptorDict)
+            self.textDescriptor = CompositeTextDescriptor(dictionary: textDescriptorDict)
         }
         
         super.init(dictionary: dictionary, layoutSource: layoutSource)
+    }
+    
+    required public override init() {
+        super.init()
     }
     
     private static func resolveColor(dict: [String: Any], colorKey: String, projectColorKey: String, layoutSource: LayoutSource) -> ColorType? {
@@ -242,5 +226,51 @@ public class RocketComponent: BaseObject {
             result.append(RocketComponent(dictionary: dict, layoutSource: layoutSource))
         }
         return result
+    }
+}
+
+// MARK: Ancestor Utilities
+
+extension RocketComponent {
+    
+    public func isAncestor(of component: RocketComponent) -> Bool {
+        var parentComponent = component.parentComponent
+        while parentComponent != nil {
+            if parentComponent!.identifier == self.identifier {
+                return true
+            }
+            parentComponent = parentComponent?.parentComponent
+        }
+        
+        return false
+    }
+
+    public func commonAncestor(with otherComponent: RocketComponent) -> RocketComponent? {
+        
+        if otherComponent.isAncestor(of: self) {
+            return otherComponent
+        } else if isAncestor(of: otherComponent) || identifier == otherComponent.identifier {
+            return self
+        }
+        
+        var commonAncestor: RocketComponent? = nil
+        var parentComponent = self.parentComponent
+        while parentComponent != nil {
+            commonAncestor = parentComponent?.commonAncestor(with: otherComponent)
+            if commonAncestor != nil {
+                return commonAncestor
+            }
+            parentComponent = parentComponent?.parentComponent
+        }
+        
+        parentComponent = otherComponent.parentComponent
+        while parentComponent != nil {
+            commonAncestor = parentComponent?.commonAncestor(with: self)
+            if commonAncestor != nil {
+                return commonAncestor
+            }
+            parentComponent = parentComponent?.parentComponent
+        }
+        return nil
     }
 }

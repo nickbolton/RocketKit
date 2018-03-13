@@ -14,18 +14,18 @@
 
 public class LayoutSource: NSObject {
 
-    private (set) var topLevelComponents = [String: RocketComponent]()
+    fileprivate (set) var topLevelComponents = [String: RocketComponent]()
     
     var rootComponent: RocketComponent? {
         guard let identifier = rootComponentId else { return nil }
         return component(with: identifier)
     }
     
-    let version: Int
+    var version: Int = 0
     private var componentMap = [String: RocketComponent]()
     private var componentMapByName = [String: RocketComponent]()
-    private let projectColors: [String: String]
-    let rootComponentId: String?
+    private var projectColors = [String: String]()
+    var rootComponentId: String? = nil
     
     private let versionKey = "version"
     private let componentsKey = "components"
@@ -42,6 +42,15 @@ public class LayoutSource: NSObject {
         establishComponentMap(components: Array(topLevelComponents.values))
     }
     
+    required public init(topLevelComponents: [RocketComponent]) {
+        for component in topLevelComponents {
+            self.topLevelComponents[component.identifier] = component
+        }
+        super.init()
+        establishComponentMap(components: Array(self.topLevelComponents.values))
+        establishParentAssociations(Array(self.topLevelComponents.values), parent: nil)
+    }
+    
     public func component(with identifier: String) -> RocketComponent? {
         return componentMap[identifier]
     }
@@ -54,7 +63,7 @@ public class LayoutSource: NSObject {
         return projectColors[identifier]
     }
     
-    private func establishComponentMap(components: [RocketComponent]) {
+    fileprivate func establishComponentMap(components: [RocketComponent]) {
         for component in components {
             componentMap[component.identifier] = component
             componentMapByName[component.name] = component
@@ -95,5 +104,12 @@ public class LayoutSource: NSObject {
             component.parentComponent = parent
             establishParentAssociations(component.childComponents, parent: component)
         }
+    }
+}
+
+public extension LayoutSource {
+    public func add(_ component: RocketComponent) {
+        topLevelComponents[component.identifier] = component
+        establishComponentMap(components: Array(topLevelComponents.values))
     }
 }

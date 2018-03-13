@@ -14,6 +14,10 @@ public class BaseObject: NSObject {
     
     private static let identifierKey = "identifier"
     
+    required public override init() {
+        self.identifier = UUID().uuidString
+    }
+    
     required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
         self.identifier = dictionary[BaseObject.identifierKey] as? String ?? ""
         super.init()

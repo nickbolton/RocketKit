@@ -11,7 +11,7 @@
     import Cocoa
 #endif
 
-typealias TextContentSuccessHandler = ((String?)->Void)
+typealias TextContentSuccessHandler = (([String])->Void)
 
 protocol TextContentProvider {
     func textContent(for component: RocketComponent, onSuccess: TextContentSuccessHandler?, onFailure: FailureHandler?)

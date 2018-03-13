@@ -13,6 +13,7 @@
 
 class DefaultTextContentProvider: TextContentProvider {
     func textContent(for component: RocketComponent, onSuccess: TextContentSuccessHandler? = nil, onFailure: FailureHandler? = nil) {
-        onSuccess?(component.textDescriptor?.text)
+        let result = component.textDescriptor?.textDescriptors.map { td in td.text } ?? []
+        onSuccess?(result)
     }
 }
