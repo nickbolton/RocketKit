@@ -11,12 +11,12 @@ public typealias ColorType = UIColor
 
 public extension UIColor {
     
-    convenience init(hex: String) {
+    public convenience init(hex: String) {
         let trimmedHex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
         Scanner(string: trimmedHex).scanHexInt32(&int)
         let a, r, g, b: UInt32
-        switch trimmedHex.characters.count {
+        switch trimmedHex.count {
         case 3: // RGB (12-bit)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
         case 6: // RGB (24-bit)
@@ -27,5 +27,18 @@ public extension UIColor {
             (a, r, g, b) = (255, 0, 0, 0)
         }
         self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
+    }
+    
+    public var hexcode: String {
+    
+        var red: CGFloat = 0.0
+        var green: CGFloat = 0.0
+        var blue: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
+        
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        let hex = (Int(red * 255.0) << 24) | (Int(green * 255.0) << 16) | (Int(blue * 255.0) << 8) | Int(alpha * 255.0)
+        return String(format: "%08lx", hex)
     }
 }

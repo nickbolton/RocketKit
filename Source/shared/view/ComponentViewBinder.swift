@@ -42,20 +42,20 @@ class ComponentViewBinder: NSObject {
         isSetup = false
     }
     
-    internal func updateView(for rocketView: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?) {
-        guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
-        rocketView.applyComponentProperties()
-        for layoutObject in component.allLayoutObjects {
-            layoutBinder.cleanUp()
-            layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
-        }
-    }
-        
-    internal func applyLayout(component: RocketComponent, layoutProvider: LayoutProvider) {
-        layoutBinder.cleanUp()
-        for layoutObject in component.allLayoutObjects {
-            layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
-//            layoutBinder.updateLayout(layoutObject, layoutProvider: layoutProvider)
-        }
-    }
+//    internal func updateView(for rocketView: ComponentView, component: RocketComponent?, layoutProvider: LayoutProvider?) {
+//        guard isSetup, let component = component, let layoutProvider = layoutProvider else { return }
+//        rocketView.applyComponentProperties()
+//        for layoutObject in component.allLayoutObjects {
+//            layoutBinder.cleanUp()
+//            layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
+//        }
+//    }
+    
+//    internal func applyLayout(component: RocketComponent, layoutProvider: LayoutProvider) {
+//        layoutBinder.cleanUp()
+//        for layoutObject in component.allLayoutObjects {
+//            layoutBinder.addLayout(layoutObject, layoutProvider: layoutProvider)
+////            layoutBinder.updateLayout(layoutObject, layoutProvider: layoutProvider)
+//        }
+//    }
 }

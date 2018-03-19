@@ -80,23 +80,7 @@ public class RocketView: UIView, ComponentView {
         safeLeftContraint?.isActive = true
         safeRightContraint?.isActive = true
     }
-    
-    func doit() {
-        guard var textView = textView else { return }
-        guard let component = component else { return }
-        guard let textDescriptor = component.textDescriptor else { return }
-        
-        if textDescriptor.compositeText == "-Jay Z" {
-            print("container frame: \(frame), text frame: \((textView as! UILabel).frame)")
-        }
-        
-        let delay = 1.0
-        let delayTime = DispatchTime.now() + delay
-        DispatchQueue.main.asyncAfter(deadline: delayTime) {
-            self.doit()
-        }
-    }
-    
+
     private func cleanUpTextView() {
         textView?.view.removeFromSuperview()
         textView = nil
@@ -135,7 +119,7 @@ public class RocketView: UIView, ComponentView {
     // MARK: Helpers
     
     public func updateView() {
-        binder.updateView(for: self, component: component, layoutProvider: layoutProvider)
+//        binder.updateView(for: self, component: component, layoutProvider: layoutProvider)
     }
     
     public func updateText() {
@@ -152,43 +136,54 @@ public class RocketView: UIView, ComponentView {
         }
         
 //        print("identifier: \(component.identifier)")
-        binder.applyLayout(component: component, layoutProvider: layoutProvider)
+//        binder.applyLayout(component: component, layoutProvider: layoutProvider)
         super.layoutSubviews()
-        layoutTextViewIfNecessary()
+//        layoutTextViewIfNecessary()
+        
+        
+        let constrainedSize = SizeRange(size: bounds.size)
+        var layout: Layout
+        if component.isTopLevelComponent {
+            layout = component.layoutThatFits(constrainedSize, parentSize: bounds.size)
+        } else {
+            let parentSize = component.parentComponent?.layoutProperties.preferredSize ?? bounds.size
+            layout = component.layoutThatFits(constrainedSize, parentSize: parentSize)
+        }
+        frame = layout.frame        
     }
     
-    private func layoutTextViewIfNecessary() {
-        guard var textView = textView else { return }
-        guard let component = component else { return }
-        guard let textDescriptor = component.textDescriptor else { return }
-        guard frame.width > 0.0 || frame.height > 0.0 else { return }
-        
-        print("frame: \(frame)")
-
-        let boundBy = CGSize(width: frame.width != 0.0 ? frame.width : CGFloat.greatestFiniteMagnitude, height: frame.height != 0.0 ? frame.height : CGFloat.greatestFiniteMagnitude)
-        let textMargins = TextMetricsCache.shared.textMetrics(for: textDescriptor, textType: textDescriptor.targetTextType, boundBy: boundBy).textMargins
-        
-        var componentFrame = useSafeArea ? safeContainer.frame : frame
-        componentFrame.size.width -= textMargins.left + textMargins.right
-        
-        
-//        print("identifier: \(component.identifier)")
-        if !component.isTopLevelComponent && component.autoConstrainingTextType.contains(.height) {
-            let containerFrame = textDescriptor.containerFrame(for: textDescriptor.targetTextType, boundBy: componentFrame.size, usePreciseTextAlignments: component.usePreciseTextAlignments)
-            var heightConstraint = component.layoutObject(with: .height)
-            if heightConstraint == nil {
-                heightConstraint = component.defaultLayoutObject(with: .height)
-            }
-            if let heightConstraint = heightConstraint, let constraint = binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint, constraint.constant != containerFrame.height {
-                constraint.constant = containerFrame.height
-            }
-            
-            componentFrame.size.height = containerFrame.height
-        }
-
-        var textFrame = textDescriptor.textFrame(for: textDescriptor.targetTextType, boundBy: CGSize(width: componentFrame.width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments, containerSize: componentFrame.size) 
-        textFrame.size.width += textMargins.left + textMargins.right
-        textView.textSize = textFrame.size
-        textView.view.frame = textFrame
-    }
+//    private func layoutTextViewIfNecessary() {
+//        guard var textView = textView else { return }
+//        guard let component = component else { return }
+//        guard let textDescriptor = component.textDescriptor else { return }
+//        guard frame.width > 0.0 || frame.height > 0.0 else { return }
+//
+//        print("frame: \(frame)")
+//
+//        let boundBy = CGSize(width: frame.width != 0.0 ? frame.width : CGFloat.greatestFiniteMagnitude, height: frame.height != 0.0 ? frame.height : CGFloat.greatestFiniteMagnitude)
+//        let textMargins = TextMetricsCache.shared.textMetrics(for: textDescriptor, textType: textDescriptor.targetTextType, boundBy: boundBy).textMargins
+//
+//        var componentFrame = useSafeArea ? safeContainer.frame : frame
+//        componentFrame.size.width -= textMargins.left + textMargins.right
+//
+//
+////        print("identifier: \(component.identifier)")
+//        if !component.isTopLevelComponent && component.autoConstrainingTextType.contains(.height) {
+//            let containerFrame = textDescriptor.containerFrame(for: textDescriptor.targetTextType, boundBy: componentFrame.size, usePreciseTextAlignments: component.usePreciseTextAlignments)
+//            var heightConstraint = component.layoutObject(with: .height)
+//            if heightConstraint == nil {
+//                heightConstraint = component.defaultLayoutObject(with: .height)
+//            }
+////            if let heightConstraint = heightConstraint, let constraint = binder.layoutBinder.binder(forLayout: heightConstraint, meta: heightConstraint.idealMeta).constraint, constraint.constant != containerFrame.height {
+////                constraint.constant = containerFrame.height
+////            }
+//
+//            componentFrame.size.height = containerFrame.height
+//        }
+//
+//        var textFrame = textDescriptor.textFrame(for: textDescriptor.targetTextType, boundBy: CGSize(width: componentFrame.width, height: CGFloat.greatestFiniteMagnitude), usePreciseTextAlignments: component.usePreciseTextAlignments, containerSize: componentFrame.size)
+//        textFrame.size.width += textMargins.left + textMargins.right
+//        textView.textSize = textFrame.size
+//        textView.view.frame = textFrame
+//    }
 }

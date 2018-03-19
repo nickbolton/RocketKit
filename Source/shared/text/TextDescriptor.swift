@@ -37,8 +37,23 @@ public class TextDescriptor: NSObject {
         self.text = text
     }
     
+    public init(text: String,
+                font: UIFont,
+                textColor: UIColor = .clear,
+                lineHeight: CGFloat? = nil,
+                kerning: CGFloat = 0.0,
+                paragraphSpacing: CGFloat = 0.0,
+                baselineOffset: CGFloat = 0.0,
+                textAlignment: TextAlignment = .left,
+                verticalAlignment: TextVerticalAlignment = .center,
+                lineBreakMode: NSLineBreakMode = .byWordWrapping,
+                isUnderline: Bool = false) {
+        self.text = text
+        self.textAttributes = TextAttributes(font: font, textColor: textColor, lineHeight: lineHeight, kerning: kerning, paragraphSpacing: paragraphSpacing, baselineOffset: baselineOffset, textAlignment: textAlignment, verticalAlignment: verticalAlignment, lineBreakMode: lineBreakMode, isUnderline: isUnderline)
+    }
+    
     public override func copy() -> Any {
-        var result = TextDescriptor(text: text)
+        let result = TextDescriptor(text: text)
         result.textAttributes = textAttributes
         return result
     }

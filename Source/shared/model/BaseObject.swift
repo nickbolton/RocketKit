@@ -8,18 +8,30 @@
 
 import Foundation
 
-public class BaseObject: NSObject {
+protocol Exportable {
+    func dictionaryRepresentation() -> [String: Any]
+}
+
+protocol Importable {
+    init(dictionary: [String: Any])
+}
+
+public class BaseObject: NSObject, Exportable, Importable {
 
     public let identifier: String
     
-    private static let identifierKey = "identifier"
+    private let identifierKey = "identifier"
     
     required public override init() {
         self.identifier = UUID().uuidString
     }
     
-    required public init(dictionary: [String: Any], layoutSource: LayoutSource) {
-        self.identifier = dictionary[BaseObject.identifierKey] as? String ?? ""
+    required public init(dictionary: [String: Any]) {
+        self.identifier = dictionary[identifierKey] as? String ?? ""
         super.init()
+    }
+    
+    public func dictionaryRepresentation() -> [String: Any] {
+        return [identifierKey : identifier]
     }
 }

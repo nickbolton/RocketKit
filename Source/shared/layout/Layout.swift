@@ -12,108 +12,72 @@
     import Cocoa
 #endif
 
-public class Layout: BaseObject {
+public struct Layout {
     
-    public var componentIdentifier = ""
-    public var attribute = NSLayoutAttribute.notAnAttribute
-    public var relatedComponentIdentifier: String? = nil
-    public var relatedAttribute = NSLayoutAttribute.notAnAttribute
-    public var isDefaultLayout = false
-    public var idealMeta = LayoutMeta()
-    public var minMeta = LayoutMeta()
-    public var maxMeta = LayoutMeta()
-    public var commonAncestorComponentIdentifier: String? = nil
-    
-    public var isSizing: Bool { return attribute == .width || attribute == .height }
-    
-    public var isHorizontal: Bool {
-        return Layout.isHorizontal(attribute)
-    }
-    
-    public var isVertical: Bool {
-        return Layout.isVertical(attribute)
-    }
-
-    public var isCompletelyDeactivated: Bool {
-        return !idealMeta.isActive && !minMeta.isActive && !maxMeta.isActive
-    }
-
-    static func isHorizontal(_ attribute: NSLayoutAttribute) -> Bool {
-        switch (attribute) {
-        case .width, .left, .right, .centerX, .leading, .trailing:
-            return true
-        default:
-            break
-        }
-        return false
-    }
-    
-    static func isVertical(_ attribute: NSLayoutAttribute) -> Bool {
-        return !isHorizontal(attribute)
-    }
-    
-    private static let componentIdentifierKey = "componentIdentifier"
-    private static let attributeKey = "attribute"
-    private static let relatedComponentIdentifierKey = "relatedComponentIdentifier"
-    private static let commonAncestorComponentIdentifierKey = "commonAncestorComponentIdentifier"
-    private static let relatedAttributeKey = "relatedAttribute"
-    private static let defaultLayoutKey = "defaultLayout"
-    private static let idealMetaKey = "idealMeta"
-    private static let minMetaKey = "minMeta"
-    private static let maxMetaKey = "maxMeta"
-
-    required public override init(dictionary: [String: Any], layoutSource: LayoutSource) {
-        self.componentIdentifier = dictionary[Layout.componentIdentifierKey] as? String ?? ""
-        self.attribute = NSLayoutAttribute(rawValue: dictionary[Layout.attributeKey] as? Int ?? 0) ?? .notAnAttribute
-        self.relatedComponentIdentifier = dictionary[Layout.relatedComponentIdentifierKey] as? String
-        self.commonAncestorComponentIdentifier = dictionary[Layout.commonAncestorComponentIdentifierKey] as? String
-        self.relatedAttribute = NSLayoutAttribute(rawValue: dictionary[Layout.relatedAttributeKey] as? Int ?? 0) ?? .notAnAttribute
-        self.isDefaultLayout = dictionary[Layout.defaultLayoutKey] as? Bool ?? false
-        self.idealMeta = LayoutMeta(dictionary: dictionary[Layout.idealMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
-        self.minMeta = LayoutMeta(dictionary: dictionary[Layout.minMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
-        self.maxMeta = LayoutMeta(dictionary: dictionary[Layout.maxMetaKey] as? [String: Any] ?? [:], layoutSource: layoutSource)
-        super.init(dictionary: dictionary, layoutSource: layoutSource)
-    }
-    
-    required public override init() {
-        super.init()
-    }
-    
-    convenience public init(component: RocketComponent, attribute: NSLayoutAttribute, relatedComponent: RocketComponent? = nil, relatedAttribute: NSLayoutAttribute = .notAnAttribute, idealMeta: LayoutMeta = LayoutMeta()) {
-        self.init()
-        self.componentIdentifier = component.identifier
-        self.attribute = attribute
-        self.relatedComponentIdentifier = relatedComponent?.identifier
-        self.relatedAttribute = relatedAttribute
-        self.idealMeta = idealMeta
-        self.commonAncestorComponentIdentifier = relatedComponent != nil ? component.commonAncestor(with: relatedComponent!)?.identifier : component.identifier
-    }
-}
-
-// MARK: Convenience factory methods
-
-public extension Layout {
-    public static func expand(_ component: RocketComponent, to relatedComponent: RocketComponent) -> [Layout] {
-        let topLayout = align(component, to: relatedComponent, attribute: .top)
-        let bottomLayout = align(component, to: relatedComponent, attribute: .bottom)
-        let leftLayout = align(component, to: relatedComponent, attribute: .left)
-        let rightLayout = align(component, to: relatedComponent, attribute: .right)
-        return [topLayout, bottomLayout, leftLayout, rightLayout]
-    }
+    let componentId: String
+    var position: CGPoint
+    var size: CGSize
+    let sublayouts: [Layout]
+    private let sublayoutMap: [String : Layout]
         
-    public static func align(_ component: RocketComponent, to relatedComponent: RocketComponent, attribute: NSLayoutAttribute, multiplier: CGFloat = 1.0, constant: CGFloat = 0.0) -> Layout {
-        let meta = LayoutMeta(multipler: multiplier, constant: constant)
-        return Layout(component: component, attribute: attribute, relatedComponent: relatedComponent, relatedAttribute: attribute, idealMeta: meta)
+    var frame: CGRect {
+        var subnodeFrame = CGRect.zero
+        var adjustedOrigin = position
+        
+        if adjustedOrigin.x.isInfinite {
+            assert(false, "Layout has an invalid x position")
+            adjustedOrigin.x = 0
+        }
+        if adjustedOrigin.y.isInfinite {
+            assert(false, "Layout has an invalid y position");
+            adjustedOrigin.y = 0
+        }
+        subnodeFrame.origin = adjustedOrigin
+        
+        var adjustedSize = size
+        if adjustedSize.width.isInfinite {
+            assert(false, "Layout has an invalid width")
+            adjustedSize.width = 0
+        }
+        
+        if adjustedSize.height.isInfinite {
+            assert(false, "Layout has an invalid height")
+            adjustedSize.height = 0
+        }
+        
+        subnodeFrame.size = adjustedSize;
+        
+        return subnodeFrame;
     }
     
-    public static func align(_ component: RocketComponent, attribute: NSLayoutAttribute, to relatedComponent: RocketComponent, relatedAttribute: NSLayoutAttribute, multiplier: CGFloat = 1.0, constant: CGFloat = 0.0) -> Layout {
-        let meta = LayoutMeta(multipler: multiplier, constant: constant)
-        return Layout(component: component, attribute: attribute, relatedComponent: relatedComponent, relatedAttribute: relatedAttribute, idealMeta: meta)
-    }
+    public init(componentId: String, position: CGPoint = .null, size: CGSize = .zero, sublayouts: [Layout] = []) {
     
-    public static func size(_ component: RocketComponent, attribute: NSLayoutAttribute, multiplier: CGFloat = 1.0, constant: CGFloat = 0.0) -> Layout {
-        assert(attribute == .width || attribute == .height, "only .width and .height attributes are supported")
-        let meta = LayoutMeta(multipler: multiplier, constant: constant)
-        return Layout(component: component, attribute: attribute, idealMeta: meta)
+        #if DEBUG
+        for sublayout in sublayouts {
+            assert(!sublayout.position.isNull, "Invalid position is not allowed in sublayout.")
+        }
+        #endif
+
+        if Dimension.isSizeValidForSize(size) {
+            self.size = CGSize(width: size.width.halfPointCeilValue, height: size.height.halfPointCeilValue)
+        } else {
+            assert(false, "layoutSize is invalid and unsafe to provide to Core Animation! Release configurations will force to 0, 0.  Size = \(size)")
+            self.size = .zero
+        }
+        
+        if position.isNull {
+            self.position = position
+        } else {
+            self.position = CGPoint(x: position.x.halfPointCeilValue, y: position.y.halfPointCeilValue)
+        }
+        
+        self.componentId = componentId
+        self.sublayouts = sublayouts
+        
+        var map = [String: Layout]()
+        for sublayout in sublayouts {
+            map[sublayout.componentId] = sublayout
+        }
+        sublayoutMap = map
     }
 }

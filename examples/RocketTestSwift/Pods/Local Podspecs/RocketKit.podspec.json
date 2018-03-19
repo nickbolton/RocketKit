@@ -11,7 +11,7 @@
     "git": "https://github.com/nickbolton/RocketKit.git"
   },
   "platforms": {
-    "ios": "11.0",
+    "ios": "10.0",
     "osx": "10.11"
   },
   "source_files": "Source/**/*.swift",
@@ -21,5 +21,10 @@
   "osx": {
     "exclude_files": "Source/ios"
   },
-  "requires_arc": true
+  "requires_arc": true,
+  "dependencies": {
+    "Cache": [
+      "4.1.2"
+    ]
+  }
 }

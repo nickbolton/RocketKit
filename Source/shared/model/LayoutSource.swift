@@ -24,18 +24,15 @@ public class LayoutSource: NSObject {
     var version: Int = 0
     private var componentMap = [String: RocketComponent]()
     private var componentMapByName = [String: RocketComponent]()
-    private var projectColors = [String: String]()
     var rootComponentId: String? = nil
     
     private let versionKey = "version"
     private let componentsKey = "components"
     private let rootComponentIdKey = "rootComponentId"
-    private let projectColorsKey = "projectColors"
 
     required public init(dictionary: [String: Any]) {
         print("loading data source: \(dictionary)")
         self.version = dictionary[versionKey] as? Int ?? 1
-        self.projectColors = LayoutSource.initializeProjectColors(dictionary[projectColorsKey] as? [[String: Any]] ?? [])
         self.rootComponentId = dictionary[rootComponentIdKey] as? String
         super.init()
         topLevelComponents = initializeComponents(dictionary[componentsKey] as? [[String: Any]] ?? [])
@@ -59,10 +56,6 @@ public class LayoutSource: NSObject {
         return componentMapByName[name]
     }
     
-    internal func projectColor(with identifier: String) -> String? {
-        return projectColors[identifier]
-    }
-    
     fileprivate func establishComponentMap(components: [RocketComponent]) {
         for component in components {
             componentMap[component.identifier] = component
@@ -70,29 +63,11 @@ public class LayoutSource: NSObject {
             establishComponentMap(components: component.childComponents)
         }
     }
-    
-    private static func initializeProjectColors(_ colorArray: [[String: Any]]) -> [String: String] {
-        let identifierKey = "identifier"
-        let hexCodeKey = "color"
-        var colors = [String: String]()
-        for dict in colorArray {
-            guard let identifier = dict[identifierKey] as? String, let hexCode = dict[hexCodeKey] as? String else { continue }
-            colors[identifier] = hexCode
-        }
-        return colors
-    }
-    
-    private static func projectColorIdentifier(_ identifier: String, colors: [String: String]) -> String? {
-        if let color = colors[identifier] {
-            return color
-        }
-        return nil
-    }
-    
+        
     private func initializeComponents(_ componentArray: [[String: Any]]) -> [String: RocketComponent] {
         var components = [String: RocketComponent]()
         for dict in componentArray {
-            let component = RocketComponent(dictionary: dict, layoutSource: self)
+            let component = RocketComponent(dictionary: dict)
             components[component.identifier] = component
         }
         establishParentAssociations(Array(components.values), parent: nil)

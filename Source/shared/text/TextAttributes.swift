@@ -82,19 +82,18 @@ public struct TextAttributes {
         return "\(font.fontName)|\(font.pointSize)|\(lineHeightMultiple)|\(kerning)|\(paragraphSpacing)"
     }
     
-    public init(fontFamilyMember: FontFamilyMember? = nil,
-                fontFamilyName: String? = nil,
+    public init(fontFamilyName: String? = nil,
                 isSystemFont: Bool = false,
                 pointSize: CGFloat = TextAttributes.defaultFontSize,
-                kerning: CGFloat = 0.0,
+                textColor: UIColor = .clear,
                 lineHeightMultiple: CGFloat = TextAttributes.defaultLineHeightMultiple,
+                kerning: CGFloat = 0.0,
                 paragraphSpacing: CGFloat = 0.0,
                 baselineOffset: CGFloat = 0.0,
                 textAlignment: TextAlignment = .left,
                 verticalAlignment: TextVerticalAlignment = .center,
                 lineBreakMode: NSLineBreakMode = .byWordWrapping,
-                isUnderline: Bool = false,
-                textColor: ColorType = .clear) {
+                isUnderline: Bool = false) {
         self.fontFamilyMember = fontFamilyMember
         self.fontFamilyName = fontFamilyName
         self.isSystemFont = isSystemFont
@@ -108,6 +107,35 @@ public struct TextAttributes {
         self.lineBreakMode = lineBreakMode
         self.isUnderline = isUnderline
         self.textColor = textColor
+    }
+    
+    public init(font: UIFont,
+                textColor: UIColor = .clear,
+                lineHeight: CGFloat? = nil,
+                kerning: CGFloat = 0.0,
+                paragraphSpacing: CGFloat = 0.0,
+                baselineOffset: CGFloat = 0.0,
+                textAlignment: TextAlignment = .left,
+                verticalAlignment: TextVerticalAlignment = .center,
+                lineBreakMode: NSLineBreakMode = .byWordWrapping,
+                isUnderline: Bool = false) {
+        self.fontFamilyName = nil
+        self.isSystemFont = false
+        self.pointSize = 0.0
+        self.kerning = kerning
+        if let lineHeight = lineHeight {
+            self.lineHeightMultiple = (lineHeight / font.pointSize)
+        } else {
+            self.lineHeightMultiple = TextAttributes.defaultLineHeightMultiple
+        }
+        self.paragraphSpacing = paragraphSpacing
+        self.baselineOffset = baselineOffset
+        self.textAlignment = textAlignment
+        self.verticalAlignment = verticalAlignment
+        self.lineBreakMode = lineBreakMode
+        self.isUnderline = isUnderline
+        self.textColor = textColor
+        self.font = font
     }
     
     public init(dictionary: [String: Any]) {
@@ -135,61 +163,6 @@ public struct TextAttributes {
             self.fontFamilyMember = nil
         }
     }
-    
-//    public override func copy() -> Any {
-//        var result = TextAttributes()
-//        result.font = nil;
-//        if (self.fontFamilyMember != nil) {
-//            result.fontFamilyMember = [self.fontFamilyMember copy];
-//        }
-//        if (self.fontFamilyName != nil) {
-//            result.fontFamilyName = self.fontFamilyName;
-//        }
-//        result.pointSize = self.pointSize;
-//        result.kerning = self.kerning;
-//        result.lineHeightMultiple = self.lineHeightMultiple;
-//        result.paragraphSpacing = self.paragraphSpacing;
-//        result.baselineOffset = self.baselineOffset;
-//        result.internalTextAlignment = self.internalTextAlignment;
-//        result.verticalAlignment = self.verticalAlignment;
-//        result.lineBreakMode = self.lineBreakMode;
-//        result.underline = self.underline;
-//        result.textColor = self.textColor.copy;
-//        result.clearText = self.isClearText;
-//        result.debugText = self.isDebugText;
-//        [result updateSystemFontState];
-//        return result;
-//    }
-//    
-//    public func dictionaryRepresentation() -> [String: Any] {
-//        NSMutableDictionary *dict =
-//            [@{
-//            kAMTextAttributesKerningKey : @(self.kerning),
-//            kAMTextAttributesLineHeightMultipleKey : @(self.lineHeightMultiple),
-//            kAMTextAttributesParagraphSpacingKey : @(self.paragraphSpacing),
-//            kAMTextAttributesLineBreakModeKey : @(self.lineBreakMode),
-//            kAMTextAttributesUnderlineKey : @(self.underline),
-//            kAMTextAttributesPointSizeKey : @(self.pointSize),
-//            kAMTextAttributesSystemFontKey : @(self.isSystemFont),
-//            kAMTextAttributesTextAlignmentKey : @(self.internalTextAlignment),
-//            kAMTextAttributesVerticalAlignmentKey : @(self.verticalAlignment),
-//            kAMTextAttributesBaselineOffsetKey : @(self.baselineOffset),
-//            } mutableCopy];
-//        
-//        if (self.textColor != nil) {
-//            dict[kAMTextAttributesTextColorKey] = [self.textColor hexcodePlusAlpha];
-//        }
-//        
-//        if (self.fontFamilyName != nil) {
-//            dict[kAMTextAttributesFontFamilyNameKey] = self.fontFamilyName;
-//        }
-//        
-//        if (self.fontFamilyMember != nil) {
-//            dict[kAMTextAttributesFontFamilyMemberKey] = [self.fontFamilyMember dictionaryRepresentation];
-//        }
-//        
-//        return dict;
-//    }
     
     private var _font: FontType?
     public var font: FontType {
@@ -225,7 +198,7 @@ public struct TextAttributes {
         }
         set {
             _lineHeight = newValue
-            lineHeightMultiple = (newValue / font.pointSize) / font.lineHeight
+            lineHeightMultiple = (newValue / font.pointSize)
         }
     }
 

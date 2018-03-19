@@ -328,24 +328,14 @@ class TextMetricsCalculator: NSObject, NSLayoutManagerDelegate {
         var rects = [CGRect]()
         
         for i in 0..<attributedString.length {
-            var rectCount = 0
             let charRange = NSMakeRange(i, 1)
             var rect = CGRect.zero
             layoutManager.enumerateEnclosingRects(forGlyphRange: charRange, withinSelectedGlyphRange: charRange, in: layoutManager.textContainers.first!, using: { (r, _) in
                 rect = r
             })
-
-//            #if os(iOS)
-//            #else
-//            let rectArray = layoutManager.rectArray(forCharacterRange: charRange, withinSelectedCharacterRange: charRange, in: layoutManager.textContainers.first!, rectCount: &rectCount)
-//            #endif
-//            if rectCount == 1 {
-//                let rect = rectArray![0]
-//                print("rect: \(rect)")
-                rects.append(rect)
-                bottomLocation = max(bottomLocation, rect.minY)
-                topLocation = min(topLocation, rect.minY)
-//            }
+            rects.append(rect)
+            bottomLocation = max(bottomLocation, rect.minY)
+            topLocation = min(topLocation, rect.minY)
         }
     
         var minTopIndex = Int.max
@@ -357,7 +347,6 @@ class TextMetricsCalculator: NSObject, NSLayoutManagerDelegate {
         var firstBottomCharBottom: CGFloat = 0.0
         
         var topRect = CGRect.zero
-        var bottomRect = CGRect.zero
         
         for i in 0..<attributedString.length {
             let font = characterFonts[i]!
@@ -380,27 +369,10 @@ class TextMetricsCalculator: NSObject, NSLayoutManagerDelegate {
                 maxBottomIndex = max(maxBottomIndex, i)
                 if firstBottomCharBottom == 0.0 {
                     firstBottomCharBottom = baseline
-                    bottomRect = rect
                 }
             }
         }
-        
-//        let topRange = NSMakeRange(minTopIndex, maxTopIndex-minTopIndex+1)
-//        let bottomRange = NSMakeRange(minBottomIndex, maxBottomIndex-minBottomIndex+1)
-//
-//        var topRect = CGRect.zero
-//        var bottomRect = CGRect.zero
-//
-//        layoutManager.enumerateEnclosingRects(forGlyphRange: topRange, withinSelectedGlyphRange: topRange, in: layoutManager.textContainers.first!) { (rect, _) in
-//            topRect = rect
-//        }
-//
-//        layoutManager.enumerateEnclosingRects(forGlyphRange: bottomRange, withinSelectedGlyphRange: bottomRange, in: layoutManager.textContainers.first!) { (rect, _) in
-//            bottomRect = rect
-//        }
-//
-//        print("topRect: \(topRect)")
-        
+
         let font = characterFonts[0]!
     
         var top = topRect.height - firstCharCapHeight
@@ -463,7 +435,7 @@ class TextMetricsCalculator: NSObject, NSLayoutManagerDelegate {
         } catch {
         }
                 
-        let attributedString = textDescriptor.attributedString ?? NSAttributedString()
+        let attributedString = textDescriptor.attributedString
     
         switch textType {
         case .label:

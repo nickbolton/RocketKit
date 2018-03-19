@@ -37,7 +37,7 @@ public class CompositeTextDescriptor: NSObject {
     }
     
     public var attributedString: NSAttributedString {
-        var result = NSMutableAttributedString()
+        let result = NSMutableAttributedString()
         for descriptor in textDescriptors {
             let attributedString = descriptor.attributedString
             if attributedString.length > 0 {
@@ -166,7 +166,7 @@ public class CompositeTextDescriptor: NSObject {
             return nil
         }
         
-        var result = textDescriptors[descriptorIndex];
+        let result = textDescriptors[descriptorIndex];
         result.textRange = NSMakeRange(location - startPosition, 0)
         result.compositeTextRange = NSMakeRange(location, 0)
         return result
